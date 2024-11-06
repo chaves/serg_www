@@ -136,7 +136,7 @@
 			<a href="/news">latest news</a> and <a href="/prizes">Prizes!</a>
 		</p>
 
-		<h2>SERG's members</h2>
+		<h2><a href="/people">SERG's members</a></h2>
 		<p>
 			The S.E.R.G. had 31 members: 6 Professors, 1 Associate Professor, 3 Post-docs and 21 PhD
 			candidates ; 32% women and 68% men ; of 9 nationalities: France, Germany, Tunisia, Nigeria,
