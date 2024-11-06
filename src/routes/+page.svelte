@@ -133,7 +133,7 @@
 		</p>
 		<p>
 			S.E.R.G.'s researchers are also active in their communities outside the lab: Find out our
-			latest news and Prizes!
+			<a href="/news">latest news</a> and <a href="/prizes">Prizes!</a>
 		</p>
 
 		<h2>SERG's members</h2>
