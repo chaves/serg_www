@@ -25,8 +25,8 @@
 		<p>
 			The work of the Sustainable Economy Research Group (S.E.R.G.) falls within the fields of
 			economics and management, with a particular focus on engineering sciences given the specialism
-			of its host institution, CentraleSup&eacute;lec / Paris-Saclay University. The team works
-			within the cross-disciplinary Industrial Engineering Department (LGI in French) in a dialogue
+			of its host institution, <a href="https://www.centralesupelec.fr/fr/universite-paris-saclay">Paris-Saclay University</a>. The team works
+			within the cross-disciplinary <a href="https://www.lgi.centralesupelec.fr/">Industrial Engineering Department (LGI in French)</a> in a dialogue
 			between economics / management / technological, environmental and industrial issues.
 		</p>
 		<p>
