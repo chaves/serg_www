@@ -136,9 +136,9 @@
 			<a href="/news">latest news</a> and <a href="/prizes">Prizes!</a>
 		</p>
 
-		<h2><a href="/people">SERG's members</a></h2>
+		<h2>SERG's members</h2>
 		<p>
-			The S.E.R.G. had 31 members: 6 Professors, 1 Associate Professor, 3 Post-docs and 21 PhD
+			The <a href="/people">S.E.R.G. has 31 members</a>: 6 Professors, 1 Associate Professor, 3 Post-docs and 21 PhD
 			candidates ; 32% women and 68% men ; of 9 nationalities: France, Germany, Tunisia, Nigeria,
 			Ghana, Lebanon, Chile, Mexico, Peru... We also had the chance to welcome researchers from
 			Brazil or the USA. Over the past 5 years, 25 theses were defended and 7 post-docs were members
