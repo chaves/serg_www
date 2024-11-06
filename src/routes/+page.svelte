@@ -186,9 +186,6 @@
 </div>
 
 <style>
-	p {
-		@apply text-sm;
-	}
 	h2, h3 {
 		@apply text-lg font-bold mb-2 text-serg_green-700;
 	}
