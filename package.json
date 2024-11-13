@@ -14,7 +14,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.3.1",
+		"@sveltejs/adapter-vercel": "^5.4.7",
 		"@sveltejs/enhanced-img": "^0.3.10",
 		"@sveltejs/kit": "^2.7.7",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
