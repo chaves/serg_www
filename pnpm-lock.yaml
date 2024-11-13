@@ -12,8 +12,8 @@ importers:
         specifier: ^5.4.7
         version: 5.4.7(@sveltejs/kit@2.8.0(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.16)(vite@5.4.11))(svelte@5.1.16)(vite@5.4.11))
       '@sveltejs/enhanced-img':
-        specifier: ^0.3.10
-        version: 0.3.10(rollup@4.26.0)(svelte@5.1.16)(vite@5.4.11)
+        specifier: ^0.4.1
+        version: 0.4.1(rollup@4.26.0)(svelte@5.1.16)(vite@5.4.11)
       '@sveltejs/kit':
         specifier: ^2.8.0
         version: 2.8.0(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.16)(vite@5.4.11))(svelte@5.1.16)(vite@5.4.11)
@@ -57,8 +57,8 @@ importers:
         specifier: ^15.12.0
         version: 15.12.0
       lucide-svelte:
-        specifier: ^0.453.0
-        version: 0.453.0(svelte@5.1.16)
+        specifier: ^0.456.0
+        version: 0.456.0(svelte@5.1.16)
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -78,8 +78,8 @@ importers:
         specifier: ^2.5.4
         version: 2.5.4
       tailwind-variants:
-        specifier: ^0.2.1
-        version: 0.2.1(tailwindcss@3.4.14)
+        specifier: ^0.3.0
+        version: 0.3.0(tailwindcss@3.4.14)
       tailwindcss:
         specifier: ^3.4.14
         version: 3.4.14
@@ -576,10 +576,10 @@ packages:
     peerDependencies:
       '@sveltejs/kit': ^2.4.0
 
-  '@sveltejs/enhanced-img@0.3.10':
-    resolution: {integrity: sha512-1JxjthN6yb1md3rSFbHRDBi/Jj2R9EjE06vh9zbWgYxm5d4UUphTzNICJTis8bkIDQilbAokrkaQtfRpKSE7qg==}
+  '@sveltejs/enhanced-img@0.4.1':
+    resolution: {integrity: sha512-Z0xwQWM7tfdlNYuaFsAsbjEosEZb961yP7hlvZBLlh3+Rv4tI3BboD6bUkmInj+cC66p/5rybgvEtxX5LILSuw==}
     peerDependencies:
-      svelte: ^4.0.0 || ^5.0.0-next.0
+      svelte: ^5.0.0
       vite: '>= 5.0.0'
 
   '@sveltejs/kit@2.8.0':
@@ -1341,8 +1341,8 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
-  lucide-svelte@0.453.0:
-    resolution: {integrity: sha512-K+eE2ZeE00ThIEbAmZB3Hq0sVS+1ZLj+7nqtJvN0Xrh/KZnfnEChG+do80sctqXQEE+iG1dA2T+5fVcJS1awfA==}
+  lucide-svelte@0.456.0:
+    resolution: {integrity: sha512-SSdmxJOmL1h42ZypuGr54dYsXAT5o6WkQPKVDFnnrD0liOaXzfNNJuA7JbpkO9FFozBchyVpB1A1mKRmXOD8ug==}
     peerDependencies:
       svelte: ^3 || ^4 || ^5.0.0-next.42
 
@@ -1798,8 +1798,8 @@ packages:
   tailwind-merge@2.5.4:
     resolution: {integrity: sha512-0q8cfZHMu9nuYP/b5Shb7Y7Sh1B7Nnl5GqNr1U+n2p6+mybvRtayrQ+0042Z5byvTA8ihjlP8Odo8/VnHbZu4Q==}
 
-  tailwind-variants@0.2.1:
-    resolution: {integrity: sha512-2xmhAf4UIc3PijOUcJPA1LP4AbxhpcHuHM2C26xM0k81r0maAO6uoUSHl3APmvHZcY5cZCY/bYuJdfFa4eGoaw==}
+  tailwind-variants@0.3.0:
+    resolution: {integrity: sha512-ho2k5kn+LB1fT5XdNS3Clb96zieWxbStE9wNLK7D0AV64kdZMaYzAKo0fWl6fXLPY99ffF9oBJnIj5escEl/8A==}
     engines: {node: '>=16.x', pnpm: '>=7.x'}
     peerDependencies:
       tailwindcss: '*'
@@ -2392,13 +2392,14 @@ snapshots:
       - encoding
       - supports-color
 
-  '@sveltejs/enhanced-img@0.3.10(rollup@4.26.0)(svelte@5.1.16)(vite@5.4.11)':
+  '@sveltejs/enhanced-img@0.4.1(rollup@4.26.0)(svelte@5.1.16)(vite@5.4.11)':
     dependencies:
       magic-string: 0.30.12
       svelte: 5.1.16
       svelte-parse-markup: 0.1.5(svelte@5.1.16)
       vite: 5.4.11
       vite-imagetools: 7.0.4(rollup@4.26.0)
+      zimmerframe: 1.1.2
     transitivePeerDependencies:
       - rollup
 
@@ -3217,7 +3218,7 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
-  lucide-svelte@0.453.0(svelte@5.1.16):
+  lucide-svelte@0.456.0(svelte@5.1.16):
     dependencies:
       svelte: 5.1.16
 
@@ -3650,7 +3651,7 @@ snapshots:
 
   tailwind-merge@2.5.4: {}
 
-  tailwind-variants@0.2.1(tailwindcss@3.4.14):
+  tailwind-variants@0.3.0(tailwindcss@3.4.14):
     dependencies:
       tailwind-merge: 2.5.4
       tailwindcss: 3.4.14
