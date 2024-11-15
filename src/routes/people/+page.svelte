@@ -59,7 +59,7 @@
 	{#if visitors}
 		<h2 class="mt-6">Visiting Academics</h2>
 		<div class="person">
-			{#each visitors as visitor}
+			{#each visitors as person}
 				<PersonCard {person} />
 			{/each}
 		</div>
