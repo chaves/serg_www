@@ -19,6 +19,7 @@
 	const post_docs = filterRecordsByKey(people, 'category', 'Postdoctoral researchers');
 	const visitors = filterRecordsByKey(people, 'category', 'Visiting Academics');
 	const associates = filterRecordsByKey(people, 'category', 'Associate Researchers');
+	const formers = filterRecordsByKey(people, 'category', 'Former Researchers');
 
 	researchers = [...directors, ...researchers];
 </script>
@@ -34,6 +35,15 @@
 		<h2 class="">Research Team</h2>
 		<div class="person">
 			{#each researchers as person}
+				<PersonCard {person} />
+			{/each}
+		</div>
+	{/if}
+
+	{#if associates}
+		<h2 class="mt-6">Associate Researchers</h2>
+		<div class="person">
+			{#each associates as person}
 				<PersonCard {person} />
 			{/each}
 		</div>
@@ -57,19 +67,19 @@
 		</div>
 	{/if}
 
-	{#if visitors}
-		<h2 class="mt-6">Visiting Academics</h2>
+	{#if formers}
+		<h2 class="mt-6">Former Researchers</h2>
 		<div class="person">
-			{#each visitors as person}
+			{#each formers as person}
 				<PersonCard {person} />
 			{/each}
 		</div>
 	{/if}
 
-	{#if associates}
-		<h2 class="mt-6">Associate Researchers</h2>
+	{#if visitors}
+		<h2 class="mt-6">Visiting Academics</h2>
 		<div class="person">
-			{#each associates as person}
+			{#each visitors as person}
 				<PersonCard {person} />
 			{/each}
 		</div>
