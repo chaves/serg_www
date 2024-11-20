@@ -13,8 +13,8 @@ async function fetchData(url: string) {
 export const load: PageServerLoad = async ({ fetch }) => {
   try {
     const dataDesc = await fetchData(`https://cms.serg.paris/api/home-description`);
-    const dataNews: NewsResponse = await fetchData('https://cms.serg.paris/api/news');
-    const dataEvents: EventsResponse = await fetchData('https://cms.serg.paris/api/events');
+    const dataNews: NewsResponse = await fetchData('https://cms.serg.paris/api/news?&sort=createdAt:desc');
+    const dataEvents: EventsResponse = await fetchData('https://cms.serg.paris/api/events?sort=date_start:desc');
 
     return {
       description: dataDesc,
