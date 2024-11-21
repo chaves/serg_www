@@ -1,5 +1,4 @@
-export interface Event {
-	id: number;
+export interface EventAttributes {
 	title: string;
 	slug: string;
 	description: string;
@@ -7,4 +6,17 @@ export interface Event {
 	date_end: string;
     areas: [],
 	attached_files: []
+}
+
+export interface Event {
+	id: number;
+	attributes: EventAttributes;
+}
+
+export interface EventsResponse {
+	data: Event[];
+}
+
+export interface EventResponse {
+	data: Event;
 }

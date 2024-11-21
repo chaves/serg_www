@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type { NewsResponse } from '../types/news';
-	import type { EventsResponse } from '../types/events';
+	import type { New } from '../types/news';
+	import type { Event } from '../types/events';
 	import * as Accordion from '$lib/components/ui/accordion/index.js';
 	export let data: {
 		description: any;
-		news: NewsResponse | null;
-		events: EventsResponse | null;
+		news: New[] | null;
+		events: Event[] | null;
 		error?: string;
 	};
 	const aboutUsPaths = {
@@ -155,11 +155,11 @@
 	<div class="w-full md:w-1/3 text-sm rounded shadow hover:shadow-md bg-gray-100">
 		<div class="space-y-4">
 			<!-- Upcoming News Section -->
-			{#if data.news.data}
+			{#if data.news}
 				<div class="p-4 border-b border-gray-200 border-solid">
 					<h3>Upcoming News</h3>
 					<ul class="space-y-3">
-						{#each data.news.data as article (article.id)}
+						{#each data.news as article (article.id)}
 							<li class="font-semibold">
 								<a href="/news/{article.attributes.slug}">{article.attributes.title}</a>
 							</li>
@@ -169,11 +169,11 @@
 			{/if}
 
 			<!-- Events Section -->
-			{#if data.events.data}
+			{#if data.events}
 				<div class="p-4">
 					<h3>Events</h3>
 					<ul class="space-y-3">
-						{#each data.events.data as events (events.id)}
+						{#each data.events as events (events.id)}
 							<li class="font-semibold">
 								<a href="/events/{events.attributes.slug}">{events.attributes.title}</a>
 							</li>

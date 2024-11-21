@@ -2,6 +2,7 @@ export interface NewAttributes {
 	title: string;
 	slug: string;
 	description: string;
+	publishedAt: string;
     areas: [],
 	attached_files: []
 }

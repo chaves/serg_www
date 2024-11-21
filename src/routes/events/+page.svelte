@@ -1,13 +1,10 @@
 <script lang="ts">
-	import type { Event } from '../../types/events';
-	import { flattenObj } from '$lib/utils';
-
+	import type { Event } from '$types/events';
 	export let data: {
 		events: Event[] | null;
 		error?: string;
 	};
 
-	const events = flattenObj(data.events.data);
 </script>
 
 <svelte:head>
@@ -18,13 +15,13 @@
 
 	<h1 class="mb-4">Events</h1>
 
-	{#if events}
+	{#if data.events}
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-			{#each events as event}
+			{#each data.events as event (event.id)}
 				<div class="event-card p-4 border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
 					<p class="font-semibold mb-2">
-						<a href="/events/{event.slug}">
-							{event.title}
+						<a href="/events/{event.attributes.slug}">
+							{event.attributes.title}
 						</a>
 					</p>
 					<!-- Additional event details can be added here -->

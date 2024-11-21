@@ -5,20 +5,16 @@
 		event: Event | null;
 		error?: string;
 	};
-	const title = data.event ? data.event.attributes.title : 'Event not found';
 </script>
 
 <svelte:head>
-	<title>SERG - {title}</title>
+	<title>Sustainable Economy Research Group (SERG) - Events</title>
 </svelte:head>
 
 {#if data.event}
 	<h1 class="text-left">
 		{data.event.attributes.title}
 	</h1>
-	<div class="description">
-		{@html data.event.attributes.description}
-	</div>
 {:else if data.error}
 	<p>Error: {data.error}</p>
 {:else}

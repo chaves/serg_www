@@ -1,4 +1,5 @@
 import type { PageServerLoad } from './$types';
+import type { EventsResponse } from '$types/events';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
     const slug = params.slug; // assuming `slug` is part of the route parameters
@@ -10,8 +11,8 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
         throw new Error(`Failed to fetch event data for slug: ${slug}`);
       }
 
-      const data = await response.json();
-      console.log(data.data[0])
+      const data : EventsResponse = await response.json();
+
       return {
         event: data.data[0] // return the first matching event
       };

@@ -1,15 +1,13 @@
 <script lang="ts">
-	import type { PeopleResponse, PersonAttributes } from '$types/people';
-	import { flattenObj, sortByKey, filterRecordsByKey } from '$lib/utils';
+	import type { Person } from '$types/people';
+	import { flattenObj, filterRecordsByKey, sortByKey } from '$lib/utils'
 	import PersonCard from '$lib/components/PersonCard.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
 
 	export let data: {
-		people: PeopleResponse;
+		people: Person[] | null;
 		error: string;
 	};
-	const peopleData = flattenObj(data.people.data);
+	const peopleData : any = flattenObj(data.people);
 	const people = sortByKey(peopleData, 'last_name');
 
 	const directors = filterRecordsByKey(people, 'category', 'Director');
@@ -34,11 +32,13 @@
 	{#if researchers}
 		<h2 class="">Research Team</h2>
 		<div class="person">
-			{#each researchers as person}
+			{#each researchers as person (person.id)}
 				<PersonCard {person} />
+			{:else}
+				<p>No researchers found.</p>
 			{/each}
 		</div>
-	{/if}
+		{/if}
 
 	{#if associates}
 		<h2 class="mt-6">Associate Researchers</h2>

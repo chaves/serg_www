@@ -13,7 +13,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
 		const data: PeopleResponse = await response.json();
 
 		return {
-			people: data
+			people: data.data
 		};
 	} catch (error) {
 		console.error('Error fetching data:', error);

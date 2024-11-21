@@ -5,14 +5,15 @@
 		new: New | null;
 		error?: string;
 	};
+	const title = data.new ? data.new.attributes.title : 'New not found';
 </script>
 
 <svelte:head>
-	<title>Sustainable Economy Research Group (SERG) - {data.new.attributes.title}</title>
+	<title>SERG - {title}</title>
 </svelte:head>
 
 {#if data.new}
-<h1 class="text-left">{data.new.attributes.title}</h1>
+<h1 class="text-left">{title}</h1>
 {:else if data.error}
 	<p>Error: {data.error}</p>
 {:else}

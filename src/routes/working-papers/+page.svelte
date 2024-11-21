@@ -1,14 +1,14 @@
 <script lang="ts">
 
-  import { flattenObj } from '$lib/utils';
   import DownloadFiles from '$lib/components/DownloadFiles.svelte';
+  import AreasTags from '$lib/components/AreasTags.svelte';
+  import type { Paper } from '$types/papers';
 
 	export let data: {
-		papers;
+		papers : Paper[];
 		error?: string;
 	};
 
-  const papers = flattenObj(data.papers.data);
 </script>
 
   <svelte:head>
@@ -18,12 +18,15 @@
   <h1>Working Papers</h1>
 
   <div class="space-y-6">
-    {#each papers as paper (paper.id)}
+    {#each data.papers as paper (paper.id)}
       <div class="bg-white p-6 rounded shadow hover:shadow-md transition-shadow">
-        <h3 class="text-xl font-semibold mb-2">{paper.title}</h3>
-        <p class="text-gray-600 mb-2">Authors: {paper.authors}</p>
-        <p class="text-sm text-gray-500 mb-4">{paper.year}</p>
-        <DownloadFiles files={paper.files} />
+        <h3 class="text-xl font-semibold mb-2">
+          <a href={`/working-papers/${paper.attributes.slug}`}>{paper.attributes.title}</a>
+        </h3>
+        <p class="text-gray-600 mb-2">Authors: {paper.attributes.authors}</p>
+        <p class="text-sm text-gray-500 mb-4">{paper.attributes.year}</p>
+        <DownloadFiles files={paper.attributes.files} />
+        <AreasTags areas={paper.attributes.areas} />
       </div>
     {/each}
   </div>

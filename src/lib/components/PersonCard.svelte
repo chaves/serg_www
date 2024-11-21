@@ -1,7 +1,6 @@
 <!-- src/components/PersonCard.svelte -->
 <script lang="ts">
   	import type { PersonAttributes } from '$types/people';
-    import * as Card from "$lib/components/ui/card";
 
 	export let person: PersonAttributes;
 

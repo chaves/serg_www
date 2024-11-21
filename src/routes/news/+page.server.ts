@@ -1,6 +1,6 @@
 // src/routes/people/+page.server.ts
 import type { PageServerLoad } from './$types';
-import { flattenObj } from '$lib/utils';
+import type { NewsResponse } from '$types/news';
 
 export const load: PageServerLoad = async ({ fetch }) => {
   try {
@@ -10,10 +10,10 @@ export const load: PageServerLoad = async ({ fetch }) => {
       throw new Error('Failed to fetch data');
     }
 
-    const data: unknown = await flattenObj(response.json());
+    const data: NewsResponse = await response.json();
 
     return {
-      news: data,
+      news: data.data,
     };
   } catch (error) {
     console.error('Error fetching data:', error);

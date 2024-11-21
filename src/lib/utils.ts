@@ -72,8 +72,7 @@ export const flattenObj = (data: unknown): unknown => {
 		Object.prototype.toString.call(data) === '[object Object]';
 	const isArray = (data: unknown): data is unknown[] =>
 		Object.prototype.toString.call(data) === '[object Array]';
-
-	const flatten = (data: unknown) => {
+	const flatten = (data: any) => {
 		if (!data.attributes) return data;
 
 		return {

@@ -1,6 +1,5 @@
 <script lang="ts">
-	import type { Person, PersonAttributes } from '$types/people';
-	import { flattenObj } from '$lib/utils';
+	import type { Person } from '$types/people';
 	import PersonPage from '$lib/components/PersonPage.svelte';
 
 	export let data: {
@@ -8,16 +7,16 @@
 		error?: string;
 	};
 
-	const person: PersonAttributes = data.person ? flattenObj(data.person) : {} as PersonAttributes;
+	const title = data.person ? `${data.person.attributes.first_name} ${data.person.attributes.last_name}`: 'Member not found';
 
 </script>
 
 <h1>
-	{person?.first_name} {person?.last_name}
+	{title}
 </h1>
 
-{#if person}
-	<PersonPage {person} />
+{#if data.person}
+	<PersonPage person={data.person.attributes} />
 {:else if data.error}
 	<p>Error: {data.error}</p>
 {:else}

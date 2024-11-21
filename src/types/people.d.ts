@@ -1,4 +1,5 @@
 export interface Picture {
+	url: string;
 	data: {
 		attributes: {
 			url: string;
