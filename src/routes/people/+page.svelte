@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Person } from '$types/people';
 	import { flattenObj, filterRecordsByKey, sortByKey } from '$lib/utils'
-	import PersonCard from '$lib/components/PersonCard.svelte';
+	import PersonCard from './PersonCard.svelte';
 
 	export let data: {
 		people: Person[] | null;

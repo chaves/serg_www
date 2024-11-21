@@ -157,10 +157,10 @@
 			<!-- Upcoming News Section -->
 			{#if data.news}
 				<div class="p-4 border-b border-gray-200 border-solid">
-					<h3>Upcoming News</h3>
+					<h2 class="mb-4 text-xl">Upcoming News</h2>
 					<ul class="space-y-3">
 						{#each data.news as article (article.id)}
-							<li class="font-semibold">
+							<li>
 								<a href="/news/{article.attributes.slug}">{article.attributes.title}</a>
 							</li>
 						{/each}
@@ -171,10 +171,10 @@
 			<!-- Events Section -->
 			{#if data.events}
 				<div class="p-4">
-					<h3>Events</h3>
+					<h2 class="mb-4 text-xl">Events</h2>
 					<ul class="space-y-3">
 						{#each data.events as events (events.id)}
-							<li class="font-semibold">
+							<li>
 								<a href="/events/{events.attributes.slug}">{events.attributes.title}</a>
 							</li>
 						{/each}

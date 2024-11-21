@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Person } from '$types/people';
-	import PersonPage from '$lib/components/PersonPage.svelte';
+	import PersonPage from './PersonPage.svelte';
 
 	export let data: {
 		person: Person | null;

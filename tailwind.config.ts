@@ -16,9 +16,16 @@ const config: Config = {
 		extend: {
 			colors: {
 				serg_blue: {
-					DEFAULT: '#003366', // Primary blue color
-					light: '#336699',   // Lighter shade
-					dark: '#002244',    // Darker shade
+					50: '#e6eaf0',
+					100: '#ccd5e1',
+					200: '#99abc3',
+					300: '#6682a5',
+					400: '#335887',
+					500: '#003366', // Base color
+					600: '#002d5c',
+					700: '#002652',
+					800: '#001e47',
+					900: '#00173d',
 				  },
 				  serg_gray: {
 					DEFAULT: '#666666', // Primary gray color

@@ -1,31 +1,22 @@
 <script lang="ts">
 	import type { New } from '$types/news';
-	import { formatDate } from '$lib/utils';
+	import NewCard from './NewCard.svelte';
 
 	export let data: {
-		news: New[] | null;
-		error?: string;
+	  news: New[] | null;
+	  error?: string;
 	};
-</script>
+  </script>
 
-<svelte:head>
+  <svelte:head>
 	<title>SERG - Latest News and Updates</title>
-</svelte:head>
+  </svelte:head>
 
-<h1>Latest News and Updates</h1>
-{#if data.news}
+  <h1>Latest News and Updates</h1>
+  {#if data.news}
 	<div class="space-y-6">
-		{#each data.news as article}
-			<article class="bg-white p-6 rounded shadow hover:shadow-md transition-shadow">
-				<h3 class="text-xl font-semibold mb-2">
-					<a href="/news/{article.attributes.slug}">{article.attributes.title}</a>
-				</h3>
-				<p class="text-sm text-gray-600 mb-2">{formatDate(article.attributes.publishedAt)}</p>
-				<p class="text-base leading-relaxed mb-4">{@html article.attributes.description}</p>
-				<a href={`/news/${article.attributes.slug}`} class="text-green-700 hover:underline"
-					>Read more</a
-				>
-			</article>
-		{/each}
+	  {#each data.news as article}
+		<NewCard {article} />
+	  {/each}
 	</div>
-{/if}
+  {/if}

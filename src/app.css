@@ -76,13 +76,14 @@
     @apply bg-background text-foreground;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-serg_blue-light;
+    @apply font-bold text-serg_blue-600;
   }
   p {
 		@apply mb-4;
 	}
 
   main a {
+    @apply text-serg_blue-400 underline underline-offset-2 hover:no-underline;
 	}
 
   h1 {

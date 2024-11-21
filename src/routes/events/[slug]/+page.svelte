@@ -1,5 +1,8 @@
 <script lang="ts">
-	import type { Event } from '../../../types/events';
+	import type { Event } from '$types/events';
+
+	import AreasTags from '$lib/components/AreasTags.svelte';
+    import DownloadFiles from '$lib/components/DownloadFiles.svelte';
 
 	export let data: {
 		event: Event | null;

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Paper } from '$types/papers';
-	import PaperPage from '$lib/components/PaperPage.svelte';
+	import PaperPage from './PaperPage.svelte';
 
 	export let data: {
 		paper: Paper | null,

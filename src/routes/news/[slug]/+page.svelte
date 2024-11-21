@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type { New } from '../../../types/news';
+	import type { New } from '$types/news';
+	import NewPage from './NewPage.svelte';
 
 	export let data: {
 		new: New | null;
@@ -13,7 +14,9 @@
 </svelte:head>
 
 {#if data.new}
-<h1 class="text-left">{title}</h1>
+
+<NewPage article={data.new} />
+
 {:else if data.error}
 	<p>Error: {data.error}</p>
 {:else}
