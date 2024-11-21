@@ -18,7 +18,7 @@
     <li>
       <a
         href={href}
-        class={isMobile ? "block py-2 px-4 hover:bg-green-700 transition-colors" : "hover:text-green-200 transition-colors"}
+        class={isMobile ? "block py-2 px-4 transition-colors" : "transition-colors"}
         class:font-bold={$page.url.pathname === href}
         on:click={isMobile ? toggleMenu : undefined}
       >

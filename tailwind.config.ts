@@ -15,22 +15,23 @@ const config: Config = {
 		},
 		extend: {
 			colors: {
-				serg_green: {
-					50: '#f0fdf4',
-					100: '#dcfce7',
-					200: '#bbf7d0',
-					300: '#86efac',
-					400: '#4ade80',
-					500: '#22c55e',
-					600: '#16a34a',
-					700: '#15803d',
-					800: '#166534',
-					900: '#14532d',
+				serg_blue: {
+					DEFAULT: '#003366', // Primary blue color
+					light: '#336699',   // Lighter shade
+					dark: '#002244',    // Darker shade
+				  },
+				  serg_gray: {
+					DEFAULT: '#666666', // Primary gray color
+					light: '#999999',   // Lighter shade
+					dark: '#333333',    // Darker shade
+				  },
+				  serg_purple: {
+					DEFAULT: '#86144f',
 				  },
 				border: "hsl(var(--border) / <alpha-value>)",
 				input: "hsl(var(--input) / <alpha-value>)",
 				ring: "hsl(var(--ring) / <alpha-value>)",
-				background: "hsl(var(--background) / <alpha-value>)",
+				background: "#D3E5EC",
 				foreground: "hsl(var(--foreground) / <alpha-value>)",
 				primary: {
 					DEFAULT: "hsl(var(--primary) / <alpha-value>)",
@@ -67,10 +68,10 @@ const config: Config = {
 				sm: "calc(var(--radius) - 4px)"
 			},
 			fontFamily: {
-				sans: ['var(--font-roboto)'],
-				inter: ['var(--font-inter)'],
-			  }
-		}
+				body: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+				baskerville: ['"Libre Baskerville"', 'serif'],
+			},
+		},
 	},
 };
 

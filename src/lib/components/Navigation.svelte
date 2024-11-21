@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { page } from "$app/stores";
     import { Menu, X } from 'lucide-svelte';
     import { slide } from 'svelte/transition';
     import MenuItems from '$lib/components/MenuItems.svelte';
@@ -12,14 +11,14 @@
     }
   </script>
 
-<nav class="bg-green-600 text-white">
+<nav class="bg-serg_purple text-white">
     <div class="container mx-auto px-4">
       <div class="flex justify-between items-center py-4">
         <button class="md:hidden" on:click={toggleMenu} aria-label={isMenuOpen ? "Close menu" : "Open menu"}>
           {#if isMenuOpen}
-            <X size={24} />
+            <X size={28} />
           {:else}
-            <Menu size={24} />
+            <Menu size={28} />
           {/if}
         </button>
         <MenuItems {toggleMenu} />

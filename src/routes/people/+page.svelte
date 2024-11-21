@@ -101,7 +101,7 @@
 
 <style>
 	h2 {
-		@apply text-lg md:text-xl font-bold mb-3 text-serg_green-700;
+		@apply text-lg md:text-xl font-bold mb-3;
 	}
 	.person {
 		@apply grid grid-cols-1 sm:grid-cols-3 gap-6 bg-gray-100 p-6 rounded-lg;

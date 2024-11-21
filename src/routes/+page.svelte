@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { New } from '../types/news';
-	import type { Event } from '../types/events';
+	import type { New } from '$types/news';
+	import type { Event } from '$types/events';
 	import * as Accordion from '$lib/components/ui/accordion/index.js';
 	export let data: {
 		description: any;
@@ -184,9 +184,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	h2, h3 {
-		@apply text-lg font-bold mb-2 text-serg_green-700;
-	}
-</style>
