@@ -11,6 +11,7 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
       }
 
       const data = await response.json();
+
       return {
         new: data.data[0] // return the first matching event
       };
