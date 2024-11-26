@@ -7,6 +7,6 @@
 
 {#if items}
 	{#each items as item}
-		<Badge variant="outline">{item.attributes.title}</Badge>
+		<Badge variant="outline">{item.title}</Badge>
 	{/each}
 {/if}

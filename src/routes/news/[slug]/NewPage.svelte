@@ -12,7 +12,7 @@
 
 <div>{@html article.description}</div>
 
-<div>{article.picture.data.attributes.url}</div>
+<div>{article.picture.url}</div>
 
 <DownloadFiles files={article.attached_files} />
 <AreasTags areas={article.areas} />

@@ -8,7 +8,7 @@
 
 {#if files}
 	{#each files.data as file}
-    <a href=https://cms.serg.paris{file.attributes.url} class=" flex items-center">
+    <a href=https://cms.serg.paris{file.url} class=" flex items-center">
 		<FileDown class="mr-2" /> Download
 	</a>
     {/each}
