@@ -13,7 +13,7 @@
 {#if person.picture}
 <a href={`/people/${person.slug}`} class="image-link">
   <img
-    src="https://cms.serg.paris{person.picture.data.url}"
+    src="https://cms.serg.paris{person.picture.url}"
     alt="An alt text"
     class="w-32 h-32 rounded-full object-cover md:mr-10 float-right"
   />
