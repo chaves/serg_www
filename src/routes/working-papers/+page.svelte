@@ -21,12 +21,12 @@
     {#each data.papers as paper (paper.id)}
       <div class="bg-white p-6 rounded shadow hover:shadow-md transition-shadow">
         <h3 class="text-xl font-semibold mb-2">
-          <a href={`/working-papers/${paper.attributes.slug}`}>{paper.attributes.title}</a>
+          <a href={`/working-papers/${paper.slug}`}>{paper.title}</a>
         </h3>
-        <p class="text-gray-600 mb-2">Authors: {paper.attributes.authors}</p>
-        <p class="text-sm text-gray-500 mb-4">{paper.attributes.year}</p>
-        <DownloadFiles files={paper.attributes.files} />
-        <AreasTags areas={paper.attributes.areas} />
+        <p class="text-gray-600 mb-2">Authors: {paper.authors}</p>
+        <p class="text-sm text-gray-500 mb-4">{paper.year}</p>
+        <DownloadFiles files={paper.files} />
+        <AreasTags areas={paper.areas} />
       </div>
     {/each}
   </div>

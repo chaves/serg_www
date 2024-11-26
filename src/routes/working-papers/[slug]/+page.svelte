@@ -7,7 +7,7 @@
 		error?: string;
 	};
 
-	const title = data.paper ? data.paper.attributes.title : 'Paper not found';
+	const title = data.paper ? data.paper.title : 'Paper not found';
 
 </script>
 
@@ -20,7 +20,7 @@
 </h1>
 
 {#if data.paper}
-	<PaperPage paper={data.paper.attributes} />
+	<PaperPage paper={data.paper} />
 {:else if data.error}
 	<p>Error: {data.error}</p>
 {:else}

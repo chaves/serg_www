@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PrizesResponse } from '../../types/prizes';
+	import type { PrizesResponse } from '$types/prizes';
 
 	export let data: {
 		prizes: PrizesResponse | null;
@@ -17,7 +17,7 @@
 	{#if data.prizes}
 		{#each data.prizes.data as prize}
 			<li class="prize-item mb-2.5 text-lg bg-gray-100 p-1.5 odd:bg-white rounded">
-				{prize.attributes.year} - <span class="font-semibold">{prize.attributes.first_name} {prize.attributes.last_name}</span> : {prize.attributes.title}
+				{prize.year} - <span class="font-semibold">{prize.first_name} {prize.last_name}</span> : {prize.title}
 			</li>
 		{/each}
 	{:else if data.error}

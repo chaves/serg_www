@@ -1,13 +1,12 @@
 export interface Picture {
 	url: string;
 	data: {
-		attributes: {
-			url: string;
-		};
+		url: string;
 	};
 }
 
-export interface PersonAttributes {
+export interface Person {
+	id: number;
 	first_name: string;
 	last_name: string;
 	category: string;
@@ -17,11 +16,6 @@ export interface PersonAttributes {
 	bio: string;
 	areas: string[];
 	picture: Picture;
-}
-
-export interface Person {
-	id: number;
-	attributes: PersonAttributes;
 }
 
 export interface PeopleResponse {

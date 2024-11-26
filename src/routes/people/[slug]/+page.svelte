@@ -7,7 +7,7 @@
 		error?: string;
 	};
 
-	const title = data.person ? `${data.person.attributes.first_name} ${data.person.attributes.last_name}`: 'Member not found';
+	const title = data.person ? `${data.person.first_name} ${data.person.last_name}`: 'Member not found';
 
 </script>
 
@@ -16,7 +16,7 @@
 </h1>
 
 {#if data.person}
-	<PersonPage person={data.person.attributes} />
+	<PersonPage person={data.person} />
 {:else if data.error}
 	<p>Error: {data.error}</p>
 {:else}

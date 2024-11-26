@@ -6,7 +6,7 @@
 		new: New | null;
 		error?: string;
 	};
-	const title = data.new ? data.new.attributes.title : 'New not found';
+	const title = data.new ? data.new.title : 'New not found';
 </script>
 
 <svelte:head>

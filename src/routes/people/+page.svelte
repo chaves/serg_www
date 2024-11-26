@@ -1,14 +1,14 @@
 <script lang="ts">
 	import type { Person } from '$types/people';
-	import { flattenObj, filterRecordsByKey, sortByKey } from '$lib/utils'
+	import { filterRecordsByKey, sortByKey } from '$lib/utils'
 	import PersonCard from './PersonCard.svelte';
 
 	export let data: {
 		people: Person[] | null;
 		error: string;
 	};
-	const peopleData : any = flattenObj(data.people);
-	const people = sortByKey(peopleData, 'last_name');
+
+	const people = sortByKey(data.people, 'last_name');
 
 	const directors = filterRecordsByKey(people, 'category', 'Director');
 	let researchers = filterRecordsByKey(people, 'category', 'Research Team');

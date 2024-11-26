@@ -1,4 +1,5 @@
-export interface FileAttributes {
+export interface File {
+	id: number;
 	name: string;
 	alternativeText: string;
 	hash: string;
@@ -6,11 +7,6 @@ export interface FileAttributes {
 	mime: string;
 	size: string;
 	url: string;
-}
-
-export interface File {
-	id: number;
-	attributes: FileAttributes;
 }
 
 export interface FilesResponse {

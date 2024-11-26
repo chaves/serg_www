@@ -67,47 +67,6 @@ export const formatDate = (dateString: string): string => {
 	return date.toLocaleDateString('en-US', options);
 };
 
-export const flattenObj = (data: unknown): unknown => {
-	const isObject = (data: unknown): data is Record<string, unknown> =>
-		Object.prototype.toString.call(data) === '[object Object]';
-	const isArray = (data: unknown): data is unknown[] =>
-		Object.prototype.toString.call(data) === '[object Array]';
-	const flatten = (data: any) => {
-		if (!data.attributes) return data;
-
-		return {
-			id: data.id,
-			...data.attributes
-		};
-	};
-
-	if (isArray(data)) {
-		return data.map((item) => flattenObj(item));
-	}
-
-	if (isObject(data)) {
-		if (isArray(data.data)) {
-			data = [...data.data];
-		} else if (isObject(data.data)) {
-			data = flatten({ ...data.data });
-		} else if (data.data === null) {
-			data = null;
-		} else {
-			data = flatten(data);
-		}
-
-		if (isObject(data)) {
-			for (const key in data) {
-				data[key] = flattenObj(data[key]);
-			}
-		}
-
-		return data;
-	}
-
-	return data;
-};
-
 type Dictionary = { [key: string]: unknown };
 
 export const sortByKey = (list: Dictionary[], key: string, ascending: boolean = true): Dictionary[] => {

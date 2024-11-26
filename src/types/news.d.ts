@@ -1,15 +1,11 @@
-export interface NewAttributes {
+export interface New {
+	id: number;
 	title: string;
 	slug: string;
 	description: string;
 	publishedAt: string;
     areas: [],
 	attached_files: []
-}
-
-export interface New {
-	id: number;
-	attributes: NewAttributes;
 }
 
 export interface NewsResponse {

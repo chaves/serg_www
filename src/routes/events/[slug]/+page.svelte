@@ -8,7 +8,7 @@
 		event: Event | null;
 		error?: string;
 	};
-	const title = data.event ? data.event.attributes.title : 'Event not found';
+	const title = data.event ? data.event.title : 'Event not found';
 </script>
 
 <svelte:head>
@@ -17,10 +17,10 @@
 
 {#if data.event}
 	<h1 class="text-left">
-		{data.event.attributes.title}
+		{data.event.title}
 	</h1>
 	<div class="description">
-		{@html data.event.attributes.description}
+		{@html data.event.description}
 	</div>
 {:else if data.error}
 	<p>Error: {data.error}</p>

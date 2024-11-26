@@ -1,4 +1,5 @@
-export interface PaperAttributes {
+export interface Paper {
+	id: number;
 	year: string;
     title: string;
 	slug: string;
@@ -6,11 +7,6 @@ export interface PaperAttributes {
 	abstract: string;
     areas: [],
 	files: []
-}
-
-export interface Paper {
-	id: number;
-	attributes: PaperAttributes;
 }
 
 export interface PapersResponse {

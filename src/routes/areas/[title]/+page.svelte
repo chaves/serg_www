@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Event } from '../../../types/events';
+	import type { Event } from '$types/events';
 
 	export let data: {
 		event: Event | null;
@@ -13,7 +13,7 @@
 
 {#if data.event}
 	<h1 class="text-left">
-		{data.event.attributes.title}
+		{data.event.title}
 	</h1>
 {:else if data.error}
 	<p>Error: {data.error}</p>

@@ -1,10 +1,10 @@
 <!-- src/components/PersonCard.svelte -->
 <script lang="ts">
-	import type { PersonAttributes } from '$types/people';
+	import type { Person } from '$types/people';
 
 	import AreasTags from '$lib/components/AreasTags.svelte';
 
-	export let person: PersonAttributes;
+	export let person: Person;
 </script>
 
 <div class="bg-white p-6 rounded shadow hover:shadow-md transition-shadow text-center">

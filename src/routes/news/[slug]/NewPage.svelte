@@ -8,11 +8,11 @@
     export let article: New;
   </script>
 
-<h1>{article.attributes.title}</h1>
+<h1>{article.title}</h1>
 
-<div>{@html article.attributes.description}</div>
+<div>{@html article.description}</div>
 
-<div>{article.attributes.picture.data.attributes.url}</div>
+<div>{article.picture.data.attributes.url}</div>
 
-<DownloadFiles files={article.attributes.attached_files} />
-<AreasTags areas={article.attributes.areas} />
+<DownloadFiles files={article.attached_files} />
+<AreasTags areas={article.areas} />

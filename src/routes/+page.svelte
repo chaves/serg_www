@@ -161,7 +161,7 @@
 					<ul class="space-y-3">
 						{#each data.news as article (article.id)}
 							<li>
-								<a href="/news/{article.attributes.slug}">{article.attributes.title}</a>
+								<a href="/news/{article.slug}">{article.title}</a>
 							</li>
 						{/each}
 					</ul>
@@ -175,7 +175,7 @@
 					<ul class="space-y-3">
 						{#each data.events as events (events.id)}
 							<li>
-								<a href="/events/{events.attributes.slug}">{events.attributes.title}</a>
+								<a href="/events/{events.slug}">{events.title}</a>
 							</li>
 						{/each}
 					</ul>
