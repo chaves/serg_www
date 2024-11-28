@@ -7,8 +7,12 @@
 <div class="min-h-screen flex flex-col bg-gray-100">
 	<header class="py-4">
 		<div class="container mx-auto px-4">
-			<img class="h-16" src="/logo_200.png" alt="Sustainable Economy Research Group (SERG)">
-			<h1 class="text-xl md:text-2xl font-bold text-left -mb-3">Sustainable Economy Research Group (SERG)</h1>
+			<a href="/">
+				<img class="h-16" src="/logo_200.png" alt="Sustainable Economy Research Group (SERG)" />
+				<h1 class="text-xl md:text-2xl font-bold text-left -mb-3">
+					Sustainable Economy Research Group (SERG)
+				</h1>
+			</a>
 		</div>
 	</header>
 
