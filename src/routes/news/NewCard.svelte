@@ -14,11 +14,13 @@
     </h3>
     <p class="text-sm text-gray-600 mb-2">{formatDate(article.publishedAt)}</p>
     <a href={`/news/${article.slug}`}>Read more</a>
+    {#if article.picture}
     <img
       src="https://cms.serg.paris{article.picture.url}"
       alt="An alt text"
       class="h-32 rounded-sm mx-auto mb-4 object-cover"
     />
+    {/if}
 
     <AreasTags areas={article.areas} />
   </article>
