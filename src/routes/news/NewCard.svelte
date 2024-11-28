@@ -1,26 +1,32 @@
 <!-- src/components/NewCard.svelte -->
 <script lang="ts">
-    import type { New } from '$types/news';
-    import { formatDate } from '$lib/utils';
+	import type { New } from '$types/news';
+	import { formatDate } from '$lib/utils';
 
-    import AreasTags from '$lib/components/AreasTags.svelte';
+	import AreasTags from '$lib/components/AreasTags.svelte';
 
-    export let article: New;
-  </script>
+	export let article: New;
+</script>
 
-  <article class="bg-white p-6 rounded shadow hover:shadow-md transition-shadow">
-    <h3 class="text-xl font-semibold mb-2">
-      <a href="/news/{article.slug}">{article.title}</a>
-    </h3>
-    <p class="text-sm text-gray-600 mb-2">{formatDate(article.publishedAt)}</p>
-    <a href={`/news/${article.slug}`}>Read more</a>
-    {#if article.picture}
-    <img
-      src="https://cms.serg.paris{article.picture.url}"
-      alt="An alt text"
-      class="h-32 rounded-sm mx-auto mb-4 object-cover"
-    />
-    {/if}
+<article>
+	{#if article.picture}
+		<img src="https://cms.serg.paris{article.picture.url}" alt={article.title} />
+	{/if}
+  <div class="content">
+	<h3 class="text-xl font-semibold mb-2">
+		<a href="/news/{article.slug}">{article.title}</a>
+	</h3>
+  <AreasTags areas={article.areas} />
+	<p class="text-sm text-gray-600 my-2">{formatDate(article.publishedAt)}</p>
+	<a href={`/news/${article.slug}`}>Read more</a>
+</div>
+</article>
 
-    <AreasTags areas={article.areas} />
-  </article>
+<style>
+	img {
+		@apply rounded-sm mx-auto mb-4 object-cover float-right ml-9 p-6 max-h-28 md:max-h-36;
+	}
+  .content {
+    @apply bg-white p-6 rounded shadow hover:shadow-md transition-shadow;
+  }
+</style>
