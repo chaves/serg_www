@@ -12,6 +12,7 @@
 </svelte:head>
 
 <h1>Prizes</h1>
+dddd
 
 <ul class="prize-list bg-white p-5 rounded-lg shadow-md">
 	{#if data.prizes}

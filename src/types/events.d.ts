@@ -5,9 +5,17 @@ export interface Event {
 	description: string;
 	date_start: string;
 	date_end: string;
+	picture: Picture;
     areas: [];
 	attached_files: [];
 	publishedAt: string;
+}
+
+export interface Picture {
+	url: string;
+	data: {
+		url: string;
+	};
 }
 
 export interface EventsResponse {

@@ -4,8 +4,16 @@ export interface New {
 	slug: string;
 	description: string;
 	publishedAt: string;
+	picture: Picture;
     areas: [],
 	attached_files: []
+}
+
+export interface Picture {
+	url: string;
+	data: {
+		url: string;
+	};
 }
 
 export interface NewsResponse {
