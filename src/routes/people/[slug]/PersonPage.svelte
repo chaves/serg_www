@@ -15,7 +15,7 @@
   <img
     src="https://cms.serg.paris{person.picture.url}"
     alt="An alt text"
-    class="w-32 h-32 rounded-full object-cover md:mr-10 float-right"
+    class="w-64 h-64 rounded-full object-cover md:mr-10 float-right"
   />
 </a>
 {/if}
