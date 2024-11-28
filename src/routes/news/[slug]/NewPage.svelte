@@ -10,20 +10,24 @@
 
 <h1>{article.title}</h1>
 
-{#if article.picture}
-<img
-  src="https://cms.serg.paris{article.picture.url}"
-  alt="An alt text"
-/>
-{/if}
-
-<div>{@html article.description}</div>
-
-<DownloadFiles files={article.attached_files} />
 <AreasTags areas={article.areas} />
 
+<div class="content">
+	{#if article.picture}
+		<img src="https://cms.serg.paris{article.picture.url}" alt="An alt text" />
+	{/if}
+
+	{@html article.description}
+
+	<DownloadFiles files={article.attached_files} />
+</div>
+
 <style>
-  img {
-	@apply rounded-sm mx-auto mb-4 object-cover float-right ml-9 border-l-2 p-6 max-h-56
-  }
+	img {
+		@apply rounded-sm mx-auto mb-4 object-cover float-right ml-9 border-l-4 border-b-4 border-gray-200 p-6 max-h-64;
+	}
+
+	.content {
+		@apply mt-3;
+	}
 </style>

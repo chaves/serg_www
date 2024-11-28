@@ -93,3 +93,21 @@ export const filterRecordsByKey = (records: RecordType[], key: string, value: un
     return records.filter(record => record[key] === value);
 };
 
+export const getFirstTwoSentences = (input: string) => {
+    const matches: string[] = input.match(/<p>(.*?)<\/p>/g) || []; // Match content inside <p> tags
+    const result: string[] = [];
+    let totalLength: number = 0;
+
+    for (const match of matches) {
+      const content: string = match
+        .replace(/<\/?p>/g, "") // Remove <p> tags
+        .replace(/<br\s*\/?>/g, "") // Remove <br> tags
+        .trim();
+
+      if (totalLength + content.length > 500) break;
+      result.push(content);
+      totalLength += content.length;
+    }
+
+    return result;
+}
