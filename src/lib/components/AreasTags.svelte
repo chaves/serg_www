@@ -6,8 +6,8 @@
 </script>
 
 {#if items}
+	<span class="text-xs">Topic(s):</span>
 	{#each items as item}
-		<span class="text-xs">Topic(s):</span>
 		<Badge variant="outline" class="p-1 mr-2">{item.title}</Badge>
 	{/each}
 {/if}
