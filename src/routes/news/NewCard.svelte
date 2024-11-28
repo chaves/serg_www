@@ -24,7 +24,7 @@
 
     {#if article.areas}
 		<div class="areas">
-			<span class="text-xs">Topic(s):</span> <AreasTags areas={article.areas} />
+			<AreasTags areas={article.areas} />
 		</div>
     {/if}
 		<p class="date">Publication date: {formatDate(article.publishedAt)}</p>
