@@ -6,11 +6,11 @@
 
 <div class="min-h-screen flex flex-col bg-gray-100">
 	<header class="py-4">
-		<div class="container mx-auto px-4">
+		<div class="container mx-auto">
 			<a href="/">
-				<img class="h-16" src="/logo_200.png" alt="Sustainable Economy Research Group (SERG)" />
-				<h1 class="text-xl md:text-2xl font-bold text-left -mb-3">
-					Sustainable Economy Research Group (SERG)
+				<img class="h-16" src="/logo_200.png" alt="Sustainable Economy Research Group (S.E.R.G.)" />
+				<h1 class="text-xs md:text-base font-bold md:text-left -mb-3 mt-1">
+					Sustainable Economy Research Group (S.E.R.G.) at CentraleSupélec / Paris-Saclay University / Industrial Engineering Departement (LGI)
 				</h1>
 			</a>
 		</div>
@@ -25,7 +25,7 @@
 	<footer class="p-4 mt-8">
 		<div class="container mx-auto px-4 text-center">
 			<p>
-				&copy; {new Date().getFullYear()} Sustainable Economy Research Group (SERG). All rights reserved.
+				&copy; {new Date().getFullYear()} Sustainable Economy Research Group (S.E.R.G.) at CentraleSupélec / Paris-Saclay University / Industrial Engineering Departement (LGI). All rights reserved.
 			</p>
 		</div>
 	</footer>

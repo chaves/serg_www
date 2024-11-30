@@ -30,28 +30,28 @@
 
 		<Accordion.Root class="w-full mb-6">
 			<Accordion.Item value="item-1">
-				<Accordion.Trigger>Axis: Innovations</Accordion.Trigger>
+				<Accordion.Trigger>Axis: Innovation Economics &amp; Management</Accordion.Trigger>
 				<Accordion.Content>
 					{@html data.description.axis_innovation}
 				</Accordion.Content>
 			</Accordion.Item>
 
 			<Accordion.Item value="item-2">
-				<Accordion.Trigger>Axis: Sustainable mobility</Accordion.Trigger>
+				<Accordion.Trigger>Axis: Sustainable Mobility Systems</Accordion.Trigger>
 				<Accordion.Content>
 					{@html data.description.axis_mobility}
 				</Accordion.Content>
 			</Accordion.Item>
 
 			<Accordion.Item value="item-3">
-				<Accordion.Trigger>Axis: Low-carbon energy systems</Accordion.Trigger>
+				<Accordion.Trigger>Axis: Low-Carbon Energy Systems</Accordion.Trigger>
 				<Accordion.Content>
 					{@html data.description.axis_energy}
 				</Accordion.Content>
 			</Accordion.Item>
 
 			<Accordion.Item value="item-4">
-				<Accordion.Trigger>Axis: Climate economics &amp; management</Accordion.Trigger>
+				<Accordion.Trigger>Axis: Climate Economics &amp; Management</Accordion.Trigger>
 				<Accordion.Content>
 					{@html data.description.axis_climate}
 				</Accordion.Content>
@@ -80,7 +80,7 @@
 			<!-- Events Section -->
 			{#if data.events}
 				<div class="p-4">
-					<h2 class="mb-4 text-xl">Events</h2>
+					<h2 class="mb-4 -mt-2 text-xl">Events</h2>
 					<ul class="space-y-3">
 						{#each data.events as events (events.id)}
 							<li>
