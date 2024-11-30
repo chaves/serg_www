@@ -9,7 +9,7 @@
 		<div class="container mx-auto">
 			<a href="/">
 				<img class="h-16" src="/logo_200.png" alt="Sustainable Economy Research Group (S.E.R.G.)" />
-				<h1 class="text-xs md:text-base font-bold md:text-left -mb-3 mt-1">
+				<h1 class="text-left text-sm md:text-base lg:text-xl font-bold -mb-3 mt-1">
 					Sustainable Economy Research Group (S.E.R.G.) at CentraleSupélec / Paris-Saclay University / Industrial Engineering Departement (LGI)
 				</h1>
 			</a>
