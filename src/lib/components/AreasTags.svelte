@@ -5,7 +5,7 @@
 	const items = areas.data ? areas.data : areas;
 </script>
 
-{#if items}
+{#if items && items.length > 0}
 	<span class="text-xs">Topic(s):</span>
 	{#each items as item}
 		<Badge variant="outline" class="p-1 mr-2">{item.title}</Badge>
