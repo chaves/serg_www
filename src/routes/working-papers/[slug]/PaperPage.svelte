@@ -8,7 +8,7 @@
 
 <AreasTags areas={paper.areas} />
 
-<p class="mt-3">{paper.authors}</p>
+<p class="mt-3">{paper.year} - {paper.authors}</p>
 
 {@html paper.abstract}
 
