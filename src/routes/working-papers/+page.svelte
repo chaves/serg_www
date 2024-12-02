@@ -23,8 +23,7 @@
         <h3 class="text-xl font-semibold mb-2">
           <a href={`/working-papers/${paper.slug}`}>{paper.title}</a>
         </h3>
-        <p class="text-gray-600 mb-2">Authors: {paper.authors}</p>
-        <p class="text-sm text-gray-500 mb-4">{paper.year}</p>
+        <p class="text-gray-600 mb-2">{paper.year} - {paper.authors}</p>
         <DownloadFiles files={paper.files} />
         <AreasTags areas={paper.areas} />
       </div>
