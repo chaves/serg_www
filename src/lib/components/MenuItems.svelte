@@ -8,6 +8,7 @@
     { href: "/news", label: "News" },
     { href: "/events", label: "Events" },
     { href: "/people", label: "People" },
+    { href: "/publications", label: "Publications" },
     { href: "/working-papers", label: "Working Papers" },
     { href: "/prizes", label: "Prizes" }
   ];
