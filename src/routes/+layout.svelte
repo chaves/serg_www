@@ -22,7 +22,7 @@
 		{@render children()}
 	</main>
 
-	<footer class="p-4 mt-8">
+	<footer class="p-4 mt-3 mb-6">
 		<div class="container mx-auto px-4 text-center">
 			<p>
 				&copy; {new Date().getFullYear()} Sustainable Economy Research Group (S.E.R.G.) at CentraleSupélec / Paris-Saclay University / Industrial Engineering Departement (LGI). All rights reserved.
