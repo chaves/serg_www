@@ -7,9 +7,9 @@
 </script>
 
 {#if files && files.length > 0}
-	{#each files.data as file}
+	{#each files as file}
 		<a href="https://cms.serg.paris{file.url}" class=" flex items-center">
-			<FileDown class="mr-2" /> Download
+			<FileDown class="mr-2" /> Download : {file.name}
 		</a>
 	{/each}
 {/if}
