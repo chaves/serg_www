@@ -12,7 +12,7 @@
   </script>
 
 <nav class="bg-serg_purple text-white">
-    <div class="container mx-auto md:px-12 px-6">
+    <div class="container mx-auto px-8">
       <div class="flex justify-between items-center py-4">
         <button class="md:hidden" on:click={toggleMenu} aria-label={isMenuOpen ? "Close menu" : "Open menu"}>
           {#if isMenuOpen}
