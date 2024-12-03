@@ -1,4 +1,4 @@
-export interface Area {
+export interface Home {
 	id: number;
 	introduction: string;
 	axis_innovation: string;

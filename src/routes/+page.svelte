@@ -3,7 +3,8 @@
 	import type { Event } from '$types/events';
 	import type { Home } from '$types/home';
 	import * as Accordion from '$lib/components/ui/accordion/index.js';
-	import { Presentation } from 'lucide-svelte';
+	import image_home from '$lib/assets/images/CS_111018_7340_fff2101c55.jpg?enhanced&w=1200;800';
+
 	export let data: {
 		description: Home;
 		news: New[] | null;
@@ -58,6 +59,15 @@
 			</Accordion.Item>
 		</Accordion.Root>
 		{@html data.description.conclusion}
+
+		<a href="https://centralesupelec.hal.science/LGI">
+			<enhanced:img
+				src={image_home}
+				alt="CentraleSupélec / Paris-Saclay University"
+				sizes="(min-width:1080px) 1200px, (min-width:768px) 800px"
+				class="mx-auto"
+			/>
+		</a>
 	</div>
 
 	<!-- Sidebar for News and Events -->
