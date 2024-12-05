@@ -28,7 +28,7 @@
 				</div>
 			</div>
 
-			<h1 class="text-left text-sm md:text-base lg:text-xl font-bold -mb-3 mt-2">
+			<h1 class="text-left text-sm md:text-base lg:text-lg font-bold -mb-3 mt-2">
 				Sustainable Economy Research Group (S.E.R.G.) at CentraleSupélec / Paris-Saclay University /
 				Industrial Engineering Departement (LGI)
 			</h1>
