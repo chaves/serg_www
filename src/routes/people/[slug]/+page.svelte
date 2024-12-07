@@ -11,12 +11,13 @@
 
 </script>
 
-<h1>
-	{title}
-</h1>
+<svelte:head>
+	<title>{title} - SERG</title>
+  </svelte:head>
+
 
 {#if data.person}
-	<PersonPage person={data.person} />
+	<PersonPage person={data.person} {title} />
 {:else if data.error}
 	<p>Error: {data.error}</p>
 {:else}

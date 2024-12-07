@@ -21,7 +21,7 @@
 	{#if person.picture}
 		<a href={`/people/${person.slug}`}>
 			<img
-				src="https://cms.serg.paris{person.picture.url}"
+				src="https://cms.serg.paris{person.picture.formats.thumbnail.url}"
 				alt="An alt text"
 				class="w-28 h-28 rounded-full mx-auto mb-4 object-cover"
 			/>
