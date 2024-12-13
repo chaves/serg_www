@@ -46,7 +46,7 @@
 			</Accordion.Item>
 
 			<Accordion.Item value="item-3">
-				<Accordion.Trigger>Axis: Climate Change Strategiy</Accordion.Trigger>
+				<Accordion.Trigger>Axis: Climate Change Strategy</Accordion.Trigger>
 				<Accordion.Content>
 					{@html data.description.axis_climate}
 				</Accordion.Content>
