@@ -30,29 +30,23 @@
 		<h2>Research</h2>
 
 		<Accordion.Root class="w-full mb-6">
-			<Accordion.Item value="item-1">
-				<Accordion.Trigger>Axis: Innovation Economics &amp; Management</Accordion.Trigger>
-				<Accordion.Content>
-					{@html data.description.axis_innovation}
-				</Accordion.Content>
-			</Accordion.Item>
 
-			<Accordion.Item value="item-2">
+			<Accordion.Item value="item-1">
 				<Accordion.Trigger>Axis: Sustainable Mobility Systems</Accordion.Trigger>
 				<Accordion.Content>
 					{@html data.description.axis_mobility}
 				</Accordion.Content>
 			</Accordion.Item>
 
-			<Accordion.Item value="item-3">
+			<Accordion.Item value="item-2">
 				<Accordion.Trigger>Axis: Low-Carbon Energy Systems</Accordion.Trigger>
 				<Accordion.Content>
 					{@html data.description.axis_energy}
 				</Accordion.Content>
 			</Accordion.Item>
 
-			<Accordion.Item value="item-4">
-				<Accordion.Trigger>Axis: Climate Economics &amp; Management</Accordion.Trigger>
+			<Accordion.Item value="item-3">
+				<Accordion.Trigger>Axis: Climate Change Strategiy</Accordion.Trigger>
 				<Accordion.Content>
 					{@html data.description.axis_climate}
 				</Accordion.Content>
