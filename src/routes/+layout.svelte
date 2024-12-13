@@ -37,7 +37,7 @@
 
 	<Navigation />
 
-	<main class="container mx-auto px-4 py-4 flex-grow shadow-md my-4 rounded-lg bg-white">
+	<main class="container mx-auto lg:p-12 md:p-8 p-4 flex-grow shadow-md my-4 rounded-lg bg-white lg:text-base text-sm">
 		{@render children()}
 	</main>
 
