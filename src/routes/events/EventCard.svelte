@@ -19,7 +19,7 @@
 		</h3>
 
 		<div class="description">
-			<FirstTwoSentences text={event.description} slug={event.slug} />
+			<FirstTwoSentences text={event.description} slug={event.slug} path="events" />
 		</div>
 
     {#if event.areas}
