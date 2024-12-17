@@ -70,7 +70,7 @@
 			<!-- Upcoming News Section -->
 			{#if data.news}
 				<div class="p-4 border-b border-gray-200 border-solid">
-					<h2 class="mb-4 text-xl">Upcoming News</h2>
+					<h2 class="mb-4 text-xl">Latest News and Updates</h2>
 					<ul class="space-y-3">
 						{#each data.news as article (article.id)}
 							<li>
