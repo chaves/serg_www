@@ -20,7 +20,7 @@
 				<div class="flex justify-end">
 					<a href="https://www.centralesupelec.fr/"
 						><img
-							class="h-16"
+							class="h-20"
 							src="/logo_centrale_univ_150.png"
 							alt="Sustainable Economy Research Group (S.E.R.G.)"
 						/></a
