@@ -11,7 +11,7 @@
 				<div class="flex justify-start">
 					<a href="/">
 						<img
-							class="h-16"
+							class="h-14 md:h-16"
 							src="/logo_100.png"
 							alt="Sustainable Economy Research Group (S.E.R.G.)"
 						/></a
@@ -20,7 +20,7 @@
 				<div class="flex justify-end">
 					<a href="https://www.centralesupelec.fr/"
 						><img
-							class="h-20"
+							class="h-12 md:h-16"
 							src="/logo_centrale_univ_150.png"
 							alt="Sustainable Economy Research Group (S.E.R.G.)"
 						/></a
