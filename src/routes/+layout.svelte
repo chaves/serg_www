@@ -21,7 +21,7 @@
 					<a href="https://www.centralesupelec.fr/"
 						><img
 							class="h-16"
-							src="/logo_centrale_150.png"
+							src="/logo_centrale_univ_150.png"
 							alt="Sustainable Economy Research Group (S.E.R.G.)"
 						/></a
 					>
