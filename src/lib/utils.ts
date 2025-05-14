@@ -67,47 +67,73 @@ export const formatDate = (dateString: string): string => {
 	return date.toLocaleDateString('en-US', options);
 };
 
+export const formatDateEvent = (startDate: string, endDate: string): string => {
+	const start = new Date(startDate);
+	const end = new Date(endDate);
+	const options: Intl.DateTimeFormatOptions = {
+		weekday: 'long',
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric'
+	};
+	if (startDate === endDate) {
+		return start.toLocaleDateString('en-US', options);
+	} else {
+		return (
+			start.toLocaleDateString('en-US', options) + ' - ' + end.toLocaleDateString('en-US', options)
+		);
+	}
+};
+
 type Dictionary = { [key: string]: unknown };
 
-export const sortByKey = (list: Dictionary[], key: string, ascending: boolean = true): Dictionary[] => {
-  return list.sort((a, b) => {
-    const aValue = a[key] as unknown;
-    const bValue = b[key] as unknown;
+export const sortByKey = (
+	list: Dictionary[],
+	key: string,
+	ascending: boolean = true
+): Dictionary[] => {
+	return list.sort((a, b) => {
+		const aValue = a[key] as unknown;
+		const bValue = b[key] as unknown;
 
-    if (typeof aValue === 'string' && typeof bValue === 'string') {
-      return ascending ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
-    }
+		if (typeof aValue === 'string' && typeof bValue === 'string') {
+			return ascending ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+		}
 
-    if (typeof aValue === 'number' && typeof bValue === 'number') {
-      if (aValue < bValue) return ascending ? -1 : 1;
-      if (aValue > bValue) return ascending ? 1 : -1;
-    }
+		if (typeof aValue === 'number' && typeof bValue === 'number') {
+			if (aValue < bValue) return ascending ? -1 : 1;
+			if (aValue > bValue) return ascending ? 1 : -1;
+		}
 
-    return 0;
-  });
+		return 0;
+	});
 };
 
 type RecordType = { [key: string]: unknown };
 
-export const filterRecordsByKey = (records: RecordType[], key: string, value: unknown): RecordType[] => {
-    return records.filter(record => record[key] === value);
+export const filterRecordsByKey = (
+	records: RecordType[],
+	key: string,
+	value: unknown
+): RecordType[] => {
+	return records.filter((record) => record[key] === value);
 };
 
 export const getFirstTwoSentences = (input: string) => {
-    const matches: string[] = input.match(/<p>(.*?)<\/p>/g) || []; // Match content inside <p> tags
-    const result: string[] = [];
-    let totalLength: number = 0;
+	const matches: string[] = input.match(/<p>(.*?)<\/p>/g) || []; // Match content inside <p> tags
+	const result: string[] = [];
+	let totalLength: number = 0;
 
-    for (const match of matches) {
-      const content: string = match
-        .replace(/<\/?p>/g, "") // Remove <p> tags
-        .replace(/<br\s*\/?>/g, "") // Remove <br> tags
-        .trim();
+	for (const match of matches) {
+		const content: string = match
+			.replace(/<\/?p>/g, '') // Remove <p> tags
+			.replace(/<br\s*\/?>/g, '') // Remove <br> tags
+			.trim();
 
-      if (totalLength + content.length > 500) break;
-      result.push(content);
-      totalLength += content.length;
-    }
+		if (totalLength + content.length > 500) break;
+		result.push(content);
+		totalLength += content.length;
+	}
 
-    return result;
-}
+	return result;
+};

@@ -1,19 +1,24 @@
 <!-- src/components/NewCard.svelte -->
 <script lang="ts">
-    import type { Event } from '$types/events';
-    import { formatDate } from '$lib/utils';
+	import type { Event } from '$types/events';
+	import { formatDate, formatDateEvent } from '$lib/utils';
 
-    import AreasTags from '$lib/components/AreasTags.svelte';
-    import FirstTwoSentences from '$lib/components/FirstTwoSentences.svelte';
+	import AreasTags from '$lib/components/AreasTags.svelte';
+	import FirstTwoSentences from '$lib/components/FirstTwoSentences.svelte';
+	import { Calendar } from 'lucide-svelte';
 
-    export let event: Event;
-  </script>
+	export let event: Event;
+</script>
 
 <article>
 	{#if event.picture}
 		<img src="https://cms.serg.paris{event.picture.url}" alt={event.title} />
 	{/if}
 	<div class="content">
+		<p class="text-sm text-gray-600 mb-1">
+			<Calendar class="inline-block mr-1 -mt-1 w-4 h-4" />
+			{formatDateEvent(event.date_start, event.date_end)}
+		</p>
 		<h3 class="text-xl font-semibold mb-2">
 			<a href="/events/{event.slug}">{event.title}</a>
 		</h3>
@@ -22,11 +27,11 @@
 			<FirstTwoSentences text={event.description} slug={event.slug} path="events" />
 		</div>
 
-    {#if event.areas}
-		<div class="areas">
-			<AreasTags areas={event.areas} />
-		</div>
-    {/if}
+		{#if event.areas}
+			<div class="areas">
+				<AreasTags areas={event.areas} />
+			</div>
+		{/if}
 		<p class="date">Publication date: {formatDate(event.publishedAt)}</p>
 	</div>
 </article>
@@ -43,13 +48,11 @@
 		@apply text-sm italic;
 	}
 
-  .areas {
+	.areas {
 		@apply mt-3;
 	}
 
-  .date {
+	.date {
 		@apply text-gray-600 my-2 text-right text-xs clear-both block italic;
 	}
 </style>
-
-
