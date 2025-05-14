@@ -1,8 +1,6 @@
 <script lang="ts">
 	import type { Event } from '$types/events';
-
-	import AreasTags from '$lib/components/AreasTags.svelte';
-    import DownloadFiles from '$lib/components/DownloadFiles.svelte';
+	import EventDescription from './EventDescription.svelte';
 
 	export let data: {
 		event: Event | null;
@@ -16,12 +14,7 @@
 </svelte:head>
 
 {#if data.event}
-	<h1 class="text-left">
-		{data.event.title}
-	</h1>
-	<div class="description">
-		{@html data.event.description}
-	</div>
+	<EventDescription event={data.event} />
 {:else if data.error}
 	<p>Error: {data.error}</p>
 {:else}

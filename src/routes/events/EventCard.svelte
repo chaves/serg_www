@@ -53,6 +53,6 @@
 	}
 
 	.date {
-		@apply text-gray-600 my-2 text-right text-xs clear-both block italic;
+		@apply text-gray-600 my-2 text-right text-sm clear-both block italic;
 	}
 </style>
