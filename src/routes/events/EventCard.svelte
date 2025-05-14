@@ -15,7 +15,7 @@
 		<img src="https://cms.serg.paris{event.picture.url}" alt={event.title} />
 	{/if}
 	<div class="content">
-		<p class="text-sm text-gray-600 mb-1">
+		<p class="text-gray-600 mb-1">
 			<Calendar class="inline-block mr-1 -mt-1 w-4 h-4" />
 			{formatDateEvent(event.date_start, event.date_end)}
 		</p>
