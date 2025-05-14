@@ -2,6 +2,7 @@
 	import type { New } from '$types/news';
 	import type { Event } from '$types/events';
 	import type { Home } from '$types/home';
+	import { formatDateEvent } from '$lib/utils';
 	import * as Accordion from '$lib/components/ui/accordion/index.js';
 	import image_home from '$lib/assets/images/CS_111018_7340_fff2101c55.jpg?enhanced&w=1200;800';
 
@@ -30,7 +31,6 @@
 		<h2>Research</h2>
 
 		<Accordion.Root class="w-full mb-6">
-
 			<Accordion.Item value="item-1">
 				<Accordion.Trigger>Axis: Sustainable Mobility Systems</Accordion.Trigger>
 				<Accordion.Content>
@@ -86,9 +86,12 @@
 				<div class="p-4">
 					<h2 class="mb-4 -mt-2 text-xl">Events</h2>
 					<ul class="space-y-3">
-						{#each data.events as events (events.id)}
+						{#each data.events as event (event.id)}
 							<li>
-								<a href="/events/{events.slug}">{events.title}</a>
+								<a href="/events/{event.slug}">{event.title}</a> - {formatDateEvent(
+									event.date_start,
+									event.date_end
+								)}
 							</li>
 						{/each}
 					</ul>

@@ -38,7 +38,7 @@
 
 <style>
 	img {
-		@apply rounded-sm mx-auto mb-4 object-cover float-right ml-9 p-6 max-h-28 md:max-h-36;
+		@apply rounded-xl mx-auto mb-4 object-cover float-right ml-9 p-6 max-h-28 md:max-h-36;
 	}
 	.content {
 		@apply bg-white p-6 rounded shadow hover:shadow-md transition-shadow;
