@@ -16,8 +16,15 @@
 <ul class="prize-list bg-white p-5 rounded-lg shadow-md">
 	{#if data.prizes}
 		{#each data.prizes.data as prize}
-			<li class="prize-item mb-2.5 text-lg bg-gray-100 p-1.5 odd:bg-white rounded">
+			<li class="prize-item mb-2.5 text-lg bg-gray-100 p-1.5 odd:bg-white rounded h-20">
 				{prize.year} - <span class="font-semibold">{prize.first_name} {prize.last_name}</span> : {prize.title}
+				{#if prize.picture}
+					<img
+						src={`https://cms.serg.paris${prize.picture.formats.thumbnail.url}`}
+						alt={`${prize.first_name} ${prize.last_name}`}
+						class="rounded-xl h-full float-right ml-4 object-cover"
+					/>
+				{/if}
 			</li>
 		{/each}
 	{:else if data.error}
