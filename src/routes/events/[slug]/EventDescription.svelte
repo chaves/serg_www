@@ -16,7 +16,7 @@
 {/if}
 
 <h1 class="text-2xl font-semibold mb-2">
-	<a href="/events/{event.slug}">{event.title}</a>
+	{event.title}
 </h1>
 
 <p class="mb-1 text-center font-bold text-xl">
