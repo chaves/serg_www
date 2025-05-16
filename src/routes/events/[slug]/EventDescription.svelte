@@ -11,7 +11,7 @@
 
 {#if event.picture}
 	<div class="picture">
-		<img src="https://cms.serg.paris{event.picture.formats.medium.url}" alt={event.title} />
+		<img src="https://cms.serg.paris{event.picture.url}" alt={event.title} />
 	</div>
 {/if}
 
@@ -46,11 +46,11 @@
 
 <style>
 	.picture {
-		@apply mb-4 object-cover ml-9 p-6;
+		@apply mb-6;
 	}
 
 	img {
-		@apply rounded-xl max-h-60 md:max-h-80 mx-auto;
+		@apply h-96 mx-auto rounded-xl;
 	}
 
 	.description {

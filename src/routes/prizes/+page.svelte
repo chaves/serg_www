@@ -13,23 +13,22 @@
 
 <h1>Prizes</h1>
 
-<ul class="prize-list bg-white p-5 rounded-lg shadow-md">
+<ul class="prize-list">
 	{#if data.prizes}
 		{#each data.prizes.data as prize}
-			<li
-				class="prize-item mb-2.5 text-lg bg-gray-100 p-1.5 odd:bg-white rounded h-20 flex items-center justify-between"
-			>
-				<div class="flex-1">
+			<div class="prize-item">
+				<div class="price-text">
 					{prize.year} - <span class="font-semibold">{prize.first_name} {prize.last_name}</span> : {prize.title}
 				</div>
 				{#if prize.picture}
-					<img
-						src={`https://cms.serg.paris${prize.picture.formats.thumbnail.url}`}
-						alt={`${prize.first_name} ${prize.last_name}`}
-						class="rounded-xl h-full object-cover ml-4"
-					/>
+					<div class="picture">
+						<img
+							src={`https://cms.serg.paris${prize.picture.formats.thumbnail.url}`}
+							alt={`${prize.first_name} ${prize.last_name}`}
+						/>
+					</div>
 				{/if}
-			</li>
+			</div>
 		{/each}
 	{:else if data.error}
 		<li class="error-message text-red-500 font-bold">Error: {data.error}</li>
@@ -39,23 +38,25 @@
 </ul>
 
 <style>
-	.prize-list {
-		background-color: white;
-		padding: 20px;
-		border-radius: 8px;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		list-style: none;
-	}
-
 	.prize-item {
-		margin-bottom: 10px;
-		font-size: 1.1em;
 		background-color: #f9f9f9;
-		padding: 6px;
+		@apply flex items-center justify-between p-2 mb-2 rounded;
 	}
 
 	.prize-item:nth-child(odd) {
 		background-color: white;
+	}
+
+	.price-text {
+		@apply text-lg flex-1;
+	}
+
+	.picture {
+		@apply ml-4;
+	}
+
+	img {
+		@apply rounded-xl h-20 md:h-28 object-cover;
 	}
 
 	.error-message {

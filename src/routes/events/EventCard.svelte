@@ -12,7 +12,9 @@
 
 <article>
 	{#if event.picture}
-		<img src="https://cms.serg.paris{event.picture.formats.thumbnail.url}" alt={event.title} />
+		<div class="picture">
+			<img src="https://cms.serg.paris{event.picture.formats.thumbnail.url}" alt={event.title} />
+		</div>
 	{/if}
 	<div class="content">
 		<p class="text-gray-600 mb-1">
@@ -37,8 +39,12 @@
 </article>
 
 <style>
+	.picture {
+		@apply mb-4 float-right ml-9 p-6;
+	}
+
 	img {
-		@apply rounded-xl mx-auto mb-4 object-cover float-right ml-9 p-6 max-h-28 md:max-h-36;
+		@apply rounded-xl max-h-28 md:max-h-36;
 	}
 	.content {
 		@apply bg-white p-6 rounded shadow hover:shadow-md transition-shadow;
