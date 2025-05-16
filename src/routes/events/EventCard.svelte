@@ -12,7 +12,7 @@
 
 <article>
 	{#if event.picture}
-		<img src="https://cms.serg.paris{event.picture.url}" alt={event.title} />
+		<img src="https://cms.serg.paris{event.picture.formats.thumbnail.url}" alt={event.title} />
 	{/if}
 	<div class="content">
 		<p class="text-gray-600 mb-1">

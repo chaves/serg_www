@@ -7,12 +7,11 @@
 	export let person: Person;
 	export let title: string;
 
-  let picture = person.picture.url
+	let picture = person.picture.url;
 
-if (person.picture.formats.small) {
-  picture = person.picture.formats.small.url
-}
-
+	if (person.picture.formats.small) {
+		picture = person.picture.formats.small.url;
+	}
 </script>
 
 <h1>
@@ -31,19 +30,14 @@ if (person.picture.formats.small) {
 
 {#if person.picture}
 	<a href={`/people/${person.slug}`} class="image-link">
-		<img
-			src="https://cms.serg.paris{picture}"
-			alt="{title}"
-		/>
+		<img src="https://cms.serg.paris{picture}" alt={title} />
 	</a>
 {/if}
 
 {@html person?.bio}
 
 <style>
-
-img {
-  @apply w-64 h-64 rounded-full object-cover md:mr-10 mb-6 md:float-right mx-auto;
-}
-
+	img {
+		@apply w-64 h-64 rounded-full object-cover md:mr-10 mb-6 md:float-right mx-auto;
+	}
 </style>

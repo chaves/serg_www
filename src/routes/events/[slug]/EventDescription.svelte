@@ -11,7 +11,7 @@
 
 {#if event.picture}
 	<div class="picture">
-		<img src="https://cms.serg.paris{event.picture.url}" alt={event.title} />
+		<img src="https://cms.serg.paris{event.picture.formats.medium.url}" alt={event.title} />
 	</div>
 {/if}
 
