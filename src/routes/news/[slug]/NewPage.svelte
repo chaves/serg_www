@@ -20,6 +20,8 @@
 	{@html article.description}
 
 	<DownloadFiles files={article.attached_files} />
+
+	<div class="date">Publication date: {formatDate(article.publishedAt)}</div>
 </div>
 
 <style>
@@ -29,5 +31,9 @@
 
 	.content {
 		@apply mt-3;
+	}
+
+	.date {
+		@apply text-gray-600 my-2 float-right text-xs clear-both block italic;
 	}
 </style>

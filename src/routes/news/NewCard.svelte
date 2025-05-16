@@ -7,12 +7,11 @@
 	import FirstTwoSentences from '$lib/components/FirstTwoSentences.svelte';
 
 	export let article: New;
+
+	const pictureUrl = article.picture?.formats?.thumbnail?.url || article.picture?.url;
 </script>
 
 <article>
-	{#if article.picture}
-		<img src="https://cms.serg.paris{article.picture.url}" alt={article.title} />
-	{/if}
 	<div class="content">
 		<h3 class="text-xl font-semibold mb-2">
 			<a href="/news/{article.slug}">{article.title}</a>
@@ -22,32 +21,46 @@
 			<FirstTwoSentences text={article.description} slug={article.slug} path="news" />
 		</div>
 
-    {#if article.areas}
-		<div class="areas">
-			<AreasTags areas={article.areas} />
-		</div>
-    {/if}
-		<p class="date">Publication date: {formatDate(article.publishedAt)}</p>
+		<div class="date">Publication date: {formatDate(article.publishedAt)}</div>
+
+		{#if article.areas}
+			<div class="areas">
+				<AreasTags areas={article.areas} />
+			</div>
+		{/if}
+	</div>
+
+	<div class="picture">
+		{#if article.picture}
+			<img src="https://cms.serg.paris{pictureUrl}" alt={article.title} />
+		{/if}
 	</div>
 </article>
 
 <style>
 	img {
-		@apply rounded-sm mx-auto mb-4 object-cover float-right ml-9 p-6 max-h-28 md:max-h-36;
+		@apply rounded-xl object-cover max-h-48 md:max-h-60;
 	}
 	.content {
-		@apply bg-white p-6 rounded shadow hover:shadow-md transition-shadow;
+	}
+
+	.picture {
+		@apply mr-4 ml-12;
+	}
+
+	article {
+		@apply flex items-center justify-between mb-2 bg-white p-4 rounded shadow hover:shadow-md transition-shadow;
 	}
 
 	.description {
 		@apply text-sm italic;
 	}
 
-  .areas {
+	.areas {
 		@apply mt-3;
 	}
 
-  .date {
-		@apply text-gray-600 my-2 text-right text-xs clear-both block italic;
+	.date {
+		@apply text-gray-600 my-2 float-right text-xs clear-both block italic;
 	}
 </style>

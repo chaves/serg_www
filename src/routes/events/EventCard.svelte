@@ -8,12 +8,14 @@
 	import { Calendar } from 'lucide-svelte';
 
 	export let event: Event;
+
+	const pictureUrl = event.picture?.formats?.thumbnail?.url || event.picture?.url;
 </script>
 
 <article>
 	{#if event.picture}
 		<div class="picture">
-			<img src="https://cms.serg.paris{event.picture.formats.thumbnail.url}" alt={event.title} />
+			<img src="https://cms.serg.paris{pictureUrl}" alt={event.title} />
 		</div>
 	{/if}
 	<div class="content">
@@ -44,7 +46,7 @@
 	}
 
 	img {
-		@apply rounded-xl max-h-28 md:max-h-36;
+		@apply rounded-xl h-28 md:h-36;
 	}
 	.content {
 		@apply bg-white p-6 rounded shadow hover:shadow-md transition-shadow;

@@ -50,7 +50,7 @@
 	}
 
 	img {
-		@apply h-96 mx-auto rounded-xl;
+		@apply h-56 md:min-h-80 mx-auto rounded-xl;
 	}
 
 	.description {
