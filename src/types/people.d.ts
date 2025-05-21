@@ -1,9 +1,4 @@
-export interface Picture {
-	url: string;
-	data: {
-		url: string;
-	};
-}
+import type { Media } from './strapi/Media';
 
 export interface Person {
 	id: number;
@@ -15,7 +10,7 @@ export interface Person {
 	slug: string;
 	bio: string;
 	areas: string[];
-	picture: Picture;
+	picture: Media;
 }
 
 export interface PeopleResponse {

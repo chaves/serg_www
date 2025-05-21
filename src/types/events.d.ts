@@ -1,3 +1,5 @@
+import type { Media } from './strapi/Media';
+
 export interface Event {
 	id: number;
 	title: string;
@@ -5,17 +7,10 @@ export interface Event {
 	description: string;
 	date_start: string;
 	date_end: string;
-	picture: Picture;
-    areas: [];
+	picture: Media;
+	areas: [];
 	attached_files: [];
 	publishedAt: string;
-}
-
-export interface Picture {
-	url: string;
-	data: {
-		url: string;
-	};
 }
 
 export interface EventsResponse {

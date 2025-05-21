@@ -9,16 +9,15 @@
 
 	export let event: Event;
 
-	const pictureUrl = event.picture?.formats?.thumbnail?.url || event.picture?.url;
+	const pictureUrl = event.picture?.formats?.small?.url || event.picture?.url;
 </script>
 
 <article>
-	{#if event.picture}
-		<div class="picture">
-			<img src="https://cms.serg.paris{pictureUrl}" alt={event.title} />
-		</div>
-	{/if}
 	<div class="content">
+		<div class="picture_mobile">
+			<img class="w-full" src="https://cms.serg.paris{pictureUrl}" alt={event.title} />
+		</div>
+
 		<p class="text-gray-600 mb-1">
 			<Calendar class="inline-block mr-1 -mt-1 w-4 h-4" />
 			{formatDateEvent(event.date_start, event.date_end)}
@@ -38,18 +37,32 @@
 		{/if}
 		<p class="date">Publication date: {formatDate(event.publishedAt)}</p>
 	</div>
+	{#if event.picture}
+		<div class="picture">
+			<img src="https://cms.serg.paris{pictureUrl}" alt={event.title} />
+		</div>
+	{/if}
 </article>
 
 <style>
+	article {
+		@apply flex items-center justify-between bg-white p-4 rounded shadow hover:shadow-md transition-shadow;
+	}
+
+	.content {
+		@apply text-lg flex-1;
+	}
 	.picture {
-		@apply mb-4 float-right ml-9 p-6;
+		@apply ml-4
+		 hidden md:block;
+	}
+
+	.picture_mobile {
+		@apply md:hidden mb-2;
 	}
 
 	img {
-		@apply rounded-xl h-28 md:h-36;
-	}
-	.content {
-		@apply bg-white p-6 rounded shadow hover:shadow-md transition-shadow;
+		@apply rounded-xl max-h-60 md:h-40 object-cover;
 	}
 
 	.description {
@@ -61,6 +74,6 @@
 	}
 
 	.date {
-		@apply text-gray-600 my-2 text-right text-sm clear-both block italic;
+		@apply text-gray-600 my-2 text-sm clear-both block italic;
 	}
 </style>
