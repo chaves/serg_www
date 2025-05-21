@@ -11,7 +11,8 @@
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run",
 		"lint": "eslint . && prettier --check .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"t4s": "t4s"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "^5.5.2",
@@ -33,6 +34,7 @@
 		"lucide-svelte": "^0.468.0",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.2",
+		"strapi-schema-types": "^1.0.4",
 		"svelte": "^5.10.0",
 		"svelte-check": "^4.1.1",
 		"svelte-radix": "^2.0.1",

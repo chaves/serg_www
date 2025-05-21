@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Person } from '$types/people';
-	import { filterRecordsByKey, sortByKey } from '$lib/utils'
+	import { filterRecordsByKey, sortByKey } from '$lib/utils';
 	import PersonCard from './PersonCard.svelte';
 
 	export let data: {
@@ -38,7 +38,7 @@
 				<p>No researchers found.</p>
 			{/each}
 		</div>
-		{/if}
+	{/if}
 
 	{#if associates}
 		<h2 class="mt-6">Associate Researchers</h2>
@@ -104,6 +104,6 @@
 		@apply text-lg md:text-xl font-bold mb-3;
 	}
 	.person {
-		@apply grid grid-cols-1 sm:grid-cols-3 gap-6 bg-gray-100 p-6 rounded-lg;
+		@apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 bg-gray-100 p-6 rounded-lg;
 	}
 </style>
