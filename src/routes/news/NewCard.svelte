@@ -6,61 +6,49 @@
 	import AreasTags from '$lib/components/AreasTags.svelte';
 	import FirstTwoSentences from '$lib/components/FirstTwoSentences.svelte';
 
+	import Card from '$lib/components/Card.svelte';
+
 	export let article: New;
 
 	const pictureUrl = article.picture?.formats?.thumbnail?.url || article.picture?.url;
 </script>
 
-<article>
-	<div class="content">
-		<h3 class="text-xl font-semibold mb-2">
-			<a href="/news/{article.slug}">{article.title}</a>
-		</h3>
+<Card title={article.title} slug={article.slug} path="news">
+	<svelte:fragment slot="header"></svelte:fragment>
 
-		<div class="description">
-			<FirstTwoSentences text={article.description} slug={article.slug} path="news" />
-		</div>
+	<svelte:fragment slot="description">
+		<FirstTwoSentences text={article.description} slug={article.slug} path="news" />
+	</svelte:fragment>
 
-		<div class="date">Publication date: {formatDate(article.publishedAt)}</div>
-
+	<svelte:fragment slot="tags">
 		{#if article.areas}
 			<div class="areas">
 				<AreasTags areas={article.areas} />
 			</div>
 		{/if}
-	</div>
+	</svelte:fragment>
 
-	<div class="picture">
+	<svelte:fragment slot="footer">
+		<p class="date">Publication date: {formatDate(article.publishedAt)}</p>
+	</svelte:fragment>
+
+	<svelte:fragment slot="picture">
 		{#if article.picture}
 			<img src="https://cms.serg.paris{pictureUrl}" alt={article.title} />
 		{/if}
-	</div>
-</article>
+	</svelte:fragment>
+</Card>
 
 <style>
-	img {
-		@apply rounded-xl object-cover max-h-48 md:max-h-60;
-	}
-	.content {
-	}
-
-	.picture {
-		@apply mr-4 ml-12;
-	}
-
-	article {
-		@apply flex items-center justify-between mb-2 bg-white p-4 rounded shadow hover:shadow-md transition-shadow;
-	}
-
-	.description {
-		@apply text-sm italic;
-	}
-
 	.areas {
 		@apply mt-3;
 	}
 
 	.date {
-		@apply text-gray-600 my-2 float-right text-xs clear-both block italic;
+		@apply text-gray-600 my-2 text-sm clear-both block italic;
+	}
+
+	img {
+		@apply rounded-xl max-h-60 md:h-40 object-cover;
 	}
 </style>
