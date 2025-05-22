@@ -64,7 +64,7 @@
 	}
 
 	.description {
-		@apply italic;
+		@apply text-sm italic;
 	}
 
 	.areas {
