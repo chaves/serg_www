@@ -1,20 +1,18 @@
-<!-- src/components/NewCard.svelte -->
 <script lang="ts">
 	import type { New } from '$types/news';
 
-	import Card from '$lib/components/Card.svelte';
+	import PageDescription from '$lib/components/PageDescription.svelte';
 
 	export let article: New;
 
 	const pictureUrl = article.picture?.formats?.small?.url || article.picture?.url;
 </script>
 
-<Card
+<PageDescription
 	title={article.title}
-	slug={article.slug}
-	path="news"
+	description={article.description}
 	areas={article.areas}
+	attachedFiles={article.attached_files}
 	publishedAt={article.publishedAt}
 	{pictureUrl}
-	description={article.description}
 />
