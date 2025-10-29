@@ -2,6 +2,7 @@
 	import '../app.css';
 	import Navigation from '$lib/components/Navigation.svelte';
 	let { children } = $props();
+	export const prerender = true;
 </script>
 
 <div class="min-h-screen flex flex-col bg-gray-100">
@@ -37,7 +38,9 @@
 
 	<Navigation />
 
-	<main class="container mx-auto lg:p-12 md:p-8 p-4 flex-grow shadow-md my-4 rounded-lg bg-white lg:text-base text-sm">
+	<main
+		class="container mx-auto lg:p-12 md:p-8 p-4 flex-grow shadow-md my-4 rounded-lg bg-white lg:text-base text-sm"
+	>
 		{@render children()}
 	</main>
 
