@@ -31,5 +31,5 @@
 			/>
 		</a>
 	{/if}
-  <AreasTags areas={person.areas} />
+	<AreasTags areas={person.areas} center={true} />
 </div>

@@ -24,7 +24,7 @@
 {/if}
 
 <p class="text-center">
-	<AreasTags areas={person.areas} />
+	<AreasTags areas={person.areas} center={true} />
 </p>
 
 {#if person.picture}
