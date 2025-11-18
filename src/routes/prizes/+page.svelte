@@ -1,17 +1,15 @@
 <script lang="ts">
-	import type { PrizesResponse } from '$types/prizes';
-
+	import type { PageData } from './$types';
 	import PrizeCard from './PrizeCard.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 
-	export let data: {
-		prizes: PrizesResponse | null;
-		error?: string;
-	};
+	let { data }: { data: PageData } = $props();
 </script>
 
-<svelte:head>
-	<title>Sustainable Economy Research Group (SERG) - Prizes</title>
-</svelte:head>
+<SEO
+	title="Prizes"
+	description="Awards and prizes received by members of the Sustainable Economy Research Group (SERG) for their research contributions."
+/>
 
 <h1>Prizes</h1>
 

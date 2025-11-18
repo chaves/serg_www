@@ -1,17 +1,16 @@
 <script lang="ts">
+	import type { PageData } from './$types';
 	import DownloadFiles from '$lib/components/DownloadFiles.svelte';
 	import AreasTags from '$lib/components/AreasTags.svelte';
-	import type { Paper } from '$types/papers';
+	import SEO from '$lib/components/SEO.svelte';
 
-	export let data: {
-		papers: Paper[];
-		error?: string;
-	};
+	let { data }: { data: PageData } = $props();
 </script>
 
-<svelte:head>
-	<title>Sustainable Economy Research Group (SERG) - Working Papers</title>
-</svelte:head>
+<SEO
+	title="Working Papers"
+	description="Research working papers and publications from the Sustainable Economy Research Group (SERG) on sustainable economy, mobility, energy, and climate change."
+/>
 
 <h1>Working Papers</h1>
 

@@ -1,17 +1,35 @@
 <script lang="ts">
-	import type { Event } from '$types/events';
+	import type { PageData } from './$types';
 	import EventDescription from './EventDescription.svelte';
+	import SEO from '$lib/components/SEO.svelte';
+	import StructuredData from '$lib/components/StructuredData.svelte';
 
-	export let data: {
-		event: Event | null;
-		error?: string;
-	};
+	let { data }: { data: PageData } = $props();
 	const title = data.event ? data.event.title : 'Event not found';
+	const description = data.event?.description;
+	const image = data.event?.picture?.formats?.medium?.url || data.event?.picture?.url;
+	const imageUrl = image ? `https://cms.serg.paris${image}` : undefined;
 </script>
 
-<svelte:head>
-	<title>SERG - {title}</title>
-</svelte:head>
+{#if data.event}
+	<SEO
+		title={title}
+		description={description}
+		image={imageUrl}
+		type="article"
+		publishedTime={data.event.publishedAt}
+	/>
+	<StructuredData
+		type="Event"
+		data={{
+			title: data.event.title,
+			description: data.event.description,
+			image: image,
+			date_start: data.event.date_start,
+			date_end: data.event.date_end
+		}}
+	/>
+{/if}
 
 {#if data.event}
 	<EventDescription event={data.event} />

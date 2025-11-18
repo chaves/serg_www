@@ -1,16 +1,15 @@
 <script lang="ts">
-	import type { Event } from '$types/events';
+	import type { PageData } from './$types';
 	import EventCard from './EventCard.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 
-	export let data: {
-		events: Event[] | null;
-		error?: string;
-	};
+	let { data }: { data: PageData } = $props();
 </script>
 
-<svelte:head>
-	<title>Sustainable Economy Research Group (SERG) - Events</title>
-</svelte:head>
+<SEO
+	title="Events"
+	description="Upcoming and past events organized by the Sustainable Economy Research Group (SERG) at CentraleSupélec."
+/>
 
 <h1 class="mb-4">Events</h1>
 

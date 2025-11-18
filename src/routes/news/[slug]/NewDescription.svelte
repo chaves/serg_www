@@ -3,7 +3,7 @@
 
 	import PageDescription from '$lib/components/PageDescription.svelte';
 
-	export let article: New;
+	let { article }: { article: New } = $props();
 
 	const pictureUrl = article.picture?.formats?.small?.url || article.picture?.url;
 </script>

@@ -4,7 +4,7 @@
 
 	import AreasTags from '$lib/components/AreasTags.svelte';
 
-	export let prize: Prize;
+	let { prize }: { prize: Prize } = $props();
 </script>
 
 <article>
@@ -15,7 +15,9 @@
 		<div class="picture">
 			<img
 				src={`https://cms.serg.paris${prize.picture.formats.thumbnail.url}`}
-				alt={`${prize.first_name} ${prize.last_name}`}
+				alt={`${prize.first_name} ${prize.last_name} - ${prize.title}`}
+				loading="lazy"
+				decoding="async"
 			/>
 		</div>
 	{/if}
@@ -41,5 +43,8 @@
 
 	img {
 		@apply rounded-xl h-20 md:h-28 object-cover;
+		@apply shadow-md;
+		@apply transition-all duration-300;
+		@apply hover:shadow-lg hover:scale-105;
 	}
 </style>

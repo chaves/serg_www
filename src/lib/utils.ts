@@ -137,3 +137,21 @@ export const getFirstTwoSentences = (input: string) => {
 
 	return result;
 };
+
+export const stripHtml = (html: string): string => {
+	return html
+		.replace(/<[^>]*>/g, '') // Remove all HTML tags
+		.replace(/&nbsp;/g, ' ') // Replace &nbsp; with space
+		.replace(/&amp;/g, '&') // Replace &amp; with &
+		.replace(/&lt;/g, '<') // Replace &lt; with <
+		.replace(/&gt;/g, '>') // Replace &gt; with >
+		.replace(/&quot;/g, '"') // Replace &quot; with "
+		.replace(/&#39;/g, "'") // Replace &#39; with '
+		.replace(/\s+/g, ' ') // Replace multiple spaces with single space
+		.trim();
+};
+
+export const truncateText = (text: string, maxLength: number = 160): string => {
+	if (text.length <= maxLength) return text;
+	return text.substring(0, maxLength).trim() + '...';
+};

@@ -1,9 +1,7 @@
-<script>
+<script lang="ts">
     import { getFirstTwoSentences } from '$lib/utils';
 
-    export let text = "";
-    export let slug = "";
-    export let path = "";
+    let { text = "", slug = "", path = "" }: { text?: string; slug?: string; path?: string } = $props();
 
   </script>
 

@@ -3,7 +3,7 @@
 	import type { Paper } from '$types/papers';
 	import AreasTags from '$lib/components/AreasTags.svelte';
 	import DownloadFiles from '$lib/components/DownloadFiles.svelte';
-	export let paper: Paper;
+	let { paper }: { paper: Paper } = $props();
 </script>
 
 <AreasTags areas={paper.areas} />

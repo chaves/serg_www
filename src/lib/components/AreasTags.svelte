@@ -1,7 +1,7 @@
 <!-- src/components/AreasTags.svelte -->
 <script lang="ts">
 	import { Badge } from '$lib/components/ui/badge';
-	export let areas;
+	let { areas }: { areas: any } = $props();
 	const items = areas.data ? areas.data : areas;
 </script>
 

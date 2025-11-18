@@ -6,10 +6,17 @@
 	import { Calendar } from 'lucide-svelte';
 	import Card from '$lib/components/Card.svelte';
 
-	export let event: Event;
+	let { event }: { event: Event } = $props();
 
 	const pictureUrl = event.picture?.formats?.small?.url || event.picture?.url;
 </script>
+
+{#snippet header()}
+	<p class="text-gray-600 mb-1">
+		<Calendar class="inline-block mr-1 -mt-1 w-4 h-4" />
+		{formatDateEvent(event.date_start, event.date_end)}
+	</p>
+{/snippet}
 
 <Card
 	title={event.title}
@@ -18,14 +25,8 @@
 	areas={event.areas}
 	{pictureUrl}
 	description={event.description}
->
-	<svelte:fragment slot="header">
-		<p class="text-gray-600 mb-1">
-			<Calendar class="inline-block mr-1 -mt-1 w-4 h-4" />
-			{formatDateEvent(event.date_start, event.date_end)}
-		</p>
-	</svelte:fragment>
-</Card>
+	{header}
+/>
 
 <style>
 </style>

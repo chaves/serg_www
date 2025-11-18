@@ -3,7 +3,7 @@
 
 	import { FileDown } from 'lucide-svelte';
 
-	export let files: File[];
+	let { files }: { files: File[] } = $props();
 </script>
 
 {#if files && files.length > 0}

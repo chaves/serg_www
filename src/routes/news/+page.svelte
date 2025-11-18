@@ -1,16 +1,15 @@
 <script lang="ts">
-	import type { New } from '$types/news';
+	import type { PageData } from './$types';
 	import NewCard from './NewCard.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 
-	export let data: {
-	  news: New[] | null;
-	  error?: string;
-	};
-  </script>
+	let { data }: { data: PageData } = $props();
+</script>
 
-  <svelte:head>
-	<title>SERG - Latest News and Updates</title>
-  </svelte:head>
+<SEO
+	title="Latest News and Updates"
+	description="Latest news, updates, and announcements from the Sustainable Economy Research Group (SERG)."
+/>
 
   <h1>Latest News and Updates</h1>
   {#if data.news}

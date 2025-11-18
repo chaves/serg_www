@@ -4,7 +4,7 @@
 
 	import AreasTags from '$lib/components/AreasTags.svelte';
 
-	export let person: Person;
+	let { person }: { person: Person } = $props();
 </script>
 
 <div class="bg-white p-6 rounded shadow hover:shadow-md transition-shadow text-center">
@@ -22,8 +22,12 @@
 		<a href={`/people/${person.slug}`}>
 			<img
 				src="https://cms.serg.paris{person.picture.formats.thumbnail.url}"
-				alt="An alt text"
-				class="w-28 h-28 rounded-full mx-auto mb-4 object-cover"
+				alt={`${person.first_name} ${person.last_name} - ${person.category || 'Member'}`}
+				class="w-28 h-28 rounded-full mx-auto mb-4 object-cover shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105"
+				loading="lazy"
+				decoding="async"
+				width="112"
+				height="112"
 			/>
 		</a>
 	{/if}

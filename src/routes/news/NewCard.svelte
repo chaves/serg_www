@@ -4,7 +4,7 @@
 
 	import Card from '$lib/components/Card.svelte';
 
-	export let article: New;
+	let { article }: { article: New } = $props();
 
 	const pictureUrl = article.picture?.formats?.small?.url || article.picture?.url;
 </script>

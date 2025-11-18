@@ -41,34 +41,115 @@
   * {
     @apply border-border;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    @apply text-gray-800;
+    @apply leading-relaxed;
+    @apply antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold text-serg_blue-600;
+    @apply leading-tight;
+    @apply tracking-tight;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   }
   p {
-		@apply mb-4;
+		@apply mb-5;
+		@apply leading-7;
+		@apply text-gray-800;
 	}
 
+  main {
+    @apply leading-relaxed;
+    @apply max-w-none;
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+
+  @media (min-width: 768px) {
+    main {
+      font-size: 1.125rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    main {
+      font-size: 1.25rem;
+      line-height: 1.8;
+    }
+  }
+
   main a {
-    @apply text-serg_blue-400 underline underline-offset-2 hover:no-underline;
+    @apply text-serg_blue-500 underline underline-offset-2 hover:no-underline hover:text-serg_blue-600;
 	}
 
   h1 {
-		@apply text-xl md:text-2xl font-bold mb-2 text-center;
+		@apply text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-center;
+		@apply leading-tight;
+		@apply tracking-tight;
+		color: rgb(0, 51, 102); /* Fallback for browsers that don't support gradient text */
+		background: linear-gradient(135deg, rgb(0, 51, 102) 0%, rgb(134, 20, 79) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
 	}
 
+  h2 {
+    @apply text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8;
+    @apply leading-tight;
+  }
+
+  h3 {
+    @apply text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 mt-4 md:mt-6;
+    @apply leading-snug;
+  }
+
   main ol, main ul {
-		@apply ml-6;
+		@apply ml-6 md:ml-8;
+		@apply mb-5;
+		@apply leading-7;
 	}
 
   main ul {
-		@apply list-disc
+		@apply list-disc;
+		@apply space-y-2;
 	}
 
   main ol {
-		@apply list-decimal
+		@apply list-decimal;
+		@apply space-y-2;
 	}
+
+  main li {
+    @apply leading-7;
+    @apply text-gray-800;
+  }
+
+  main strong {
+    @apply font-semibold;
+    @apply text-gray-900;
+  }
+
+  main em {
+    @apply italic;
+  }
+
+  main blockquote {
+    @apply border-l-4 border-serg_blue-400 pl-4 my-6 italic text-gray-700;
+  }
+
+  main img {
+    @apply max-w-full;
+    @apply h-auto;
+  }
+
+  img {
+    @apply transition-all duration-300;
+  }
 
 }

@@ -1,11 +1,8 @@
 <script lang="ts">
-	import type { Paper } from '$types/papers';
+	import type { PageData } from './$types';
 	import PaperPage from './PaperPage.svelte';
 
-	export let data: {
-		paper: Paper | null,
-		error?: string;
-	};
+	let { data }: { data: PageData } = $props();
 
 	const title = data.paper ? data.paper.title : 'Paper not found';
 

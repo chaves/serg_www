@@ -1,30 +1,28 @@
 <script lang="ts">
-	import type { Person } from '$types/people';
+	import type { PageData } from './$types';
 	import { filterRecordsByKey, sortByKey } from '$lib/utils';
 	import PersonCard from './PersonCard.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 
-	export let data: {
-		people: Person[] | null;
-		error: string;
-	};
+	let { data }: { data: PageData } = $props();
 
 	const people = sortByKey(data.people, 'last_name');
 
 	const directors = filterRecordsByKey(people, 'category', 'Director');
-	let researchers = filterRecordsByKey(people, 'category', 'Research Team');
+	const researchTeam = filterRecordsByKey(people, 'category', 'Research Team');
+	const researchers = [...directors, ...researchTeam];
 	const students = filterRecordsByKey(people, 'category', 'PhD Students');
 	const prev_students = filterRecordsByKey(people, 'category', 'Previous PhD Students');
 	const post_docs = filterRecordsByKey(people, 'category', 'Postdoctoral researchers');
 	const visitors = filterRecordsByKey(people, 'category', 'Visiting Academics');
 	const associates = filterRecordsByKey(people, 'category', 'Associate Researchers');
 	const formers = filterRecordsByKey(people, 'category', 'Former Researchers');
-
-	researchers = [...directors, ...researchers];
 </script>
 
-<svelte:head>
-	<title>Sustainable Economy Research Group (SERG) - Our Team</title>
-</svelte:head>
+<SEO
+	title="Our Team"
+	description="Meet the researchers, faculty, students, and associates of the Sustainable Economy Research Group (SERG) at CentraleSupélec."
+/>
 
 <h1 class="text-xl md:text-2xl font-bold mb-2 text-center">Our Team</h1>
 
