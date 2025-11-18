@@ -68,18 +68,21 @@
 	</div>
 
 	<!-- Sidebar for News and Events -->
-	<div class="w-full md:w-1/3 text-sm rounded-xl shadow-lg hover:shadow-xl bg-gradient-to-br from-white to-serg_blue-50 border border-serg_blue-100 transition-all duration-300">
+	<div
+		class="w-full md:w-1/3 text-sm rounded-xl shadow-lg hover:shadow-xl bg-gradient-to-br from-white to-serg_blue-50 border border-serg_blue-100 transition-all duration-300"
+	>
 		<div class="space-y-4 p-4">
 			<!-- Upcoming News Section -->
 			{#if data.news}
 				<div class="p-4 border-b border-serg_blue-200 border-solid">
 					<h2 class="mb-4 text-xl font-bold text-serg_blue-700 flex items-center gap-2">
-						<span class="w-1 h-6 bg-gradient-to-b from-serg_blue-500 to-serg_purple rounded-full"></span>
+						<span class="w-1 h-6 bg-gradient-to-b from-serg_blue-500 to-serg_purple rounded-full"
+						></span>
 						Latest News and Updates
 					</h2>
-					<ul class="space-y-3">
+					<ul class="space-y-3 -ml-4 pl-4 list-none">
 						{#each data.news as article (article.id)}
-							<li class="text-base pl-2 border-l-2 border-transparent hover:border-serg_blue-400 transition-colors">
+							<li class="text-base pl-3">
 								<a
 									href="/news/{article.slug}"
 									class="text-serg_blue-600 hover:text-serg_blue-700 font-medium transition-colors"
@@ -96,12 +99,13 @@
 			{#if data.events}
 				<div class="p-4">
 					<h2 class="mb-4 text-xl font-bold text-serg_blue-700 flex items-center gap-2">
-						<span class="w-1 h-6 bg-gradient-to-b from-serg_blue-500 to-serg_purple rounded-full"></span>
+						<span class="w-1 h-6 bg-gradient-to-b from-serg_blue-500 to-serg_purple rounded-full"
+						></span>
 						Events
 					</h2>
-					<ul class="space-y-3">
+					<ul class="space-y-3 -ml-4 pl-4 list-none">
 						{#each data.events as event (event.id)}
-							<li class="text-base pl-2 border-l-2 border-transparent hover:border-serg_blue-400 transition-colors">
+							<li class="text-base pl-3">
 								<a
 									href="/events/{event.slug}"
 									class="text-serg_blue-600 hover:text-serg_blue-700 font-medium transition-colors"
