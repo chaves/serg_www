@@ -61,17 +61,17 @@
 	bind:this={menuElement}
 >
 	<div class="container mx-auto px-4 md:px-8">
-		<div class="flex justify-between items-center py-3 md:py-4">
+		<div class="flex justify-end md:justify-between items-center py-3 md:py-4">
 			<button
-				class="md:hidden p-2 rounded-md transition-colors duration-200 hover:bg-white/10 active:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+				class="md:hidden p-3 rounded-lg bg-white/20 hover:bg-white/30 active:bg-white/40 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/70 shadow-md hover:shadow-lg"
 				onclick={toggleMenu}
 				aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
 				aria-expanded={isMenuOpen}
 			>
 				{#if isMenuOpen}
-					<X size={28} />
+					<X size={32} stroke-width={2.5} class="text-white" />
 				{:else}
-					<Menu size={28} />
+					<Menu size={32} stroke-width={2.5} class="text-white" />
 				{/if}
 			</button>
 			<MenuItems {toggleMenu} />
