@@ -77,6 +77,8 @@ const config: Config = {
 			fontFamily: {
 				body: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
 				baskerville: ['"Libre Baskerville"', 'serif'],
+				display: ['"Montserrat"', 'sans-serif'],
+				sans: ['Inter', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
 			},
 		},
 	},

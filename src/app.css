@@ -1,3 +1,13 @@
+@import '@fontsource/montserrat/600.css';
+@import '@fontsource/montserrat/700.css';
+@import '@fontsource/montserrat/800.css';
+@import '@fontsource/montserrat/900.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/inter/800.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -53,7 +63,8 @@
     @apply antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-serg_blue-600;
+    font-family: 'Montserrat', sans-serif;
+    @apply font-bold text-serg_blue-800;
     @apply leading-tight;
     @apply tracking-tight;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -89,11 +100,13 @@
 	}
 
   h1 {
-		@apply text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-center;
+		font-family: 'Montserrat', sans-serif;
+		@apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 md:mb-8 text-center;
 		@apply leading-tight;
 		@apply tracking-tight;
-		color: rgb(0, 51, 102); /* Fallback for browsers that don't support gradient text */
-		background: linear-gradient(135deg, rgb(0, 51, 102) 0%, rgb(134, 20, 79) 100%);
+		letter-spacing: -0.02em;
+		color: rgb(0, 30, 71); /* Fallback for browsers that don't support gradient text - serg_blue-800 */
+		background: linear-gradient(135deg, rgb(0, 30, 71) 0%, rgb(134, 20, 79) 100%);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;

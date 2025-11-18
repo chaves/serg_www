@@ -93,7 +93,7 @@
 	.description :global(h3),
 	.description :global(h4) {
 		@apply mt-6 mb-4;
-		@apply font-bold text-serg_blue-600;
+		@apply font-bold text-serg_blue-800;
 	}
 
 	.attached-files {

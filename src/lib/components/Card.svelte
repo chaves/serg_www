@@ -28,12 +28,7 @@
 	<div class="content">
 		<div class="picture_mobile">
 			{#if pictureUrl}
-				<img
-					src="https://cms.serg.paris{pictureUrl}"
-					alt={title}
-					loading="lazy"
-					decoding="async"
-				/>
+				<img src="https://cms.serg.paris{pictureUrl}" alt={title} loading="lazy" decoding="async" />
 			{/if}
 		</div>
 
@@ -61,12 +56,7 @@
 	</div>
 	<div class="picture">
 		{#if pictureUrl}
-			<img
-				src="https://cms.serg.paris{pictureUrl}"
-				alt={title}
-				loading="lazy"
-				decoding="async"
-			/>
+			<img src="https://cms.serg.paris{pictureUrl}" alt={title} loading="lazy" decoding="async" />
 		{/if}
 	</div>
 </article>
@@ -92,7 +82,7 @@
 	}
 
 	.description {
-		@apply text-sm italic;
+		@apply text-base italic;
 	}
 
 	.areas {

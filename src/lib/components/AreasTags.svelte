@@ -1,14 +1,41 @@
 <!-- src/components/AreasTags.svelte -->
 <script lang="ts">
 	import { Badge } from '$lib/components/ui/badge';
+	import { Battery, Car, Sun } from 'lucide-svelte';
+	import type { ComponentType } from 'svelte';
+
 	let { areas, center = false }: { areas: any; center?: boolean } = $props();
 	const items = areas.data ? areas.data : areas;
+
+	function getIconForTag(title: string): ComponentType | null {
+		const titleLower = title.toLowerCase();
+		if (titleLower.includes('energy') || titleLower.includes('énerg')) {
+			return Battery;
+		}
+		if (
+			titleLower.includes('mobility') ||
+			titleLower.includes('mobilité') ||
+			titleLower.includes('transport')
+		) {
+			return Car;
+		}
+		if (titleLower.includes('climate') || titleLower.includes('climat')) {
+			return Sun;
+		}
+		return null;
+	}
 </script>
 
 {#if items && items.length > 0}
 	<div class="tags-container" class:center>
 		{#each items as item}
-			<Badge variant="outline" class="tag-item">{item.title}</Badge>
+			{@const Icon = getIconForTag(item.title)}
+			<Badge variant="outline" class="tag-item">
+				{#if Icon}
+					<Icon class="tag-icon" />
+				{/if}
+				<span>{item.title}</span>
+			</Badge>
 		{/each}
 	</div>
 {/if}
@@ -23,6 +50,9 @@
 	}
 
 	:global(.tag-item) {
+		display: inline-flex !important;
+		align-items: center !important;
+		gap: 0.375rem !important;
 		padding: 0.5rem 0.75rem !important;
 		font-size: 0.875rem !important;
 		line-height: 1.25rem !important;
@@ -42,5 +72,11 @@
 			0 4px 6px -1px rgba(0, 0, 0, 0.1),
 			0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
 		transform: translateY(-1px) !important;
+	}
+
+	:global(.tag-icon) {
+		width: 0.875rem !important;
+		height: 0.875rem !important;
+		flex-shrink: 0 !important;
 	}
 </style>

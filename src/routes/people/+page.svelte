@@ -24,11 +24,11 @@
 	description="Meet the researchers, faculty, students, and associates of the Sustainable Economy Research Group (SERG) at CentraleSupélec."
 />
 
-<h1 class="text-xl md:text-2xl font-bold mb-2 text-center">Our Team</h1>
+<h1>Our Team</h1>
 
 {#if people}
 	{#if researchers}
-		<h2 class="">Research Team</h2>
+		<h2 class="text-center">Research Team</h2>
 		<div class="person">
 			{#each researchers as person (person.id)}
 				<PersonCard {person} />
@@ -39,7 +39,7 @@
 	{/if}
 
 	{#if associates}
-		<h2 class="mt-6">Associate Researchers</h2>
+		<h2 class="text-center">Associate Researchers</h2>
 		<div class="person">
 			{#each associates as person}
 				<PersonCard {person} />
@@ -48,7 +48,7 @@
 	{/if}
 
 	{#if post_docs}
-		<h2 class="mt-6">Postdoctoral researchers</h2>
+		<h2 class="text-center">Postdoctoral researchers</h2>
 		<div class="person">
 			{#each post_docs as person}
 				<PersonCard {person} />
@@ -57,7 +57,7 @@
 	{/if}
 
 	{#if students}
-		<h2 class="mt-6">PhD Students</h2>
+		<h2 class="text-center">PhD Students</h2>
 		<div class="person">
 			{#each students as person}
 				<PersonCard {person} />
@@ -66,7 +66,7 @@
 	{/if}
 
 	{#if formers}
-		<h2 class="mt-6">Former Researchers</h2>
+		<h2 class="text-center">Former Researchers</h2>
 		<div class="person">
 			{#each formers as person}
 				<PersonCard {person} />
@@ -75,7 +75,7 @@
 	{/if}
 
 	{#if visitors}
-		<h2 class="mt-6">Visiting Academics</h2>
+		<h2 class="text-center">Visiting Academics</h2>
 		<div class="person">
 			{#each visitors as person}
 				<PersonCard {person} />
@@ -84,7 +84,7 @@
 	{/if}
 
 	{#if prev_students}
-		<h2 class="mt-6">Previous PhD Students</h2>
+		<h2 class="text-center">Previous PhD Students</h2>
 		<div class="person">
 			{#each prev_students as person}
 				<PersonCard {person} />
@@ -99,7 +99,7 @@
 
 <style>
 	h2 {
-		@apply text-lg md:text-xl font-bold mb-3;
+		@apply text-2xl md:text-3xl lg:text-4xl font-bold mb-3 mt-8 md:mt-10;
 	}
 	.person {
 		@apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 bg-gray-100 p-6 rounded-lg;

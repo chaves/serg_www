@@ -75,7 +75,7 @@
 			<!-- Upcoming News Section -->
 			{#if data.news}
 				<div class="p-4 border-b border-serg_blue-200 border-solid">
-					<h2 class="mb-4 text-xl font-bold text-serg_blue-700 flex items-center gap-2">
+					<h2 class="mb-4 text-xl font-bold text-serg_blue-800 flex items-center gap-2">
 						<span class="w-1 h-6 bg-gradient-to-b from-serg_blue-500 to-serg_purple rounded-full"
 						></span>
 						Latest News and Updates
@@ -98,7 +98,7 @@
 			<!-- Events Section -->
 			{#if data.events}
 				<div class="p-4">
-					<h2 class="mb-4 text-xl font-bold text-serg_blue-700 flex items-center gap-2">
+					<h2 class="mb-4 text-xl font-bold text-serg_blue-800 flex items-center gap-2">
 						<span class="w-1 h-6 bg-gradient-to-b from-serg_blue-500 to-serg_purple rounded-full"
 						></span>
 						Events
