@@ -4,8 +4,12 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ fetch }) => {
 	try {
+		// Use cache: 'no-store' to ensure fresh data from CMS
 		const response = await fetch(
-			'https://cms.serg.paris/api/prizes?sort[0]=year:desc&sort[1]=last_name&populate=*&pagination[pageSize]=1000'
+			'https://cms.serg.paris/api/prizes?sort[0]=year:desc&sort[1]=last_name&populate=*&pagination[pageSize]=1000',
+			{
+				cache: 'no-store'
+			}
 		);
 
 		if (!response.ok) {

@@ -4,7 +4,10 @@ import type { PeopleResponse } from '$types/people';
 
 export const load: PageServerLoad = async ({ fetch }) => {
 	try {
-		const response = await fetch('https://cms.serg.paris/api/people?sort=last_name:asc&pagination[pageSize]=1000&populate=*');
+		// Use cache: 'no-store' to ensure fresh data from CMS
+		const response = await fetch('https://cms.serg.paris/api/people?sort=last_name:asc&pagination[pageSize]=1000&populate=*', {
+			cache: 'no-store'
+		});
 
 		if (!response.ok) {
 			throw new Error('Failed to fetch data');

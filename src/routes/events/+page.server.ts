@@ -4,7 +4,10 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ fetch }) => {
 	try {
-		const response = await fetch('https://cms.serg.paris/api/events?sort=date_start:desc&populate=*');
+		// Use cache: 'no-store' to ensure fresh data from CMS
+		const response = await fetch('https://cms.serg.paris/api/events?sort=date_start:desc&populate=*', {
+			cache: 'no-store'
+		});
 
 		if (!response.ok) {
 			throw new Error('Failed to fetch data');
@@ -18,7 +21,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
 	} catch (error) {
 		console.error('Error fetching data:', error);
 		return {
-			people: null,
+			events: null,
 			error: (error as Error).message
 		};
 	}
