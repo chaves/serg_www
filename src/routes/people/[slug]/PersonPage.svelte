@@ -2,6 +2,7 @@
 <script lang="ts">
 	import type { Person } from '$types/people';
 	import AreasTags from '$lib/components/AreasTags.svelte';
+	import { CMS_BASE_URL } from '$lib/config';
 	// import DownloadFiles from '$lib/components/DownloadFiles.svelte';
 
 	let { person, title }: { person: Person; title: string } = $props();
@@ -30,7 +31,7 @@
 {#if person.picture}
 	<a href={`/people/${person.slug}`} class="image-link">
 		<img
-			src="https://cms.serg.paris{picture}"
+			src="{CMS_BASE_URL}{picture}"
 			alt={title}
 			loading="lazy"
 			decoding="async"

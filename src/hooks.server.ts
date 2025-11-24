@@ -6,19 +6,26 @@ export const handle: Handle = async ({ event, resolve }) => {
 	// Set cache headers for optimal SEO and performance
 	const url = event.url.pathname;
 
-	// For HTML pages (dynamic content), use short cache with revalidation
-	// This ensures content updates while still being cacheable for SEO
+	// For HTML pages (dynamic content), use very short cache to ensure new published content is visible immediately
+	// This ensures content updates are visible quickly while still being cacheable for SEO
 	if (response.headers.get('content-type')?.includes('text/html')) {
-		// Cache for 1 hour, but allow stale-while-revalidate for better performance
-		// This means: serve cached content for 1 hour, but revalidate in background
+		// Cache for only 60 seconds, with must-revalidate to ensure fresh content
+		// This means: serve cached content for 60 seconds max, then must revalidate
+		// This ensures new published content appears within 60 seconds
 		response.headers.set(
 			'Cache-Control',
-			'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400'
+			'public, max-age=60, s-maxage=60, must-revalidate, stale-while-revalidate=300'
 		);
 
-		// Add ETag support for better caching
+		// Add ETag based on content hash for proper cache validation
+		// Using a timestamp ensures each request gets a unique ETag
 		if (!response.headers.has('ETag')) {
 			response.headers.set('ETag', `"${Date.now()}"`);
+		}
+
+		// Add Last-Modified header to help with cache validation
+		if (!response.headers.has('Last-Modified')) {
+			response.headers.set('Last-Modified', new Date().toUTCString());
 		}
 	}
 

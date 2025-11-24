@@ -3,12 +3,13 @@
 	import EventDescription from './EventDescription.svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import StructuredData from '$lib/components/StructuredData.svelte';
+	import { CMS_BASE_URL } from '$lib/config';
 
 	let { data }: { data: PageData } = $props();
 	const title = data.event ? data.event.title : 'Event not found';
 	const description = data.event?.description;
 	const image = data.event?.picture?.formats?.medium?.url || data.event?.picture?.url;
-	const imageUrl = image ? `https://cms.serg.paris${image}` : undefined;
+	const imageUrl = image ? `${CMS_BASE_URL}${image}` : undefined;
 </script>
 
 {#if data.event}

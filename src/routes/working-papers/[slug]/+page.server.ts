@@ -1,15 +1,16 @@
 import type { PageServerLoad } from './$types';
+import { CMS_BASE_URL } from '$lib/config';
+import { NO_CACHE_FETCH_OPTIONS } from '$lib/utils';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
 	const slug = params.slug; // assuming `slug` is part of the route parameters
 
 	try {
-		// Use cache: 'no-store' to ensure fresh data from CMS
+		// Use NO_CACHE_FETCH_OPTIONS to ensure fresh data from CMS
+		// Explicitly request published content with publicationState=live
 		const response = await fetch(
-			`https://cms.serg.paris/api/working-papers?filters[slug][$eq]=${slug}&populate=*`,
-			{
-				cache: 'no-store'
-			}
+			`${CMS_BASE_URL}/api/working-papers?publicationState=live&filters[slug][$eq]=${slug}&populate=*`,
+			NO_CACHE_FETCH_OPTIONS
 		);
 
 		if (!response.ok) {

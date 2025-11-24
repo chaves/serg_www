@@ -155,3 +155,16 @@ export const truncateText = (text: string, maxLength: number = 160): string => {
 	if (text.length <= maxLength) return text;
 	return text.substring(0, maxLength).trim() + '...';
 };
+
+/**
+ * Fetch options to ensure fresh data from CMS, bypassing all caches
+ * This ensures new published content is immediately visible
+ */
+export const NO_CACHE_FETCH_OPTIONS: RequestInit = {
+	cache: 'no-store',
+	headers: {
+		'Cache-Control': 'no-cache, no-store, must-revalidate',
+		'Pragma': 'no-cache',
+		'Expires': '0'
+	}
+};

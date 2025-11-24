@@ -3,12 +3,13 @@
 	import NewPage from './NewDescription.svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import StructuredData from '$lib/components/StructuredData.svelte';
+	import { CMS_BASE_URL } from '$lib/config';
 
 	let { data }: { data: PageData } = $props();
 	const title = data.new ? data.new.title : 'New not found';
 	const description = data.new?.description;
 	const image = data.new?.picture?.formats?.medium?.url || data.new?.picture?.url;
-	const imageUrl = image ? `https://cms.serg.paris${image}` : undefined;
+	const imageUrl = image ? `${CMS_BASE_URL}${image}` : undefined;
 </script>
 
 {#if data.new}

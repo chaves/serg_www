@@ -2,6 +2,7 @@
 	import AreasTags from '$lib/components/AreasTags.svelte';
 	import FirstTwoSentences from '$lib/components/FirstTwoSentences.svelte';
 	import { formatDate } from '$lib/utils';
+	import { CMS_BASE_URL } from '$lib/config';
 	import type { Snippet } from 'svelte';
 	let {
 		title,
@@ -28,7 +29,7 @@
 	<div class="content">
 		<div class="picture_mobile">
 			{#if pictureUrl}
-				<img src="https://cms.serg.paris{pictureUrl}" alt={title} loading="lazy" decoding="async" />
+				<img src="{CMS_BASE_URL}{pictureUrl}" alt={title} loading="lazy" decoding="async" />
 			{/if}
 		</div>
 
@@ -56,7 +57,7 @@
 	</div>
 	<div class="picture">
 		{#if pictureUrl}
-			<img src="https://cms.serg.paris{pictureUrl}" alt={title} loading="lazy" decoding="async" />
+			<img src="{CMS_BASE_URL}{pictureUrl}" alt={title} loading="lazy" decoding="async" />
 		{/if}
 	</div>
 </article>

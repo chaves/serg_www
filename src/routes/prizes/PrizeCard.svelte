@@ -1,8 +1,8 @@
 <!-- src/components/PrizeCard.svelte -->
 <script lang="ts">
 	import type { Prize } from '$types/prizes';
-
 	import AreasTags from '$lib/components/AreasTags.svelte';
+	import { CMS_BASE_URL } from '$lib/config';
 
 	let { prize }: { prize: Prize } = $props();
 </script>
@@ -14,7 +14,7 @@
 	{#if prize.picture}
 		<div class="picture">
 			<img
-				src={`https://cms.serg.paris${prize.picture.formats.thumbnail.url}`}
+				src={`${CMS_BASE_URL}${prize.picture.formats.thumbnail.url}`}
 				alt={`${prize.first_name} ${prize.last_name} - ${prize.title}`}
 				loading="lazy"
 				decoding="async"

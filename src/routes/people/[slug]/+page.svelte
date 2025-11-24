@@ -3,12 +3,13 @@
 	import PersonPage from './PersonPage.svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import StructuredData from '$lib/components/StructuredData.svelte';
+	import { CMS_BASE_URL } from '$lib/config';
 
 	let { data }: { data: PageData } = $props();
 
 	const title = data.person ? `${data.person.first_name} ${data.person.last_name}`: 'Member not found';
 	const image = data.person?.picture?.formats?.medium?.url || data.person?.picture?.url;
-	const imageUrl = image ? `https://cms.serg.paris${image}` : undefined;
+	const imageUrl = image ? `${CMS_BASE_URL}${image}` : undefined;
 
 </script>
 

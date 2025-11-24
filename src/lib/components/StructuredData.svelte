@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
+	import { CMS_BASE_URL, SITE_URL } from '$lib/config';
 
 	let {
 		type = 'WebPage',
@@ -10,7 +11,7 @@
 		data?: Record<string, any>;
 	} = $props();
 
-	const siteUrl = browser ? window.location.origin : 'https://serg.paris';
+	const siteUrl = browser ? window.location.origin : SITE_URL;
 	const currentUrl = browser ? window.location.href : `${siteUrl}${$page.url.pathname}`;
 
 	function getStructuredData() {
@@ -51,7 +52,7 @@
 					...base,
 					headline: data?.title || '',
 					description: data?.description || '',
-					image: data?.image ? `https://cms.serg.paris${data.image}` : `${siteUrl}/logo_100.png`,
+					image: data?.image ? `${CMS_BASE_URL}${data.image}` : `${siteUrl}/logo_100.png`,
 					datePublished: data?.publishedAt || '',
 					dateModified: data?.modifiedAt || data?.publishedAt || '',
 					author: data?.author
@@ -79,7 +80,7 @@
 					...base,
 					name: data?.title || '',
 					description: data?.description || '',
-					image: data?.image ? `https://cms.serg.paris${data.image}` : `${siteUrl}/logo_100.png`,
+					image: data?.image ? `${CMS_BASE_URL}${data.image}` : `${siteUrl}/logo_100.png`,
 					startDate: data?.date_start || '',
 					endDate: data?.date_end || data?.date_start || '',
 					location: {
@@ -107,7 +108,7 @@
 						'@type': 'Organization',
 						name: 'SERG'
 					},
-					image: data?.image ? `https://cms.serg.paris${data.image}` : undefined,
+					image: data?.image ? `${CMS_BASE_URL}${data.image}` : undefined,
 					email: data?.email || undefined,
 					...data
 				};

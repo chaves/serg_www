@@ -1,6 +1,8 @@
 import type { RequestHandler } from './$types';
+import { CMS_BASE_URL, SITE_URL } from '$lib/config';
+import { NO_CACHE_FETCH_OPTIONS } from '$lib/utils';
 
-const siteUrl = 'https://serg.paris';
+const siteUrl = SITE_URL;
 
 const staticRoutes = [
 	'',
@@ -16,8 +18,11 @@ async function getDynamicRoutes() {
 	const routes: string[] = [];
 
 	try {
-		// Fetch events
-		const eventsRes = await fetch('https://cms.serg.paris/api/events?fields[0]=slug');
+		// Fetch events - explicitly request published content with cache-busting
+		const eventsRes = await fetch(
+			`${CMS_BASE_URL}/api/events?publicationState=live&fields[0]=slug`,
+			NO_CACHE_FETCH_OPTIONS
+		);
 		if (eventsRes.ok) {
 			const eventsData = await eventsRes.json();
 			eventsData.data?.forEach((event: { slug: string }) => {
@@ -25,8 +30,11 @@ async function getDynamicRoutes() {
 			});
 		}
 
-		// Fetch news
-		const newsRes = await fetch('https://cms.serg.paris/api/news?fields[0]=slug');
+		// Fetch news - explicitly request published content with cache-busting
+		const newsRes = await fetch(
+			`${CMS_BASE_URL}/api/news?publicationState=live&fields[0]=slug`,
+			NO_CACHE_FETCH_OPTIONS
+		);
 		if (newsRes.ok) {
 			const newsData = await newsRes.json();
 			newsData.data?.forEach((article: { slug: string }) => {
@@ -34,8 +42,11 @@ async function getDynamicRoutes() {
 			});
 		}
 
-		// Fetch people
-		const peopleRes = await fetch('https://cms.serg.paris/api/people?fields[0]=slug');
+		// Fetch people - explicitly request published content with cache-busting
+		const peopleRes = await fetch(
+			`${CMS_BASE_URL}/api/people?publicationState=live&fields[0]=slug`,
+			NO_CACHE_FETCH_OPTIONS
+		);
 		if (peopleRes.ok) {
 			const peopleData = await peopleRes.json();
 			peopleData.data?.forEach((person: { slug: string }) => {
@@ -43,8 +54,11 @@ async function getDynamicRoutes() {
 			});
 		}
 
-		// Fetch working papers
-		const papersRes = await fetch('https://cms.serg.paris/api/working-papers?fields[0]=slug');
+		// Fetch working papers - explicitly request published content with cache-busting
+		const papersRes = await fetch(
+			`${CMS_BASE_URL}/api/working-papers?publicationState=live&fields[0]=slug`,
+			NO_CACHE_FETCH_OPTIONS
+		);
 		if (papersRes.ok) {
 			const papersData = await papersRes.json();
 			papersData.data?.forEach((paper: { slug: string }) => {

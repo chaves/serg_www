@@ -2,6 +2,7 @@
 	import { formatDate } from '$lib/utils';
 	import DownloadFiles from '$lib/components/DownloadFiles.svelte';
 	import AreasTags from '$lib/components/AreasTags.svelte';
+	import { CMS_BASE_URL } from '$lib/config';
 	import type { Snippet } from 'svelte';
 	let {
 		title,
@@ -24,7 +25,7 @@
 
 <div class="picture">
 	<img
-		src="https://cms.serg.paris{pictureUrl}"
+		src="{CMS_BASE_URL}{pictureUrl}"
 		alt={title}
 		loading="lazy"
 		decoding="async"

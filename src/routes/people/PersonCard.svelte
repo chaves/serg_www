@@ -1,8 +1,8 @@
 <!-- src/components/PersonCard.svelte -->
 <script lang="ts">
 	import type { Person } from '$types/people';
-
 	import AreasTags from '$lib/components/AreasTags.svelte';
+	import { CMS_BASE_URL } from '$lib/config';
 
 	let { person }: { person: Person } = $props();
 </script>
@@ -21,7 +21,7 @@
 	{#if person.picture}
 		<a href={`/people/${person.slug}`}>
 			<img
-				src="https://cms.serg.paris{person.picture.formats.thumbnail.url}"
+				src="{CMS_BASE_URL}{person.picture.formats.thumbnail.url}"
 				alt={`${person.first_name} ${person.last_name} - ${person.category || 'Member'}`}
 				class="w-28 h-28 rounded-full mx-auto mb-4 object-cover shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105"
 				loading="lazy"
