@@ -27,16 +27,16 @@
 
 	const siteUrl = browser ? window.location.origin : 'https://serg.paris';
 	const currentUrl = browser ? window.location.href : `${siteUrl}${$page.url.pathname}`;
-	const fullTitle = title.includes('SERG') ? title : `${title} | SERG`;
+	const fullTitle = $derived(title.includes('SERG') ? title : `${title} | SERG`);
 	const defaultImage = `${siteUrl}/logo_100.png`;
-	const ogImage = image || defaultImage;
+	const ogImage = $derived(image || defaultImage);
 	const defaultDescription =
 		'Sustainable Economy Research Group (SERG) at CentraleSupélec / Paris-Saclay University / Industrial Engineering Department (LGI)';
-	const cleanDescription = description ? stripHtml(description) : defaultDescription;
-	const metaDescription = truncateText(cleanDescription, 160);
+	const cleanDescription = $derived(description ? stripHtml(description) : defaultDescription);
+	const metaDescription = $derived(truncateText(cleanDescription, 160));
 
-	const robotsContent = [noindex ? 'noindex' : 'index', nofollow ? 'nofollow' : 'follow'].join(
-		', '
+	const robotsContent = $derived(
+		[noindex ? 'noindex' : 'index', nofollow ? 'nofollow' : 'follow'].join(', ')
 	);
 </script>
 

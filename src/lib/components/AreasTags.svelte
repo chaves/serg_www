@@ -5,7 +5,7 @@
 	import type { ComponentType } from 'svelte';
 
 	let { areas, center = false }: { areas: any; center?: boolean } = $props();
-	const items = areas.data ? areas.data : areas;
+	const items = $derived(areas.data ? areas.data : areas);
 
 	function getIconForTag(title: string): ComponentType | null {
 		const titleLower = title.toLowerCase();
