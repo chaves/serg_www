@@ -122,7 +122,7 @@ function fetchWithHttps(url: string, timeout: number = 30000): Promise<string> {
 	});
 }
 
-async function fetchHALContent(retries: number = 2): Promise<string> {
+async function fetchHALContent(fetchFn: typeof fetch, retries: number = 2): Promise<string> {
 	const FETCH_TIMEOUT = 30000; // 30 seconds
 	let lastError: Error | null = null;
 
@@ -140,7 +140,7 @@ async function fetchHALContent(retries: number = 2): Promise<string> {
 					'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
 				};
 
-				const response = await fetch(HAL_URL, {
+				const response = await fetchFn(HAL_URL, {
 					...NO_CACHE_FETCH_OPTIONS,
 					signal: controller.signal,
 					headers
@@ -261,7 +261,7 @@ function isCacheValid(): boolean {
 	return now - cache.timestamp < CACHE_DURATION;
 }
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async ({ fetch }) => {
 	try {
 		// Check if we have valid cached content
 		if (isCacheValid() && cache) {
@@ -272,8 +272,8 @@ export const load: PageServerLoad = async () => {
 			};
 		}
 
-		// Fetch fresh content
-		const html = await fetchHALContent();
+		// Fetch fresh content using SvelteKit's fetch
+		const html = await fetchHALContent(fetch);
 
 		// Update cache
 		cache = {

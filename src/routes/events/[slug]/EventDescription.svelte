@@ -8,7 +8,7 @@
 
 	let { event }: { event: Event } = $props();
 
-	const pictureUrl = event.picture?.formats?.small?.url || event.picture?.url;
+	const pictureUrl = $derived(event.picture?.formats?.small?.url || event.picture?.url);
 </script>
 
 {#snippet calendar()}

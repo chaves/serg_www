@@ -6,17 +6,17 @@
 
 	let { data }: { data: PageData } = $props();
 
-	const people = sortByKey(data.people, 'last_name');
+	const people = $derived(sortByKey(data.people, 'last_name'));
 
-	const directors = filterRecordsByKey(people, 'category', 'Director');
-	const researchTeam = filterRecordsByKey(people, 'category', 'Research Team');
-	const researchers = [...directors, ...researchTeam];
-	const students = filterRecordsByKey(people, 'category', 'PhD Students');
-	const prev_students = filterRecordsByKey(people, 'category', 'Previous PhD Students');
-	const post_docs = filterRecordsByKey(people, 'category', 'Postdoctoral researchers');
-	const visitors = filterRecordsByKey(people, 'category', 'Visiting Academics');
-	const associates = filterRecordsByKey(people, 'category', 'Associate Researchers');
-	const formers = filterRecordsByKey(people, 'category', 'Former Researchers');
+	const directors = $derived(filterRecordsByKey(people, 'category', 'Director'));
+	const researchTeam = $derived(filterRecordsByKey(people, 'category', 'Research Team'));
+	const researchers = $derived([...directors, ...researchTeam]);
+	const students = $derived(filterRecordsByKey(people, 'category', 'PhD Students'));
+	const prev_students = $derived(filterRecordsByKey(people, 'category', 'Previous PhD Students'));
+	const post_docs = $derived(filterRecordsByKey(people, 'category', 'Postdoctoral researchers'));
+	const visitors = $derived(filterRecordsByKey(people, 'category', 'Visiting Academics'));
+	const associates = $derived(filterRecordsByKey(people, 'category', 'Associate Researchers'));
+	const formers = $derived(filterRecordsByKey(people, 'category', 'Former Researchers'));
 </script>
 
 <SEO

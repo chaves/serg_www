@@ -7,11 +7,9 @@
 
 	let { person, title }: { person: Person; title: string } = $props();
 
-	let picture = person.picture.url;
-
-	if (person.picture.formats.small) {
-		picture = person.picture.formats.small.url;
-	}
+	const picture = $derived(
+		person.picture?.formats?.small?.url || person.picture?.url
+	);
 </script>
 
 <h1>

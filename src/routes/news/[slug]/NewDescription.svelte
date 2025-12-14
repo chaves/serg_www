@@ -5,7 +5,7 @@
 
 	let { article }: { article: New } = $props();
 
-	const pictureUrl = article.picture?.formats?.small?.url || article.picture?.url;
+	const pictureUrl = $derived(article.picture?.formats?.small?.url || article.picture?.url);
 </script>
 
 <PageDescription

@@ -12,7 +12,8 @@
 		"test": "npm run test:unit -- --run",
 		"lint": "eslint . && prettier --check .",
 		"format": "prettier --write .",
-		"t4s": "t4s"
+		"t4s": "t4s",
+		"postinstall": "node scripts/fix-sharp-link.cjs"
 	},
 	"devDependencies": {
 		"@fontsource/inter": "^5.2.8",
@@ -49,7 +50,7 @@
 		"vite": "^6.4.1",
 		"vitest": "^4.0.10"
 	},
-	"overrides": {
-		"@img/sharp-libvips-darwin-arm64": "^1.2.4"
+	"dependencies": {
+		"sharp": "^0.34.5"
 	}
 }
