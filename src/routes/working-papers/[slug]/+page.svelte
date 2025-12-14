@@ -4,7 +4,7 @@
 
 	let { data }: { data: PageData } = $props();
 
-	const title = data.paper ? data.paper.title : 'Paper not found';
+	const title = $derived(data.paper ? data.paper.title : 'Paper not found');
 
 </script>
 

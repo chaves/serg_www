@@ -6,10 +6,10 @@
 	import { CMS_BASE_URL } from '$lib/config';
 
 	let { data }: { data: PageData } = $props();
-	const title = data.new ? data.new.title : 'New not found';
-	const description = data.new?.description;
-	const image = data.new?.picture?.formats?.medium?.url || data.new?.picture?.url;
-	const imageUrl = image ? `${CMS_BASE_URL}${image}` : undefined;
+	const title = $derived(data.new ? data.new.title : 'New not found');
+	const description = $derived(data.new?.description);
+	const image = $derived(data.new?.picture?.formats?.medium?.url || data.new?.picture?.url);
+	const imageUrl = $derived(image ? `${CMS_BASE_URL}${image}` : undefined);
 </script>
 
 {#if data.new}

@@ -7,9 +7,9 @@
 
 	let { data }: { data: PageData } = $props();
 
-	const title = data.person ? `${data.person.first_name} ${data.person.last_name}`: 'Member not found';
-	const image = data.person?.picture?.formats?.medium?.url || data.person?.picture?.url;
-	const imageUrl = image ? `${CMS_BASE_URL}${image}` : undefined;
+	const title = $derived(data.person ? `${data.person.first_name} ${data.person.last_name}`: 'Member not found');
+	const image = $derived(data.person?.picture?.formats?.medium?.url || data.person?.picture?.url);
+	const imageUrl = $derived(image ? `${CMS_BASE_URL}${image}` : undefined);
 
 </script>
 
