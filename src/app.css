@@ -165,4 +165,13 @@
     @apply transition-all duration-300;
   }
 
+  footer {
+    @apply text-white;
+  }
+
+  footer p,
+  footer * {
+    @apply text-white;
+  }
+
 }
