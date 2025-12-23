@@ -6,24 +6,29 @@ export const handle: Handle = async ({ event, resolve }) => {
 	// Set cache headers for optimal SEO and performance
 	const url = event.url.pathname;
 
-	// For HTML pages (dynamic content), use very short cache to ensure new published content is visible immediately
-	// This ensures content updates are visible quickly while still being cacheable for SEO
+	// For HTML pages (prerendered static content), use longer cache for better performance
+	// Since we use webhooks to rebuild on content changes, static pages can be cached longer
 	if (response.headers.get('content-type')?.includes('text/html')) {
-		// Cache for only 60 seconds, with must-revalidate to ensure fresh content
-		// This means: serve cached content for 60 seconds max, then must revalidate
-		// This ensures new published content appears within 60 seconds
-		response.headers.set(
-			'Cache-Control',
-			'public, max-age=60, s-maxage=60, must-revalidate, stale-while-revalidate=300'
-		);
+		// Check if this is a prerendered page (has x-sveltekit-prerender header or is in static routes)
+		const isPrerendered = response.headers.has('x-sveltekit-prerender') ||
+			!url.includes('/api/') && !url.includes('/publications'); // publications stays dynamic
 
-		// Add ETag based on content hash for proper cache validation
-		// Using a timestamp ensures each request gets a unique ETag
-		if (!response.headers.has('ETag')) {
-			response.headers.set('ETag', `"${Date.now()}"`);
+		if (isPrerendered) {
+			// Prerendered pages: cache for 1 hour, revalidate in background
+			// Webhooks trigger rebuilds, so content stays fresh
+			response.headers.set(
+				'Cache-Control',
+				'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400'
+			);
+		} else {
+			// Dynamic pages (like /publications): shorter cache
+			response.headers.set(
+				'Cache-Control',
+				'public, max-age=300, s-maxage=300, stale-while-revalidate=3600'
+			);
 		}
 
-		// Add Last-Modified header to help with cache validation
+		// Add Last-Modified header for cache validation
 		if (!response.headers.has('Last-Modified')) {
 			response.headers.set('Last-Modified', new Date().toUTCString());
 		}

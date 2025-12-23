@@ -1,3 +1,4 @@
-// Removed prerender to allow dynamic content updates
-// Pages will be server-rendered on-demand, ensuring fresh content from CMS
-
+// Prerender all pages for optimal SEO and performance
+// Webhooks from Strapi will trigger rebuilds when content is published
+// Each dynamic route ([slug]) has its own entries() function to discover routes at build time
+export const prerender = true;

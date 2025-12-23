@@ -3,6 +3,10 @@ import { NO_CACHE_FETCH_OPTIONS } from '$lib/utils';
 import https from 'https';
 import { URL } from 'url';
 
+// Keep publications page dynamic due to external HAL API
+// This page is not prerendered and uses server-side rendering
+export const prerender = false;
+
 const HAL_URL =
 	'https://haltools.archives-ouvertes.fr/Public/afficheRequetePubli.php?typdoc=(\'ART\',\'COMM\',\'POSTER\',\'OUV\',\'COUV\',\'DOUV\',\'PATENT\',\'THESE\',\'HDR\')&collection_exp=LGI-ED&CB_auteur=oui&CB_titre=oui&CB_article=oui&langue=Anglais&tri_exp=annee_publi&tri_exp2=typdoc&tri_exp3=date_publi&ordre_aff=TA&CB_rubriqueDiv=oui&Fen=Aff&css=../css/VisuOmbreVignettes.css';
 

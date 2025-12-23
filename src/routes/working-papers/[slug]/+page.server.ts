@@ -2,6 +2,25 @@ import type { PageServerLoad } from './$types';
 import { CMS_BASE_URL } from '$lib/config';
 import { NO_CACHE_FETCH_OPTIONS } from '$lib/utils';
 
+// Prerender all working paper pages
+export const prerender = true;
+
+// Dynamic entries: fetch all working paper slugs at build time
+export const entries = async () => {
+	try {
+		const response = await fetch(
+			`${CMS_BASE_URL}/api/working-papers?publicationState=live&fields[0]=slug`,
+			NO_CACHE_FETCH_OPTIONS
+		);
+		if (!response.ok) return [];
+		const data = await response.json();
+		return data.data?.map((paper: { slug: string }) => ({ slug: paper.slug })) || [];
+	} catch (error) {
+		console.error('Error fetching working paper entries:', error);
+		return [];
+	}
+};
+
 export const load: PageServerLoad = async ({ fetch, params }) => {
 	const slug = params.slug; // assuming `slug` is part of the route parameters
 
