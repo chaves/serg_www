@@ -158,13 +158,20 @@ export const truncateText = (text: string, maxLength: number = 160): string => {
 
 /**
  * Fetch options to ensure fresh data from CMS, bypassing all caches
- * This ensures new published content is immediately visible
+ *
+ * Used for:
+ * - entries() functions: Ensures route discovery gets fresh data during build
+ * - Dynamic pages (e.g., /publications): Ensures fresh data at request time
+ * - Sitemap generation: Ensures fresh data at request time
+ *
+ * NOT needed for prerendered load() functions since they only run at build time
+ * and webhooks trigger rebuilds when content changes.
  */
 export const NO_CACHE_FETCH_OPTIONS: RequestInit = {
 	cache: 'no-store',
 	headers: {
 		'Cache-Control': 'no-cache, no-store, must-revalidate',
-		'Pragma': 'no-cache',
-		'Expires': '0'
+		Pragma: 'no-cache',
+		Expires: '0'
 	}
 };

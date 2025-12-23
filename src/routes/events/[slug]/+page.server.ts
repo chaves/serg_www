@@ -26,9 +26,10 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
     const slug = params.slug; // assuming `slug` is part of the route parameters
 
     try {
-      // Use NO_CACHE_FETCH_OPTIONS to ensure fresh data from CMS
+      // This page is prerendered, so load() only runs at build time
+      // Webhooks trigger rebuilds when content changes, so cache-busting is less critical
       // Explicitly request published content with publicationState=live
-      const response = await fetch(`${CMS_BASE_URL}/api/events?publicationState=live&filters[slug][$eq]=${slug}&populate=*`, NO_CACHE_FETCH_OPTIONS);
+      const response = await fetch(`${CMS_BASE_URL}/api/events?publicationState=live&filters[slug][$eq]=${slug}&populate=*`);
 
       if (!response.ok) {
         throw new Error(`Failed to fetch event data for slug: ${slug}`);

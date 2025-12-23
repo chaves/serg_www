@@ -2,13 +2,12 @@ import type { PageServerLoad } from './$types';
 import type { NewsResponse } from "$types/news";
 import type { EventsResponse } from "$types/events";
 import { CMS_BASE_URL } from '$lib/config';
-import { NO_CACHE_FETCH_OPTIONS } from '$lib/utils';
 
 async function fetchData(url: string, fetchFn: typeof fetch) {
   // Use SvelteKit's fetch which is properly instrumented
-  // Use NO_CACHE_FETCH_OPTIONS to ensure fresh data from CMS on each request
-  // This bypasses all caches (browser, CDN, proxy) to ensure new published content is immediately visible
-  const response = await fetchFn(url, NO_CACHE_FETCH_OPTIONS);
+  // This page is prerendered, so load() only runs at build time
+  // Webhooks trigger rebuilds when content changes, so cache-busting is less critical
+  const response = await fetchFn(url);
   if (!response.ok) {
     throw new Error(`Failed to fetch data from ${url}`);
   }
