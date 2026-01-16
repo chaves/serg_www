@@ -9,7 +9,8 @@
     { href: "/people", label: "People" },
     { href: "/publications", label: "Publications" },
     { href: "/working-papers", label: "Working Papers" },
-    { href: "/prizes", label: "Prizes" }
+    { href: "/prizes", label: "Prizes" },
+    { href: "/cemsi", label: "CEMSI" }
   ];
 
   function isActive(href: string): boolean {
