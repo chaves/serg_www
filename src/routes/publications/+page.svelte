@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import type { Publication } from './+page.server';
-	import logo_hal from '$lib/assets/images/HAL_logotype-rvb_fond-clair_fr.png?enhanced&w=400;200';
+	import logo_hal from '$lib/assets/images/HAL_logotype-rvb_fond-clair_fr.png';
 	import SEO from '$lib/components/SEO.svelte';
 	import { invalidateAll } from '$app/navigation';
 	import { goto } from '$app/navigation';
@@ -97,11 +97,14 @@
 	href="https://centralesupelec.hal.science/LGI"
 	aria-label="Visit CentraleSupélec HAL Science repository"
 >
-	<enhanced:img
+	<img
 		src={logo_hal}
 		alt="HAL archives ouvertes"
-		sizes="(min-width:1080px) 400px, (min-width:768px) 200px"
 		class="mx-auto -my-9"
+		width="400"
+		height="117"
+		loading="lazy"
+		decoding="async"
 	/>
 </a>
 
@@ -216,21 +219,21 @@
 
 		<!-- Cache info and refresh button -->
 		<div class="cache-info">
-			<div class="cache-status">
-				{#if data.cached}
-					<span class="cache-text">
-						Données mises en cache à {formatCacheTime(data.cacheTimestamp)}
-					</span>
-				{:else}
-					<span class="cache-text fresh">Données à jour</span>
-				{/if}
-			</div>
-			<button
-				class="refresh-btn"
-				onclick={refreshPublications}
-				disabled={isRefreshing}
-				aria-label="Rafraîchir les publications"
-			>
+				<div class="cache-status">
+					{#if data.cached}
+						<span class="cache-text">
+							Cached at {formatCacheTime(data.cacheTimestamp)}
+						</span>
+					{:else}
+						<span class="cache-text fresh">Data is up to date</span>
+					{/if}
+				</div>
+				<button
+					class="refresh-btn"
+					onclick={refreshPublications}
+					disabled={isRefreshing}
+					aria-label="Refresh publications"
+				>
 				<svg
 					class="refresh-icon"
 					class:spinning={isRefreshing}
@@ -249,30 +252,30 @@
 					<path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
 					<path d="M16 16h5v5" />
 				</svg>
-				{isRefreshing ? 'Chargement...' : 'Rafraîchir'}
-			</button>
-		</div>
-	{:else if data.error}
-		<div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-			<p class="text-yellow-800">{data.error}</p>
-			<p class="text-sm text-yellow-600 mt-2">
-				Veuillez rafraîchir la page ou visiter
-				<a
-					href="https://centralesupelec.hal.science/LGI"
-					class="underline hover:no-underline"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					HAL directement
-				</a>
-				.
-			</p>
-		</div>
-	{:else}
-		<div class="text-center py-8">
-			<p>Chargement des publications...</p>
-		</div>
-	{/if}
+					{isRefreshing ? 'Loading...' : 'Refresh'}
+				</button>
+			</div>
+		{:else if data.error}
+			<div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+				<p class="text-yellow-800">{data.error}</p>
+				<p class="text-sm text-yellow-600 mt-2">
+					Please refresh this page or visit
+					<a
+						href="https://centralesupelec.hal.science/LGI"
+						class="underline hover:no-underline"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						HAL directly
+					</a>
+					.
+				</p>
+			</div>
+		{:else}
+			<div class="text-center py-8">
+				<p>Loading publications...</p>
+			</div>
+		{/if}
 </div>
 
 <style>

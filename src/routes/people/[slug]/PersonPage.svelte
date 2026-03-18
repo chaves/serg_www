@@ -10,6 +10,18 @@
 	const picture = $derived(
 		person.picture?.formats?.small?.url || person.picture?.url
 	);
+	const pictureSrcset = $derived(
+		[
+			person.picture?.formats?.thumbnail,
+			person.picture?.formats?.small,
+			person.picture?.formats?.medium
+		]
+			.map((format) =>
+				format?.url && format?.width ? `${CMS_BASE_URL}${format.url} ${format.width}w` : null
+			)
+			.filter((value): value is string => Boolean(value))
+			.join(', ')
+	);
 </script>
 
 <h1>
@@ -30,6 +42,8 @@
 	<a href={`/people/${person.slug}`} class="image-link">
 		<img
 			src="{CMS_BASE_URL}{picture}"
+			srcset={pictureSrcset || undefined}
+			sizes="(max-width: 768px) 256px, 320px"
 			alt={title}
 			loading="lazy"
 			decoding="async"

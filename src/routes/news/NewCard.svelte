@@ -5,8 +5,6 @@
 	import Card from '$lib/components/Card.svelte';
 
 	let { article }: { article: New } = $props();
-
-	const pictureUrl = $derived(article.picture?.formats?.small?.url || article.picture?.url);
 </script>
 
 <Card
@@ -15,6 +13,6 @@
 	path="news"
 	areas={article.areas}
 	publishedAt={article.publishedAt}
-	{pictureUrl}
+	picture={article.picture}
 	description={article.description}
 />

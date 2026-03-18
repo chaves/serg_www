@@ -19,8 +19,6 @@
 			<EventCard {event} />
 		{/each}
 	</div>
-{:else if data.error}
-	<p class="text-red-500 text-center">Error: {data.error}</p>
 {:else}
-	<p class="text-center">Loading...</p>
+	<p class="text-center">No events available.</p>
 {/if}

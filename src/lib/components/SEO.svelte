@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { browser } from '$app/environment';
+	import { SITE_URL } from '$lib/config';
 	import { stripHtml, truncateText } from '$lib/utils';
 
 	let {
@@ -25,8 +25,8 @@
 		nofollow?: boolean;
 	} = $props();
 
-	const siteUrl = browser ? window.location.origin : 'https://serg.paris';
-	const currentUrl = browser ? window.location.href : `${siteUrl}${$page.url.pathname}`;
+	const siteUrl = SITE_URL.endsWith('/') ? SITE_URL.slice(0, -1) : SITE_URL;
+	const canonicalUrl = $derived(`${siteUrl}${$page.url.pathname}`);
 	const fullTitle = $derived(title.includes('SERG') ? title : `${title} | SERG`);
 	const defaultImage = `${siteUrl}/logo_100.png`;
 	const ogImage = $derived(image || defaultImage);
@@ -35,8 +35,12 @@
 	const cleanDescription = $derived(description ? stripHtml(description) : defaultDescription);
 	const metaDescription = $derived(truncateText(cleanDescription, 160));
 
+	const canonicalHost = new URL(siteUrl).host;
+	const isNonCanonicalHost = $derived(Boolean($page.url.host) && $page.url.host !== canonicalHost);
+	const effectiveNoindex = $derived(noindex || isNonCanonicalHost);
+
 	const robotsContent = $derived(
-		[noindex ? 'noindex' : 'index', nofollow ? 'nofollow' : 'follow'].join(', ')
+		[effectiveNoindex ? 'noindex' : 'index', nofollow ? 'nofollow' : 'follow'].join(', ')
 	);
 </script>
 
@@ -46,11 +50,13 @@
 	<meta name="title" content={fullTitle} />
 	<meta name="description" content={metaDescription} />
 	<meta name="robots" content={robotsContent} />
-	<link rel="canonical" href={currentUrl} />
+	<link rel="canonical" href={canonicalUrl} />
+	<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+	<link rel="alternate" hreflang="en" href={canonicalUrl} />
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content={type} />
-	<meta property="og:url" content={currentUrl} />
+	<meta property="og:url" content={canonicalUrl} />
 	<meta property="og:title" content={fullTitle} />
 	<meta property="og:description" content={metaDescription} />
 	<meta property="og:image" content={ogImage} />
@@ -58,7 +64,7 @@
 
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:url" content={currentUrl} />
+	<meta name="twitter:url" content={canonicalUrl} />
 	<meta name="twitter:title" content={fullTitle} />
 	<meta name="twitter:description" content={metaDescription} />
 	<meta name="twitter:image" content={ogImage} />

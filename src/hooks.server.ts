@@ -1,6 +1,27 @@
 import type { Handle } from '@sveltejs/kit';
+import { SITE_URL } from '$lib/config';
 
 export const handle: Handle = async ({ event, resolve }) => {
+	const canonicalOrigin = new URL(SITE_URL);
+
+	// Canonical host redirect: www -> apex host
+	if (event.url.hostname === `www.${canonicalOrigin.hostname}`) {
+		const target = new URL(event.url);
+		target.hostname = canonicalOrigin.hostname;
+		return Response.redirect(target.toString(), 308);
+	}
+
+	// Normalize trailing slashes for canonical URLs (except root and file-like paths)
+	if (
+		event.url.pathname.length > 1 &&
+		event.url.pathname.endsWith('/') &&
+		!event.url.pathname.includes('.')
+	) {
+		const target = new URL(event.url);
+		target.pathname = target.pathname.replace(/\/+$/, '');
+		return Response.redirect(target.toString(), 308);
+	}
+
 	const response = await resolve(event);
 
 	// Set cache headers for optimal SEO and performance
@@ -46,7 +67,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	// For API routes and dynamic data, use shorter cache
-	if (url.startsWith('/api/') || url.includes('+page.server')) {
+	if (url.startsWith('/api/')) {
 		response.headers.set(
 			'Cache-Control',
 			'public, max-age=300, s-maxage=300, stale-while-revalidate=3600'
@@ -55,4 +76,3 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	return response;
 };
-

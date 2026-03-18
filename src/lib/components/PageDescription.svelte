@@ -10,6 +10,7 @@
 		areas = [],
 		attachedFiles = [],
 		publishedAt,
+		picture,
 		pictureUrl,
 		calendar
 	}: {
@@ -18,18 +19,52 @@
 		areas?: any[];
 		attachedFiles?: any[];
 		publishedAt: string;
-		pictureUrl: string;
+		picture?: {
+			url?: string;
+			width?: number;
+			height?: number;
+			formats?: {
+				thumbnail?: { url: string; width: number; height: number };
+				small?: { url: string; width: number; height: number };
+				medium?: { url: string; width: number; height: number };
+			};
+		};
+		pictureUrl?: string;
 		calendar?: Snippet;
 	} = $props();
+
+	const imageSrc = $derived(
+		picture
+			? `${CMS_BASE_URL}${picture.formats?.medium?.url || picture.formats?.small?.url || picture.url || ''}`
+			: `${CMS_BASE_URL}${pictureUrl || ''}`
+	);
+	const imageWidth = $derived(picture?.formats?.medium?.width || picture?.width || undefined);
+	const imageHeight = $derived(picture?.formats?.medium?.height || picture?.height || undefined);
+	const imageSrcset = $derived(
+		[
+			picture?.formats?.thumbnail,
+			picture?.formats?.small,
+			picture?.formats?.medium
+		]
+			.map((format) =>
+				format?.url && format?.width ? `${CMS_BASE_URL}${format.url} ${format.width}w` : null
+			)
+			.filter((value): value is string => Boolean(value))
+			.join(', ')
+	);
 </script>
 
 <div class="picture">
 	<img
-		src="{CMS_BASE_URL}{pictureUrl}"
+		src={imageSrc}
 		alt={title}
-		loading="lazy"
+		loading="eager"
 		decoding="async"
 		fetchpriority="high"
+		srcset={imageSrcset || undefined}
+		sizes="(max-width: 768px) 100vw, 900px"
+		width={imageWidth}
+		height={imageHeight}
 	/>
 </div>
 

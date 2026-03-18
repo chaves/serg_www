@@ -1,22 +1,28 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { filterRecordsByKey, sortByKey } from '$lib/utils';
+	import type { Person } from '$types/people';
 	import PersonCard from './PersonCard.svelte';
 	import SEO from '$lib/components/SEO.svelte';
 
 	let { data }: { data: PageData } = $props();
 
-	const people = $derived(sortByKey(data.people, 'last_name'));
+	const people = $derived(
+		(data.people || []).slice().sort((a: Person, b: Person) => a.last_name.localeCompare(b.last_name))
+	);
 
-	const directors = $derived(filterRecordsByKey(people, 'category', 'Director'));
-	const researchTeam = $derived(filterRecordsByKey(people, 'category', 'Research Team'));
+	function byCategory(list: Person[], category: string) {
+		return list.filter((person) => person.category === category);
+	}
+
+	const directors = $derived(byCategory(people, 'Director'));
+	const researchTeam = $derived(byCategory(people, 'Research Team'));
 	const researchers = $derived([...directors, ...researchTeam]);
-	const students = $derived(filterRecordsByKey(people, 'category', 'PhD Students'));
-	const prev_students = $derived(filterRecordsByKey(people, 'category', 'Previous PhD Students'));
-	const post_docs = $derived(filterRecordsByKey(people, 'category', 'Postdoctoral researchers'));
-	const visitors = $derived(filterRecordsByKey(people, 'category', 'Visiting Academics'));
-	const associates = $derived(filterRecordsByKey(people, 'category', 'Associate Researchers'));
-	const formers = $derived(filterRecordsByKey(people, 'category', 'Former Researchers'));
+	const students = $derived(byCategory(people, 'PhD Students'));
+	const prev_students = $derived(byCategory(people, 'Previous PhD Students'));
+	const post_docs = $derived(byCategory(people, 'Postdoctoral researchers'));
+	const visitors = $derived(byCategory(people, 'Visiting Academics'));
+	const associates = $derived(byCategory(people, 'Associate Researchers'));
+	const formers = $derived(byCategory(people, 'Former Researchers'));
 </script>
 
 <SEO
@@ -91,10 +97,8 @@
 			{/each}
 		</div>
 	{/if}
-{:else if data.error}
-	<p>Error: {data.error}</p>
 {:else}
-	<p>Loading...</p>
+	<p>No team members available.</p>
 {/if}
 
 <style>

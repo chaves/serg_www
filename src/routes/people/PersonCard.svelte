@@ -5,6 +5,22 @@
 	import { CMS_BASE_URL } from '$lib/config';
 
 	let { person }: { person: Person } = $props();
+
+	const pictureSrc = $derived(
+		`${CMS_BASE_URL}${person.picture?.formats?.thumbnail?.url || person.picture?.url || ''}`
+	);
+	const pictureSrcset = $derived(
+		[
+			person.picture?.formats?.thumbnail,
+			person.picture?.formats?.small,
+			person.picture?.formats?.medium
+		]
+			.map((format) =>
+				format?.url && format?.width ? `${CMS_BASE_URL}${format.url} ${format.width}w` : null
+			)
+			.filter((value): value is string => Boolean(value))
+			.join(', ')
+	);
 </script>
 
 <div class="bg-white p-6 rounded shadow hover:shadow-md transition-shadow text-center">
@@ -21,7 +37,9 @@
 	{#if person.picture}
 		<a href={`/people/${person.slug}`}>
 			<img
-				src="{CMS_BASE_URL}{person.picture.formats.thumbnail.url}"
+				src={pictureSrc}
+				srcset={pictureSrcset || undefined}
+				sizes="112px"
 				alt={`${person.first_name} ${person.last_name} - ${person.category || 'Member'}`}
 				class="w-28 h-28 rounded-full mx-auto mb-4 object-cover shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105"
 				loading="lazy"

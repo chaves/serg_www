@@ -14,5 +14,6 @@
 	areas={article.areas}
 	attachedFiles={article.attached_files}
 	publishedAt={article.publishedAt}
+	picture={article.picture}
 	{pictureUrl}
 />

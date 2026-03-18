@@ -8,11 +8,6 @@
 	import StructuredData from '$lib/components/StructuredData.svelte';
 
 	let { data }: { data: PageData } = $props();
-	const aboutUsPaths = {
-		presentation: '/about?section=presentation',
-		research: '/about?section=research',
-		sergLife: '/about?section=serg-life'
-	};
 </script>
 
 <SEO
@@ -25,33 +20,37 @@
 <div class="flex flex-col md:flex-row gap-8 p-4">
 	<!-- Main Content Section -->
 	<div class="flex-1">
-		{@html data.description.introduction}
+		{#if data.description}
+			{@html data.description.introduction}
 
-		<h2>Research</h2>
+			<h2>Research</h2>
 
-		<Accordion.Root class="w-full mb-6">
-			<Accordion.Item value="item-1">
-				<Accordion.Trigger>Axis: Sustainable Mobility Systems</Accordion.Trigger>
-				<Accordion.Content>
-					{@html data.description.axis_mobility}
-				</Accordion.Content>
-			</Accordion.Item>
+			<Accordion.Root type="single" class="w-full mb-6">
+				<Accordion.Item value="item-1">
+					<Accordion.Trigger>Axis: Sustainable Mobility Systems</Accordion.Trigger>
+					<Accordion.Content>
+						{@html data.description.axis_mobility}
+					</Accordion.Content>
+				</Accordion.Item>
 
-			<Accordion.Item value="item-2">
-				<Accordion.Trigger>Axis: Low-Carbon Energy Systems</Accordion.Trigger>
-				<Accordion.Content>
-					{@html data.description.axis_energy}
-				</Accordion.Content>
-			</Accordion.Item>
+				<Accordion.Item value="item-2">
+					<Accordion.Trigger>Axis: Low-Carbon Energy Systems</Accordion.Trigger>
+					<Accordion.Content>
+						{@html data.description.axis_energy}
+					</Accordion.Content>
+				</Accordion.Item>
 
-			<Accordion.Item value="item-3">
-				<Accordion.Trigger>Axis: Climate Change Strategy</Accordion.Trigger>
-				<Accordion.Content>
-					{@html data.description.axis_climate}
-				</Accordion.Content>
-			</Accordion.Item>
-		</Accordion.Root>
-		{@html data.description.conclusion}
+				<Accordion.Item value="item-3">
+					<Accordion.Trigger>Axis: Climate Change Strategy</Accordion.Trigger>
+					<Accordion.Content>
+						{@html data.description.axis_climate}
+					</Accordion.Content>
+				</Accordion.Item>
+			</Accordion.Root>
+			{@html data.description.conclusion}
+		{:else}
+			<p>Content is temporarily unavailable.</p>
+		{/if}
 
 		<a
 			href="https://centralesupelec.hal.science/LGI"

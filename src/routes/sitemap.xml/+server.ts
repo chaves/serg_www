@@ -11,65 +11,33 @@ const staticRoutes = [
 	'/people',
 	'/publications',
 	'/working-papers',
-	'/prizes'
+	'/prizes',
+	'/cemsi'
 ];
 
-async function getDynamicRoutes() {
-	const routes: string[] = [];
+async function fetchSlugs(endpoint: string, prefix: string): Promise<string[]> {
+	const response = await fetch(endpoint, NO_CACHE_FETCH_OPTIONS);
 
-	try {
-		// Fetch events - explicitly request published content with cache-busting
-		const eventsRes = await fetch(
-			`${CMS_BASE_URL}/api/events?publicationState=live&fields[0]=slug`,
-			NO_CACHE_FETCH_OPTIONS
-		);
-		if (eventsRes.ok) {
-			const eventsData = await eventsRes.json();
-			eventsData.data?.forEach((event: { slug: string }) => {
-				routes.push(`/events/${event.slug}`);
-			});
-		}
-
-		// Fetch news - explicitly request published content with cache-busting
-		const newsRes = await fetch(
-			`${CMS_BASE_URL}/api/news?publicationState=live&fields[0]=slug`,
-			NO_CACHE_FETCH_OPTIONS
-		);
-		if (newsRes.ok) {
-			const newsData = await newsRes.json();
-			newsData.data?.forEach((article: { slug: string }) => {
-				routes.push(`/news/${article.slug}`);
-			});
-		}
-
-		// Fetch people - explicitly request published content with cache-busting
-		const peopleRes = await fetch(
-			`${CMS_BASE_URL}/api/people?publicationState=live&fields[0]=slug`,
-			NO_CACHE_FETCH_OPTIONS
-		);
-		if (peopleRes.ok) {
-			const peopleData = await peopleRes.json();
-			peopleData.data?.forEach((person: { slug: string }) => {
-				routes.push(`/people/${person.slug}`);
-			});
-		}
-
-		// Fetch working papers - explicitly request published content with cache-busting
-		const papersRes = await fetch(
-			`${CMS_BASE_URL}/api/working-papers?publicationState=live&fields[0]=slug`,
-			NO_CACHE_FETCH_OPTIONS
-		);
-		if (papersRes.ok) {
-			const papersData = await papersRes.json();
-			papersData.data?.forEach((paper: { slug: string }) => {
-				routes.push(`/working-papers/${paper.slug}`);
-			});
-		}
-	} catch (error) {
-		console.error('Error fetching dynamic routes for sitemap:', error);
+	if (!response.ok) {
+		throw new Error(`Failed to fetch sitemap slugs from ${endpoint}: ${response.status}`);
 	}
 
-	return routes;
+	const data = await response.json();
+	return data.data?.map((entry: { slug: string }) => `${prefix}/${entry.slug}`) || [];
+}
+
+async function getDynamicRoutes() {
+	const [eventRoutes, newsRoutes, peopleRoutes, paperRoutes] = await Promise.all([
+		fetchSlugs(`${CMS_BASE_URL}/api/events?publicationState=live&fields[0]=slug`, '/events'),
+		fetchSlugs(`${CMS_BASE_URL}/api/news?publicationState=live&fields[0]=slug`, '/news'),
+		fetchSlugs(`${CMS_BASE_URL}/api/people?publicationState=live&fields[0]=slug`, '/people'),
+		fetchSlugs(
+			`${CMS_BASE_URL}/api/working-papers?publicationState=live&fields[0]=slug`,
+			'/working-papers'
+		)
+	]);
+
+	return [...eventRoutes, ...newsRoutes, ...peopleRoutes, ...paperRoutes];
 }
 
 export const GET: RequestHandler = async () => {

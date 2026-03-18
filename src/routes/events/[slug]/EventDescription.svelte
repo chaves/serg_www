@@ -24,6 +24,7 @@
 	areas={event.areas}
 	attachedFiles={event.attached_files}
 	publishedAt={event.publishedAt}
+	picture={event.picture}
 	{pictureUrl}
 	{calendar}
 />

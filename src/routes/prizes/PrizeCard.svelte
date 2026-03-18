@@ -5,6 +5,26 @@
 	import { CMS_BASE_URL } from '$lib/config';
 
 	let { prize }: { prize: Prize } = $props();
+
+	const pictureSrc = $derived(
+		`${CMS_BASE_URL}${prize.picture?.formats?.thumbnail?.url || prize.picture?.url || ''}`
+	);
+	const pictureWidth = $derived(prize.picture?.formats?.thumbnail?.width || prize.picture?.width || 112);
+	const pictureHeight = $derived(
+		prize.picture?.formats?.thumbnail?.height || prize.picture?.height || 112
+	);
+	const pictureSrcset = $derived(
+		[
+			prize.picture?.formats?.thumbnail,
+			prize.picture?.formats?.small,
+			prize.picture?.formats?.medium
+		]
+			.map((format) =>
+				format?.url && format?.width ? `${CMS_BASE_URL}${format.url} ${format.width}w` : null
+			)
+			.filter((value): value is string => Boolean(value))
+			.join(', ')
+	);
 </script>
 
 <article>
@@ -14,10 +34,14 @@
 	{#if prize.picture}
 		<div class="picture">
 			<img
-				src={`${CMS_BASE_URL}${prize.picture.formats.thumbnail.url}`}
+				src={pictureSrc}
+				srcset={pictureSrcset || undefined}
+				sizes="112px"
 				alt={`${prize.first_name} ${prize.last_name} - ${prize.title}`}
 				loading="lazy"
 				decoding="async"
+				width={pictureWidth}
+				height={pictureHeight}
 			/>
 		</div>
 	{/if}

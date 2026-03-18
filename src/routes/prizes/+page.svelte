@@ -18,16 +18,7 @@
 		{#each data.prizes.data as prize}
 			<PrizeCard {prize} />
 		{/each}
-	{:else if data.error}
-		<li class="error-message text-red-500 font-bold">Error: {data.error}</li>
 	{:else}
-		<li>Loading...</li>
+		<li>No prizes available.</li>
 	{/if}
 </ul>
-
-<style>
-	.error-message {
-		color: red;
-		font-weight: bold;
-	}
-</style>

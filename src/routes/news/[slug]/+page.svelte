@@ -33,8 +33,6 @@
 
 {#if data.new}
 	<NewPage article={data.new} />
-{:else if data.error}
-	<p>Error: {data.error}</p>
 {:else}
-	<p>Loading...</p>
+	<p>Article unavailable.</p>
 {/if}

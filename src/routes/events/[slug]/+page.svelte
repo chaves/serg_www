@@ -34,8 +34,6 @@
 
 {#if data.event}
 	<EventDescription event={data.event} />
-{:else if data.error}
-	<p>Error: {data.error}</p>
 {:else}
-	<p>Loading...</p>
+	<p>Event unavailable.</p>
 {/if}

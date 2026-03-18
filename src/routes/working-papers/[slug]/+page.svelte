@@ -1,25 +1,36 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import PaperPage from './PaperPage.svelte';
+	import SEO from '$lib/components/SEO.svelte';
+	import StructuredData from '$lib/components/StructuredData.svelte';
+	import { stripHtml } from '$lib/utils';
 
 	let { data }: { data: PageData } = $props();
 
-	const title = $derived(data.paper ? data.paper.title : 'Paper not found');
-
+	const title = $derived(data.paper?.title || 'Working paper');
+	const description = $derived(
+		data.paper?.abstract
+			? stripHtml(data.paper.abstract)
+			: 'Research working paper from the Sustainable Economy Research Group (SERG).'
+	);
+	const publishedTime = $derived(data.paper?.year ? `${data.paper.year}-01-01` : undefined);
 </script>
 
-<svelte:head>
-    <title>SERG - {title}</title>
-  </svelte:head>
+<SEO title={title} description={description} type="article" publishedTime={publishedTime} />
 
-<h1>
-	{title}
-</h1>
+<StructuredData
+	type="Article"
+	data={{
+		title,
+		description,
+		publishedAt: publishedTime,
+		author: 'SERG'
+	}}
+/>
 
 {#if data.paper}
+	<h1>{title}</h1>
 	<PaperPage paper={data.paper} />
-{:else if data.error}
-	<p>Error: {data.error}</p>
 {:else}
-	<p>Loading...</p>
+	<p>Working paper unavailable.</p>
 {/if}

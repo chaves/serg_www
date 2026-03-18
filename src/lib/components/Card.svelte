@@ -10,6 +10,7 @@
 		path,
 		areas = [],
 		publishedAt = '',
+		picture,
 		pictureUrl = '',
 		description = '',
 		header
@@ -19,17 +20,58 @@
 		path: string;
 		areas?: any[];
 		publishedAt?: string;
+		picture?: {
+			url?: string;
+			width?: number;
+			height?: number;
+			formats?: {
+				thumbnail?: { url: string; width: number; height: number };
+				small?: { url: string; width: number; height: number };
+				medium?: { url: string; width: number; height: number };
+			};
+		};
 		pictureUrl?: string;
 		description?: string;
 		header?: Snippet;
 	} = $props();
+
+	const pictureSrc = $derived(
+		picture
+			? `${CMS_BASE_URL}${picture.formats?.small?.url || picture.formats?.thumbnail?.url || picture.url || ''}`
+			: pictureUrl
+				? `${CMS_BASE_URL}${pictureUrl}`
+				: ''
+	);
+	const pictureWidth = $derived(picture?.formats?.small?.width || picture?.width || undefined);
+	const pictureHeight = $derived(picture?.formats?.small?.height || picture?.height || undefined);
+	const pictureSrcset = $derived(
+		[
+			picture?.formats?.thumbnail,
+			picture?.formats?.small,
+			picture?.formats?.medium
+		]
+			.map((format) =>
+				format?.url && format?.width ? `${CMS_BASE_URL}${format.url} ${format.width}w` : null
+			)
+			.filter((value): value is string => Boolean(value))
+			.join(', ')
+	);
 </script>
 
 <article>
 	<div class="content">
 		<div class="picture_mobile">
-			{#if pictureUrl}
-				<img src="{CMS_BASE_URL}{pictureUrl}" alt={title} loading="lazy" decoding="async" />
+			{#if pictureSrc}
+				<img
+					src={pictureSrc}
+					alt={title}
+					loading="lazy"
+					decoding="async"
+					srcset={pictureSrcset || undefined}
+					sizes="(max-width: 768px) 100vw, 320px"
+					width={pictureWidth}
+					height={pictureHeight}
+				/>
 			{/if}
 		</div>
 
@@ -56,8 +98,17 @@
 		{/if}
 	</div>
 	<div class="picture">
-		{#if pictureUrl}
-			<img src="{CMS_BASE_URL}{pictureUrl}" alt={title} loading="lazy" decoding="async" />
+		{#if pictureSrc}
+			<img
+				src={pictureSrc}
+				alt={title}
+				loading="lazy"
+				decoding="async"
+				srcset={pictureSrcset || undefined}
+				sizes="320px"
+				width={pictureWidth}
+				height={pictureHeight}
+			/>
 		{/if}
 	</div>
 </article>

@@ -33,13 +33,13 @@
 				</div>
 			</div>
 
-			<h1
+			<p
 				class="text-left text-sm md:text-base lg:text-lg font-bold -mb-3 mt-3 text-serg_blue-700 tracking-tight"
 			>
 				Sustainable Economy Research Group (S.E.R.G.) at CentraleSupélec / Paris-Saclay University<br
 				/>
 				<span class="text-serg_gray-dark">Industrial Engineering Departement (LGI)</span>
-			</h1>
+			</p>
 		</div>
 	</header>
 

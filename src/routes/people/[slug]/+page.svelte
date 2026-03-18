@@ -35,8 +35,6 @@
 
 {#if data.person}
 	<PersonPage person={data.person} {title} />
-{:else if data.error}
-	<p>Error: {data.error}</p>
 {:else}
-	<p>Loading...</p>
+	<p>Profile unavailable.</p>
 {/if}

@@ -34,13 +34,9 @@
 				{@html data.cemsi.content}
 			</div>
 		</div>
-	{:else if data.error}
-		<div class="text-center py-12">
-			<p class="text-red-600 font-semibold text-lg">Error loading CEMSI data: {data.error}</p>
-		</div>
 	{:else}
 		<div class="text-center py-12">
-			<p class="text-gray-600 text-lg">Loading...</p>
+			<p class="text-gray-600 text-lg">CEMSI content unavailable.</p>
 		</div>
 	{/if}
 </div>

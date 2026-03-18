@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { browser } from '$app/environment';
 	import { CMS_BASE_URL, SITE_URL } from '$lib/config';
 
 	let {
@@ -11,8 +10,8 @@
 		data?: Record<string, any>;
 	} = $props();
 
-	const siteUrl = browser ? window.location.origin : SITE_URL;
-	const currentUrl = browser ? window.location.href : `${siteUrl}${$page.url.pathname}`;
+	const siteUrl = SITE_URL.endsWith('/') ? SITE_URL.slice(0, -1) : SITE_URL;
+	const currentUrl = `${siteUrl}${$page.url.pathname}`;
 
 	function getStructuredData() {
 		const base = {

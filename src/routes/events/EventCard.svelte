@@ -7,8 +7,6 @@
 	import Card from '$lib/components/Card.svelte';
 
 	let { event }: { event: Event } = $props();
-
-	const pictureUrl = $derived(event.picture?.formats?.small?.url || event.picture?.url);
 </script>
 
 {#snippet header()}
@@ -23,7 +21,7 @@
 	slug={event.slug}
 	path="events"
 	areas={event.areas}
-	{pictureUrl}
+	picture={event.picture}
 	description={event.description}
 	{header}
 />
