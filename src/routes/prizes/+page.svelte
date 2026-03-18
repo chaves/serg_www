@@ -13,12 +13,14 @@
 
 <h1>Prizes</h1>
 
-<ul class="prize-list">
-	{#if data.prizes}
+{#if data.prizes?.data?.length}
+	<ul class="m-0 w-full max-w-none list-none space-y-3 p-0" aria-label="Prizes and awards">
 		{#each data.prizes.data as prize}
-			<PrizeCard {prize} />
+			<li class="m-0 p-0">
+				<PrizeCard {prize} />
+			</li>
 		{/each}
-	{:else}
-		<li>No prizes available.</li>
-	{/if}
-</ul>
+	</ul>
+{:else}
+	<p class="mt-8 text-center text-gray-600">No prizes available.</p>
+{/if}

@@ -115,10 +115,9 @@
 
 <style>
 	article {
-		@apply flex items-center justify-between bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition-all duration-300;
-		@apply border border-gray-200 hover:border-serg_blue-300;
-		@apply hover:scale-[1.02];
-		background: linear-gradient(to bottom right, white, rgba(0, 51, 102, 0.02));
+		@apply flex items-start justify-between bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-200;
+		@apply border border-gray-200 hover:border-gray-300;
+		@apply hover:-translate-y-0.5;
 	}
 
 	.content {
@@ -142,13 +141,13 @@
 	}
 
 	.date {
-		@apply text-gray-600 my-2 text-sm clear-both block italic;
+		@apply text-gray-500 my-2 text-sm clear-both block italic;
 	}
 
 	img {
 		@apply rounded-xl w-full h-40 md:w-fit object-cover;
-		@apply shadow-md;
-		@apply transition-all duration-300;
-		@apply hover:shadow-lg hover:scale-105;
+		@apply shadow-sm;
+		@apply transition duration-200 ease-out;
+		@apply hover:shadow-md hover:scale-[1.02];
 	}
 </style>

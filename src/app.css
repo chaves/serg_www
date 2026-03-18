@@ -44,6 +44,9 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+    --body-text: #334155;
+    --heading-text: #0b2747;
+    --focus-ring: rgba(0, 51, 102, 0.35);
   }
 }
 
@@ -58,67 +61,65 @@
 
   body {
     @apply bg-background text-foreground;
-    @apply text-gray-800;
+    @apply text-gray-700;
     @apply leading-relaxed;
     @apply antialiased;
+    text-rendering: optimizeLegibility;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
-    @apply font-bold text-serg_blue-800;
+    font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    @apply font-semibold text-serg_blue-800;
     @apply leading-tight;
-    @apply tracking-tight;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    @apply tracking-normal;
+    color: var(--heading-text);
   }
   p {
-		@apply mb-5;
+		@apply mb-4;
 		@apply leading-7;
-		@apply text-gray-800;
+		@apply text-gray-700;
 	}
 
   main {
     @apply leading-relaxed;
     @apply max-w-none;
-    font-size: 1.125rem;
-    line-height: 1.75;
+    font-size: 1rem;
+    line-height: 1.72;
   }
 
   @media (min-width: 768px) {
     main {
-      font-size: 1.125rem;
+      font-size: 1.0625rem;
     }
   }
 
   @media (min-width: 1024px) {
     main {
-      font-size: 1.25rem;
-      line-height: 1.8;
+      font-size: 1.125rem;
+      line-height: 1.76;
     }
   }
 
   main a {
-    @apply text-serg_blue-500 underline underline-offset-2 hover:no-underline hover:text-serg_blue-600;
+    @apply text-serg_blue-600 underline underline-offset-[0.18em] hover:text-serg_blue-700;
+    text-decoration-thickness: 0.075em;
+    transition: color 160ms ease-out, text-decoration-color 160ms ease-out;
 	}
 
   h1 {
-		font-family: 'Montserrat', sans-serif;
-		@apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 md:mb-8 text-center;
+		@apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold mb-7 md:mb-9 text-center;
 		@apply leading-tight;
-		@apply tracking-tight;
-		letter-spacing: -0.02em;
-		color: rgb(0, 30, 71); /* Fallback for browsers that don't support gradient text - serg_blue-800 */
-		background: linear-gradient(135deg, rgb(0, 30, 71) 0%, rgb(134, 20, 79) 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+		@apply tracking-normal;
+		letter-spacing: -0.01em;
+		color: rgb(0, 30, 71);
 	}
 
   h2 {
-    @apply text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8;
+    @apply text-xl md:text-2xl lg:text-3xl font-semibold mb-4 md:mb-5 mt-8 md:mt-10;
     @apply leading-tight;
   }
 
   h3 {
-    @apply text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 mt-4 md:mt-6;
+    @apply text-lg md:text-xl lg:text-2xl font-semibold mb-3 md:mb-4 mt-6 md:mt-7;
     @apply leading-snug;
   }
 
@@ -140,7 +141,7 @@
 
   main li {
     @apply leading-7;
-    @apply text-gray-800;
+    @apply text-gray-700;
   }
 
   main strong {
@@ -156,13 +157,31 @@
     @apply border-l-4 border-serg_blue-400 pl-4 my-6 italic text-gray-700;
   }
 
+  main :where(h1, h2, h3, h4, h5, h6) {
+    text-wrap: balance;
+  }
+
+  main :where(p, li) {
+    text-wrap: pretty;
+  }
+
+  main :where(p, blockquote) {
+    max-width: 72ch;
+  }
+
   main img {
     @apply max-w-full;
     @apply h-auto;
   }
 
   img {
-    @apply transition-all duration-300;
+    @apply transition duration-200 ease-out;
+  }
+
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-radius: 0.375rem;
   }
 
   footer {

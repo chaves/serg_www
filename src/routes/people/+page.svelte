@@ -26,15 +26,15 @@
 </script>
 
 <SEO
-	title="Our Team"
+	title="People"
 	description="Meet the researchers, faculty, students, and associates of the Sustainable Economy Research Group (SERG) at CentraleSupélec."
 />
 
-<h1>Our Team</h1>
+<h1 class="people-page-title">People</h1>
 
 {#if people}
 	{#if researchers}
-		<h2 class="text-center">Research Team</h2>
+		<h2 class="section-title">Research Team</h2>
 		<div class="person">
 			{#each researchers as person (person.id)}
 				<PersonCard {person} />
@@ -45,7 +45,7 @@
 	{/if}
 
 	{#if associates}
-		<h2 class="text-center">Associate Researchers</h2>
+		<h2 class="section-title">Associate Researchers</h2>
 		<div class="person">
 			{#each associates as person}
 				<PersonCard {person} />
@@ -54,7 +54,7 @@
 	{/if}
 
 	{#if post_docs}
-		<h2 class="text-center">Postdoctoral researchers</h2>
+		<h2 class="section-title">Postdoctoral researchers</h2>
 		<div class="person">
 			{#each post_docs as person}
 				<PersonCard {person} />
@@ -63,7 +63,7 @@
 	{/if}
 
 	{#if students}
-		<h2 class="text-center">PhD Students</h2>
+		<h2 class="section-title">PhD Students</h2>
 		<div class="person">
 			{#each students as person}
 				<PersonCard {person} />
@@ -72,7 +72,7 @@
 	{/if}
 
 	{#if formers}
-		<h2 class="text-center">Former Researchers</h2>
+		<h2 class="section-title">Former Researchers</h2>
 		<div class="person">
 			{#each formers as person}
 				<PersonCard {person} />
@@ -81,7 +81,7 @@
 	{/if}
 
 	{#if visitors}
-		<h2 class="text-center">Visiting Academics</h2>
+		<h2 class="section-title">Visiting Academics</h2>
 		<div class="person">
 			{#each visitors as person}
 				<PersonCard {person} />
@@ -90,7 +90,7 @@
 	{/if}
 
 	{#if prev_students}
-		<h2 class="text-center">Previous PhD Students</h2>
+		<h2 class="section-title">Previous PhD Students</h2>
 		<div class="person">
 			{#each prev_students as person}
 				<PersonCard {person} />
@@ -102,10 +102,16 @@
 {/if}
 
 <style>
-	h2 {
-		@apply text-2xl md:text-3xl lg:text-4xl font-bold mb-3 mt-8 md:mt-10;
+	.people-page-title {
+		@apply text-center text-3xl md:text-4xl lg:text-5xl font-semibold mb-7 md:mb-9;
 	}
+
+	.section-title {
+		@apply text-center text-lg md:text-xl lg:text-2xl font-semibold mb-4 mt-9 md:mt-10 text-serg_blue-700;
+		@apply uppercase tracking-[0.03em];
+	}
+
 	.person {
-		@apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 bg-gray-100 p-6 rounded-lg;
+		@apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 bg-gray-50 p-6 md:p-7 rounded-xl border border-gray-200/80;
 	}
 </style>

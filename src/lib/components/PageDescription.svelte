@@ -102,22 +102,22 @@
 	img {
 		@apply h-56 md:max-h-80 mx-auto rounded-xl;
 		@apply object-cover;
-		@apply shadow-lg;
-		@apply transition-transform duration-300;
-		@apply hover:scale-105;
+		@apply shadow-md;
+		@apply transition-transform duration-200 ease-out;
+		@apply hover:scale-[1.02] hover:shadow-lg;
 	}
 	.areas {
 		@apply mt-3 text-center;
 	}
 
 	.date {
-		@apply text-gray-600 my-2 text-right text-sm clear-both block italic;
+		@apply text-gray-500 my-2 text-right text-sm clear-both block italic;
 	}
 
 	.description {
-		@apply mt-6;
+		@apply mt-6 mx-auto max-w-3xl;
 		@apply leading-7 md:leading-8;
-		@apply text-gray-800;
+		@apply text-gray-700;
 	}
 
 	.description :global(p) {

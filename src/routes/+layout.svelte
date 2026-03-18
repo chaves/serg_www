@@ -5,48 +5,48 @@
 </script>
 
 <div class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 via-gray-100 to-serg_blue-50">
-	<header class="py-4 bg-white/80 backdrop-blur-sm border-b border-gray-200/50 shadow-sm">
+	<header class="py-2 md:py-3 bg-white/85 backdrop-blur-sm border-b border-gray-200/60 shadow-sm">
 		<div class="container">
-			<div class="grid grid-cols-2 items-center gap-4">
-				<div class="flex justify-start">
-					<a href="/" class="transition-transform duration-300 hover:scale-105">
+			<div class="grid grid-cols-[1fr_auto] gap-x-3 md:gap-x-5 gap-y-0.5 items-center">
+				<div class="flex items-center justify-start">
+					<a href="/" class="inline-flex items-center transition-transform duration-300 hover:scale-105">
 						<img
-							class="h-14 md:h-16 drop-shadow-sm"
+							class="block h-16 md:h-20 drop-shadow-sm"
 							src="/logo_100.png"
 							alt="Sustainable Economy Research Group (S.E.R.G.)"
 						/>
 					</a>
 				</div>
-				<div class="flex justify-end">
+				<div class="row-span-2 flex items-center justify-end self-center">
 					<a
 						href="https://www.centralesupelec.fr/"
-						class="transition-transform duration-300 hover:scale-105"
+						class="inline-flex items-center transition-transform duration-300 hover:scale-105"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
 						<img
-							class="h-12 md:h-16 drop-shadow-sm"
+							class="block h-10 md:h-12 drop-shadow-sm"
 							src="/logo_centrale_univ_150.png"
 							alt="CentraleSupélec / Paris-Saclay University"
 						/>
 					</a>
 				</div>
+				<div class="text-left">
+					<p class="m-0 mb-0 text-xs md:text-sm lg:text-base font-semibold text-serg_blue-800 leading-tight">
+					Sustainable Economy Research Group (SERG)
+					</p>
+					<p class="m-0 mt-0 text-[11px] md:text-xs lg:text-sm text-serg_gray-dark/95 leading-tight">
+					CentraleSupélec / Paris-Saclay University · Industrial Engineering Department (LGI)
+					</p>
+				</div>
 			</div>
-
-			<p
-				class="text-left text-sm md:text-base lg:text-lg font-bold -mb-3 mt-3 text-serg_blue-700 tracking-tight"
-			>
-				Sustainable Economy Research Group (S.E.R.G.) at CentraleSupélec / Paris-Saclay University<br
-				/>
-				<span class="text-serg_gray-dark">Industrial Engineering Departement (LGI)</span>
-			</p>
 		</div>
 	</header>
 
 	<Navigation />
 
 	<main
-		class="container mx-auto px-4 md:px-8 py-4 md:py-8 flex-grow shadow-lg my-4 rounded-xl bg-white/95 backdrop-blur-sm border border-gray-200/50"
+		class="container mx-auto px-4 md:px-8 py-4 md:py-8 flex-grow shadow-md my-5 rounded-xl bg-white/95 backdrop-blur-sm border border-gray-200/60"
 	>
 		{@render children()}
 	</main>
@@ -56,8 +56,8 @@
 	>
 		<div class="container mx-auto px-4 text-center">
 			<p class="text-sm md:text-base opacity-90">
-				&copy; {new Date().getFullYear()} Sustainable Economy Research Group (S.E.R.G.) at CentraleSupélec
-				/ Paris-Saclay University / Industrial Engineering Departement (LGI). All rights reserved.
+				&copy; {new Date().getFullYear()} Sustainable Economy Research Group (SERG) at CentraleSupélec /
+				Paris-Saclay University / Industrial Engineering Department (LGI). All rights reserved.
 			</p>
 		</div>
 	</footer>

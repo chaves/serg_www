@@ -13,7 +13,7 @@
 <div class="max-w-4xl mx-auto px-4 py-8">
 	{#if data.cemsi}
 		<!-- Title Section -->
-		<h1 class="text-4xl md:text-5xl font-bold text-center mb-6 text-serg_blue-800 leading-tight">
+		<h1 class="cemsi-title text-4xl md:text-5xl font-bold text-center mb-6 text-serg_blue-800">
 			{data.cemsi.title}
 		</h1>
 
@@ -42,6 +42,16 @@
 </div>
 
 <style>
+	.cemsi-title {
+		line-height: 1.14;
+	}
+
+	@media (min-width: 768px) {
+		.cemsi-title {
+			line-height: 1.1;
+		}
+	}
+
 	:global(.content-container p) {
 		margin-bottom: 1rem;
 		line-height: 1.75;

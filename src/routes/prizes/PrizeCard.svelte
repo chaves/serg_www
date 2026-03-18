@@ -1,7 +1,6 @@
 <!-- src/components/PrizeCard.svelte -->
 <script lang="ts">
 	import type { Prize } from '$types/prizes';
-	import AreasTags from '$lib/components/AreasTags.svelte';
 	import { CMS_BASE_URL } from '$lib/config';
 
 	let { prize }: { prize: Prize } = $props();
@@ -27,12 +26,19 @@
 	);
 </script>
 
-<article>
-	<div class="content">
-		{prize.year} - <span class="font-semibold">{prize.first_name} {prize.last_name}</span> : {prize.title}
+<article
+	class="flex items-center justify-between gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-shadow duration-150 hover:shadow-md"
+>
+	<div class="min-w-0 flex-1">
+		<p class="m-0 text-sm leading-snug text-gray-600 md:text-base">
+			<span class="font-semibold text-serg_blue-700">{prize.year}</span>
+			<span class="mx-1 text-gray-400">·</span>
+			<span class="font-semibold text-gray-800">{prize.first_name} {prize.last_name}</span>
+		</p>
+		<p class="m-0 mt-1 text-base leading-relaxed text-gray-700 md:text-lg">{prize.title}</p>
 	</div>
 	{#if prize.picture}
-		<div class="picture">
+		<div class="ml-2 shrink-0">
 			<img
 				src={pictureSrc}
 				srcset={pictureSrcset || undefined}
@@ -42,33 +48,8 @@
 				decoding="async"
 				width={pictureWidth}
 				height={pictureHeight}
+				class="block h-20 w-20 rounded-lg object-cover shadow-sm transition duration-150 ease-out hover:shadow-md md:h-24 md:w-24"
 			/>
 		</div>
 	{/if}
 </article>
-
-<style>
-	article {
-		background-color: #f9f9f9;
-		@apply flex items-center justify-between p-2 mb-2 rounded;
-	}
-
-	article:nth-child(odd) {
-		background-color: white;
-	}
-
-	.content {
-		@apply text-lg flex-1;
-	}
-
-	.picture {
-		@apply ml-4;
-	}
-
-	img {
-		@apply rounded-xl h-20 md:h-28 object-cover;
-		@apply shadow-md;
-		@apply transition-all duration-300;
-		@apply hover:shadow-lg hover:scale-105;
-	}
-</style>

@@ -23,7 +23,9 @@
 	);
 </script>
 
-<div class="bg-white p-6 rounded shadow hover:shadow-md transition-shadow text-center">
+<div
+	class="bg-white p-6 rounded-lg border border-gray-200/80 shadow-sm hover:shadow-md transition-all duration-200 text-center"
+>
 	<h3 class="text-xl font-semibold mb-2">
 		<a href={`/people/${person.slug}`}>
 			{person.first_name}
@@ -41,7 +43,7 @@
 				srcset={pictureSrcset || undefined}
 				sizes="112px"
 				alt={`${person.first_name} ${person.last_name} - ${person.category || 'Member'}`}
-				class="w-28 h-28 rounded-full mx-auto mb-4 object-cover shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105"
+				class="w-28 h-28 rounded-full mx-auto mb-4 object-cover shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
 				loading="lazy"
 				decoding="async"
 				width="112"

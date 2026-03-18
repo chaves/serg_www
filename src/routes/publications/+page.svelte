@@ -281,8 +281,8 @@
 <style>
 	/* Document Type Navigation */
 	.type-nav {
-		@apply bg-white rounded-xl shadow-lg p-4 md:p-6 mb-8;
-		@apply border border-gray-100;
+		@apply bg-white rounded-xl shadow-sm p-4 md:p-6 mb-8;
+		@apply border border-gray-200;
 	}
 
 	.type-nav-header {
@@ -290,11 +290,11 @@
 	}
 
 	.type-nav-header h2 {
-		@apply text-lg font-semibold text-gray-800 m-0;
+		@apply text-lg font-semibold text-gray-700 m-0;
 	}
 
 	.pub-count {
-		@apply text-sm text-gray-500 font-medium;
+		@apply text-sm text-gray-600 font-medium;
 	}
 
 	.type-nav-buttons {
@@ -305,14 +305,13 @@
 		@apply flex items-center gap-2 px-4 py-2 rounded-lg;
 		@apply bg-gray-50 border border-gray-200;
 		@apply text-gray-700 font-medium;
-		@apply hover:bg-serg_blue-50 hover:border-serg_blue-200 hover:text-serg_blue-700;
-		@apply transition-all duration-200;
+		@apply hover:bg-white hover:border-gray-300 hover:text-serg_blue-700;
+		@apply transition-all duration-150;
 		@apply cursor-pointer;
 	}
 
 	.type-btn.active {
 		@apply bg-serg_blue-600 border-serg_blue-600 text-white;
-		@apply shadow-md;
 	}
 
 	.type-btn.active:hover {
@@ -343,7 +342,7 @@
 	}
 
 	.year-heading {
-		@apply text-2xl md:text-3xl font-bold text-serg_blue-600 mt-4 mb-4 pb-2 border-b-2 border-serg_blue-300;
+		@apply text-2xl md:text-3xl font-bold text-serg_blue-700 mt-4 mb-4 pb-2 border-b border-serg_blue-200;
 	}
 
 	/* Document type sections */
@@ -358,18 +357,17 @@
 
 	.type-badge {
 		@apply inline-flex items-center px-4 py-2 rounded-lg;
-		@apply bg-gradient-to-r from-serg_blue-500 to-serg_blue-600;
-		@apply text-white shadow-sm;
+		@apply bg-serg_blue-600 text-white;
 	}
 
 	/* Publication cards */
 	.publication-card {
-		@apply bg-white p-4 md:p-6 mb-4 rounded-lg shadow-md hover:shadow-lg transition-shadow;
-		@apply border-l-4 border-serg_blue-400;
+		@apply bg-white p-4 md:p-6 mb-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200;
+		@apply border border-gray-200 border-l-2 border-l-serg_blue-400;
 	}
 
 	.pub-title {
-		@apply text-lg md:text-xl font-semibold text-serg_blue-600 mb-2;
+		@apply text-lg md:text-xl font-semibold text-serg_blue-700 mb-2;
 	}
 
 	.pub-title a {
@@ -379,7 +377,7 @@
 	}
 
 	.pub-authors {
-		@apply text-base text-gray-700 italic mb-2;
+		@apply text-base text-gray-600 italic mb-2;
 	}
 
 	.pub-venue {
@@ -397,7 +395,7 @@
 	.pub-link {
 		@apply inline-block px-3 py-1 text-sm rounded-full;
 		@apply bg-serg_blue-100 text-serg_blue-700;
-		@apply hover:bg-serg_blue-200 transition-colors;
+		@apply hover:bg-serg_blue-200 transition-colors duration-150;
 		@apply no-underline;
 	}
 
@@ -427,7 +425,7 @@
 		@apply inline-flex items-center gap-2 px-4 py-2 rounded-lg;
 		@apply bg-serg_blue-50 text-serg_blue-700 border border-serg_blue-200;
 		@apply hover:bg-serg_blue-100 hover:border-serg_blue-300;
-		@apply transition-all duration-200;
+		@apply transition-all duration-150;
 		@apply cursor-pointer font-medium text-sm;
 	}
 
