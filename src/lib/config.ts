@@ -7,5 +7,4 @@ export const CMS_BASE_URL =
 	import.meta.env.PUBLIC_CMS_BASE_URL || 'https://cms.serg.paris';
 
 // Site URL
-export const SITE_URL = import.meta.env.PUBLIC_SITE_URL || 'https://serg.paris';
-
+export const SITE_URL = import.meta.env.PUBLIC_SITE_URL || 'https://www.serg.paris';

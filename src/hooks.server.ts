@@ -1,16 +1,6 @@
 import type { Handle } from '@sveltejs/kit';
-import { SITE_URL } from '$lib/config';
 
 export const handle: Handle = async ({ event, resolve }) => {
-	const canonicalOrigin = new URL(SITE_URL);
-
-	// Canonical host redirect: www -> apex host
-	if (event.url.hostname === `www.${canonicalOrigin.hostname}`) {
-		const target = new URL(event.url);
-		target.hostname = canonicalOrigin.hostname;
-		return Response.redirect(target.toString(), 308);
-	}
-
 	// Normalize trailing slashes for canonical URLs (except root and file-like paths)
 	if (
 		event.url.pathname.length > 1 &&

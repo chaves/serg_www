@@ -35,9 +35,9 @@
 	const cleanDescription = $derived(description ? stripHtml(description) : defaultDescription);
 	const metaDescription = $derived(truncateText(cleanDescription, 160));
 
-	const canonicalHost = new URL(siteUrl).host;
-	const isNonCanonicalHost = $derived(Boolean($page.url.host) && $page.url.host !== canonicalHost);
-	const effectiveNoindex = $derived(noindex || isNonCanonicalHost);
+	// Keep preview deployments out of index, but do not noindex custom domains.
+	const isVercelPreview = $derived($page.url.hostname.endsWith('.vercel.app'));
+	const effectiveNoindex = $derived(noindex || isVercelPreview);
 
 	const robotsContent = $derived(
 		[effectiveNoindex ? 'noindex' : 'index', nofollow ? 'nofollow' : 'follow'].join(', ')
