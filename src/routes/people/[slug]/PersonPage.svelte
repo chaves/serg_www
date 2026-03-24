@@ -38,23 +38,24 @@
 	<AreasTags areas={person.areas} center={true} />
 </div>
 
-{#if person.picture}
-	<a href={`/people/${person.slug}`} class="image-link">
-		<img
-			src="{CMS_BASE_URL}{picture}"
-			srcset={pictureSrcset || undefined}
-			sizes="(max-width: 768px) 256px, 320px"
-			alt={title}
-			loading="lazy"
-			decoding="async"
-			width="256"
-			height="256"
-		/>
-	</a>
-{/if}
-
-<div class="bio">
-	{@html person?.bio}
+<div class="profile">
+	{#if person.picture}
+		<div class="photo">
+			<img
+				src="{CMS_BASE_URL}{picture}"
+				srcset={pictureSrcset || undefined}
+				sizes="(max-width: 768px) 192px, 224px"
+				alt={title}
+				loading="lazy"
+				decoding="async"
+				width="224"
+				height="224"
+			/>
+		</div>
+	{/if}
+	<div class="bio">
+		{@html person?.bio}
+	</div>
 </div>
 
 <style>
@@ -62,20 +63,27 @@
 		@apply mt-1 mb-2 text-center;
 	}
 
-	.bio {
-		@apply mt-6 mx-auto max-w-3xl;
-		@apply leading-7 md:leading-8;
-		@apply text-gray-700;
-	}
-
 	.tags {
 		@apply flex justify-center py-6;
 	}
 
+	.profile {
+		@apply flex flex-col md:flex-row gap-8 mt-2 items-start;
+	}
+
+	.photo {
+		@apply flex-shrink-0 flex justify-center md:justify-start self-start;
+	}
+
 	img {
-		@apply w-64 h-64 rounded-full object-cover md:mr-10 mb-6 md:float-right mx-auto;
+		@apply w-48 md:w-56 rounded-2xl;
 		@apply shadow-lg;
 		@apply transition-all duration-300;
-		@apply hover:shadow-xl hover:scale-105;
+		@apply hover:shadow-xl hover:scale-[1.02];
+		height: auto;
+	}
+
+	.bio {
+		@apply flex-1 leading-7 md:leading-8 text-gray-700;
 	}
 </style>
