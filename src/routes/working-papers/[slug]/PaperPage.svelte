@@ -16,7 +16,9 @@
 	{@html paper.abstract}
 </div>
 
-<DownloadFiles files={paper.files} />
+<div class="download">
+	<DownloadFiles files={paper.files} />
+</div>
 
 <style>
 	.tags {
@@ -33,6 +35,10 @@
 		@apply mt-6 mx-auto max-w-3xl;
 		@apply leading-7 md:leading-8;
 		@apply text-gray-700;
+	}
+
+	.download {
+		@apply flex justify-center mt-8;
 	}
 
 	.description :global(p) {
