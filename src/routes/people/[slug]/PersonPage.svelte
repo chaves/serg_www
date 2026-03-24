@@ -29,14 +29,14 @@
 </h1>
 
 {#if person.email}
-	<p class="text-center">
+	<p class="email">
 		<a href={`mailto:${person.email}`}>{person.email}</a>
 	</p>
 {/if}
 
-<p class="text-center">
+<div class="tags">
 	<AreasTags areas={person.areas} center={true} />
-</p>
+</div>
 
 {#if person.picture}
 	<a href={`/people/${person.slug}`} class="image-link">
@@ -56,6 +56,16 @@
 {@html person?.bio}
 
 <style>
+	.email {
+		@apply mt-1 mb-2;
+		text-align: center;
+		max-width: none;
+	}
+
+	.tags {
+		@apply flex justify-center py-6;
+	}
+
 	img {
 		@apply w-64 h-64 rounded-full object-cover md:mr-10 mb-6 md:float-right mx-auto;
 		@apply shadow-lg;
