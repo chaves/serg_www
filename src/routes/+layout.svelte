@@ -5,7 +5,7 @@
 </script>
 
 <div class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 via-gray-100 to-serg_blue-50">
-	<header class="py-3 md:py-4 bg-white/85 backdrop-blur-sm border-b border-gray-200/60 shadow-sm">
+	<header class="py-7 md:py-8 bg-white/85 backdrop-blur-sm border-b border-gray-200/60 shadow-sm">
 		<div class="container">
 			<div class="flex items-center justify-between gap-x-3 md:gap-x-5">
 				<a href="/" class="inline-flex items-center transition-transform duration-300 hover:scale-105">
