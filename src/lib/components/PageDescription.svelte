@@ -78,7 +78,7 @@
 
 {#if areas}
 	<div class="areas">
-		<AreasTags {areas} />
+		<AreasTags {areas} center={true} />
 	</div>
 {/if}
 
@@ -100,8 +100,8 @@
 	}
 
 	img {
-		@apply h-56 md:max-h-80 mx-auto rounded-xl;
-		@apply object-cover;
+		@apply max-h-80 w-auto mx-auto rounded-xl;
+		@apply object-contain;
 		@apply shadow-md;
 		@apply transition-transform duration-200 ease-out;
 		@apply hover:scale-[1.02] hover:shadow-lg;
