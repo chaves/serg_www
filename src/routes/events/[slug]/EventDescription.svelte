@@ -12,11 +12,17 @@
 </script>
 
 {#snippet calendar()}
-	<p class="mb-1 text-center font-bold text-xl">
+	<p class="event-date">
 		<Calendar class="inline-block mr-1 -mt-1 w-6 h-6" />
 		{formatDateEvent(event.date_start, event.date_end)}
 	</p>
 {/snippet}
+
+<style>
+	.event-date {
+		@apply mb-3 text-center font-semibold text-lg text-serg_blue-700;
+	}
+</style>
 
 <PageDescription
 	title={event.title}

@@ -53,13 +53,19 @@
 	</a>
 {/if}
 
-{@html person?.bio}
+<div class="bio">
+	{@html person?.bio}
+</div>
 
 <style>
 	.email {
-		@apply mt-1 mb-2;
-		text-align: center;
-		max-width: none;
+		@apply mt-1 mb-2 text-center;
+	}
+
+	.bio {
+		@apply mt-6 mx-auto max-w-3xl;
+		@apply leading-7 md:leading-8;
+		@apply text-gray-700;
 	}
 
 	.tags {

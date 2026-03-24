@@ -165,10 +165,6 @@
     text-wrap: pretty;
   }
 
-  main :where(p, blockquote) {
-    max-width: 72ch;
-  }
-
   main img {
     @apply max-w-full;
     @apply h-auto;

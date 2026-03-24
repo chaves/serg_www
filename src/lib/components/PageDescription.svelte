@@ -111,7 +111,8 @@
 	}
 
 	.date {
-		@apply text-gray-500 my-2 text-right text-sm clear-both block italic;
+		@apply text-gray-500 text-right text-sm clear-both block italic;
+		@apply pt-6 pb-2;
 	}
 
 	.description {
@@ -133,6 +134,6 @@
 	}
 
 	.attached-files {
-		@apply mt-3;
+		@apply mt-3 flex justify-center;
 	}
 </style>
