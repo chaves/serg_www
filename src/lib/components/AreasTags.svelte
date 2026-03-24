@@ -4,7 +4,7 @@
 	import { Battery, Car, Sun } from 'lucide-svelte';
 	import type { ComponentType } from 'svelte';
 
-	let { areas, center = false }: { areas: any; center?: boolean } = $props();
+	let { areas, center = false, right = false }: { areas: any; center?: boolean; right?: boolean } = $props();
 	const items = $derived(areas.data ? areas.data : areas);
 
 	function getIconForTag(title: string): ComponentType | null {
@@ -27,7 +27,7 @@
 </script>
 
 {#if items && items.length > 0}
-	<div class="tags-container" class:center>
+	<div class="tags-container" class:center class:right>
 		{#each items as item}
 			{@const Icon = getIconForTag(item.title)}
 			<Badge variant="outline" class="tag-item">
@@ -47,6 +47,10 @@
 
 	.tags-container.center {
 		@apply justify-center;
+	}
+
+	.tags-container.right {
+		@apply justify-end;
 	}
 
 	:global(.tag-item) {

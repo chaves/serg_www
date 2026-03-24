@@ -29,7 +29,7 @@
 />
 
 {#if data.paper}
-	<h1>{title}</h1>
+	<h1 class="text-2xl md:text-3xl font-semibold mb-4 text-center leading-snug">{title}</h1>
 	<PaperPage paper={data.paper} />
 {:else}
 	<p>Working paper unavailable.</p>

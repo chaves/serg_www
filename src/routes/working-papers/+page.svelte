@@ -22,7 +22,7 @@
 			</h3>
 			<p class="text-gray-600 mb-2">{paper.year} - {paper.authors}</p>
 			<p class="text-gray-600 mb-2"><DownloadFiles files={paper.files} /></p>
-			<AreasTags areas={paper.areas} />
+			<AreasTags areas={paper.areas} right />
 		</div>
 	{/each}
 </div>
