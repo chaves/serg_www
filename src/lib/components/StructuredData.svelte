@@ -27,7 +27,7 @@
 					name: 'Sustainable Economy Research Group (SERG)',
 					alternateName: 'SERG',
 					url: siteUrl,
-					logo: `${siteUrl}/logo_100.png`,
+					logo: `${siteUrl}/logo.svg`,
 					address: {
 						'@type': 'PostalAddress',
 						addressCountry: 'FR',
@@ -51,7 +51,7 @@
 					...base,
 					headline: data?.title || '',
 					description: data?.description || '',
-					image: data?.image ? `${CMS_BASE_URL}${data.image}` : `${siteUrl}/logo_100.png`,
+					image: data?.image ? `${CMS_BASE_URL}${data.image}` : `${siteUrl}/logo.svg`,
 					datePublished: data?.publishedAt || '',
 					dateModified: data?.modifiedAt || data?.publishedAt || '',
 					author: data?.author
@@ -68,7 +68,7 @@
 						name: 'SERG',
 						logo: {
 							'@type': 'ImageObject',
-							url: `${siteUrl}/logo_100.png`
+							url: `${siteUrl}/logo.svg`
 						}
 					},
 					...data
@@ -79,7 +79,7 @@
 					...base,
 					name: data?.title || '',
 					description: data?.description || '',
-					image: data?.image ? `${CMS_BASE_URL}${data.image}` : `${siteUrl}/logo_100.png`,
+					image: data?.image ? `${CMS_BASE_URL}${data.image}` : `${siteUrl}/logo.svg`,
 					startDate: data?.date_start || '',
 					endDate: data?.date_end || data?.date_start || '',
 					location: {

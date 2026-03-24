@@ -33,7 +33,7 @@ const config: Config = {
 					dark: '#333333',    // Darker shade
 				  },
 				  serg_purple: {
-					DEFAULT: '#86144f',
+					DEFAULT: '#25986b',
 				  },
 				border: "hsl(var(--border) / <alpha-value>)",
 				input: "hsl(var(--input) / <alpha-value>)",

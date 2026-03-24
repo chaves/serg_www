@@ -28,7 +28,7 @@
 	const siteUrl = SITE_URL.endsWith('/') ? SITE_URL.slice(0, -1) : SITE_URL;
 	const canonicalUrl = $derived(`${siteUrl}${$page.url.pathname}`);
 	const fullTitle = $derived(title.includes('SERG') ? title : `${title} | SERG`);
-	const defaultImage = `${siteUrl}/logo_100.png`;
+	const defaultImage = `${siteUrl}/logo.svg`;
 	const ogImage = $derived(image || defaultImage);
 	const defaultDescription =
 		'Sustainable Economy Research Group (SERG) at CentraleSupélec / Paris-Saclay University / Industrial Engineering Department (LGI)';

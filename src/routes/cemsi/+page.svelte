@@ -63,7 +63,7 @@
 		font-weight: 700;
 		margin-top: 2rem;
 		margin-bottom: 1rem;
-		color: #1e40af;
+		color: #001e47;
 	}
 
 	:global(.content-container h3) {
@@ -71,7 +71,7 @@
 		font-weight: 600;
 		margin-top: 1.5rem;
 		margin-bottom: 0.75rem;
-		color: #2563eb;
+		color: #003366;
 	}
 
 	:global(.content-container ul) {
@@ -101,12 +101,12 @@
 	}
 
 	:global(.content-container a) {
-		color: #2563eb;
+		color: #003366;
 		text-decoration: underline;
 		transition: color 0.2s;
 	}
 
 	:global(.content-container a:hover) {
-		color: #1d4ed8;
+		color: #002652;
 	}
 </style>
