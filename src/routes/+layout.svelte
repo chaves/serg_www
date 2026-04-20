@@ -30,6 +30,7 @@
 					</a>
 				</div>
 			</div>
+		</div>
 	</header>
 
 	<Navigation />
