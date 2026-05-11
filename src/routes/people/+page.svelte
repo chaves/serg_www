@@ -11,7 +11,8 @@
 	);
 
 	function byCategory(list: Person[], category: string) {
-		return list.filter((person) => person.category === category);
+		const target = category.toLowerCase();
+		return list.filter((person) => (person.category ?? '').toLowerCase() === target);
 	}
 
 	const directors = $derived(byCategory(people, 'Director'));
@@ -23,6 +24,7 @@
 	const visitors = $derived(byCategory(people, 'Visiting Academics'));
 	const associates = $derived(byCategory(people, 'Associate Researchers'));
 	const formers = $derived(byCategory(people, 'Former Researchers'));
+	const pro_staff = $derived(byCategory(people, 'Professional Staff'));
 </script>
 
 <SEO
@@ -48,6 +50,15 @@
 		<h2 class="section-title">Associate Researchers</h2>
 		<div class="person">
 			{#each associates as person}
+				<PersonCard {person} />
+			{/each}
+		</div>
+	{/if}
+
+	{#if pro_staff.length}
+		<h2 class="section-title">Professional Staff</h2>
+		<div class="person">
+			{#each pro_staff as person}
 				<PersonCard {person} />
 			{/each}
 		</div>
