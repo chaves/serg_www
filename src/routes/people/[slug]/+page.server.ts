@@ -1,26 +1,15 @@
 import type { PageServerLoad } from './$types';
 import type { PeopleResponse } from '$types/people';
 import { CMS_BASE_URL } from '$lib/config';
-import { NO_CACHE_FETCH_OPTIONS } from '$lib/utils';
+import { fetchAllSlugs } from '$lib/cms';
 import { error } from '@sveltejs/kit';
 
 // Prerender all people pages
 export const prerender = true;
 
 // Dynamic entries: fetch all people slugs at build time
-export const entries = async () => {
-	const response = await fetch(
-		`${CMS_BASE_URL}/api/people?publicationState=live&fields[0]=slug`,
-		NO_CACHE_FETCH_OPTIONS
-	);
-
-	if (!response.ok) {
-		throw new Error(`Failed to fetch people entries: ${response.status} ${response.statusText}`);
-	}
-
-	const data: PeopleResponse = await response.json();
-	return data.data?.map((person) => ({ slug: person.slug })) || [];
-};
+export const entries = async () =>
+	(await fetchAllSlugs('people')).map((slug) => ({ slug }));
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
 	const slug = params.slug;

@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import type { PeopleResponse } from '$types/people';
 import { CMS_BASE_URL } from '$lib/config';
+import { withSlug } from '$lib/cms';
 import { error } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ fetch }) => {
@@ -18,6 +19,6 @@ export const load: PageServerLoad = async ({ fetch }) => {
 	const data: PeopleResponse = await response.json();
 
 	return {
-		people: data.data
+		people: withSlug(data.data)
 	};
 };

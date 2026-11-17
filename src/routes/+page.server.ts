@@ -2,6 +2,7 @@ import type { PageServerLoad } from './$types';
 import type { NewsResponse } from "$types/news";
 import type { EventsResponse } from "$types/events";
 import { CMS_BASE_URL } from '$lib/config';
+import { withSlug } from '$lib/cms';
 import { error } from '@sveltejs/kit';
 
 async function fetchData(url: string, fetchFn: typeof fetch) {
@@ -29,7 +30,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
 
 	return {
 		description: dataDesc.data,
-		news: dataNews.data,
-		events: dataEvents.data
+		news: withSlug(dataNews.data),
+		events: withSlug(dataEvents.data)
 	};
 };

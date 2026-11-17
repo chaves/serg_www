@@ -1,25 +1,14 @@
 import type { PageServerLoad } from './$types';
 import { CMS_BASE_URL } from '$lib/config';
-import { NO_CACHE_FETCH_OPTIONS } from '$lib/utils';
+import { fetchAllSlugs } from '$lib/cms';
 import { error } from '@sveltejs/kit';
 
 // Prerender all news pages
 export const prerender = true;
 
 // Dynamic entries: fetch all news slugs at build time
-export const entries = async () => {
-	const response = await fetch(
-		`${CMS_BASE_URL}/api/news?publicationState=live&fields[0]=slug`,
-		NO_CACHE_FETCH_OPTIONS
-	);
-
-	if (!response.ok) {
-		throw new Error(`Failed to fetch news entries: ${response.status} ${response.statusText}`);
-	}
-
-	const data = await response.json();
-	return data.data?.map((article: { slug: string }) => ({ slug: article.slug })) || [];
-};
+export const entries = async () =>
+	(await fetchAllSlugs('news')).map((slug) => ({ slug }));
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
 	const slug = params.slug;

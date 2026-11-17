@@ -1,5 +1,7 @@
 import type { PageServerLoad } from './$types';
+import type { PapersResponse } from '$types/papers';
 import { CMS_BASE_URL } from '$lib/config';
+import { withSlug } from '$lib/cms';
 import { error } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ fetch }) => {
@@ -7,16 +9,16 @@ export const load: PageServerLoad = async ({ fetch }) => {
 	// Webhooks trigger rebuilds when content changes, so cache-busting is less critical
 	// Explicitly request published content with publicationState=live
 	const response = await fetch(
-		`${CMS_BASE_URL}/api/working-papers?publicationState=live&sort[0]=year:desc&sort[1]=createdAt:desc&populate=*`
+		`${CMS_BASE_URL}/api/working-papers?publicationState=live&sort[0]=year:desc&sort[1]=createdAt:desc&populate=*&pagination[pageSize]=1000`
 	);
 
 	if (!response.ok) {
 		throw error(502, 'Failed to fetch working papers data');
 	}
 
-	const data = await response.json();
+	const data: PapersResponse = await response.json();
 
 	return {
-		papers: data.data
+		papers: withSlug(data.data)
 	};
 };

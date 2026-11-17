@@ -1,6 +1,6 @@
 import type { RequestHandler } from './$types';
-import { CMS_BASE_URL, SITE_URL } from '$lib/config';
-import { NO_CACHE_FETCH_OPTIONS } from '$lib/utils';
+import { SITE_URL } from '$lib/config';
+import { fetchAllSlugs } from '$lib/cms';
 
 const siteUrl = SITE_URL;
 
@@ -15,29 +15,19 @@ const staticRoutes = [
 	'/cemsi'
 ];
 
-async function fetchSlugs(endpoint: string, prefix: string): Promise<string[]> {
-	const response = await fetch(endpoint, NO_CACHE_FETCH_OPTIONS);
-
-	if (!response.ok) {
-		throw new Error(`Failed to fetch sitemap slugs from ${endpoint}: ${response.status}`);
-	}
-
-	const data = await response.json();
-	return data.data?.map((entry: { slug: string }) => `${prefix}/${entry.slug}`) || [];
-}
-
 async function getDynamicRoutes() {
-	const [eventRoutes, newsRoutes, peopleRoutes, paperRoutes] = await Promise.all([
-		fetchSlugs(`${CMS_BASE_URL}/api/events?publicationState=live&fields[0]=slug`, '/events'),
-		fetchSlugs(`${CMS_BASE_URL}/api/news?publicationState=live&fields[0]=slug`, '/news'),
-		fetchSlugs(`${CMS_BASE_URL}/api/people?publicationState=live&fields[0]=slug`, '/people'),
-		fetchSlugs(
-			`${CMS_BASE_URL}/api/working-papers?publicationState=live&fields[0]=slug`,
-			'/working-papers'
+	const sections = [
+		['events', '/events'],
+		['news', '/news'],
+		['people', '/people'],
+		['working-papers', '/working-papers']
+	] as const;
+	const routes = await Promise.all(
+		sections.map(async ([collection, prefix]) =>
+			(await fetchAllSlugs(collection)).map((slug) => `${prefix}/${slug}`)
 		)
-	]);
-
-	return [...eventRoutes, ...newsRoutes, ...peopleRoutes, ...paperRoutes];
+	);
+	return routes.flat();
 }
 
 export const GET: RequestHandler = async () => {
